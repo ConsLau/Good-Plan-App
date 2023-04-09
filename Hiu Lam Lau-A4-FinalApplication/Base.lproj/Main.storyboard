@@ -25,17 +25,17 @@ please sign in and continue!</string>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Email" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8mF-Bk-iWy">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8mF-Bk-iWy">
                                 <rect key="frame" x="20" y="444" width="353" height="34"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4oz-HQ-Q7P">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4oz-HQ-Q7P">
                                 <rect key="frame" x="20" y="488" width="353" height="34"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Up5-gg-bak">
                                 <rect key="frame" x="242" y="527" width="131" height="30"/>
@@ -51,6 +51,9 @@ please sign in and continue!</string>
                                 <rect key="frame" x="20" y="693" width="353" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Sign In"/>
+                                <connections>
+                                    <action selector="signinBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LH6-5U-8ds"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jhe-T9-uFX">
                                 <rect key="frame" x="20" y="737.33333333333337" width="142.33333333333334" height="15.666666666666629"/>
@@ -161,13 +164,7 @@ please sign in and continue!</string>
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kt6-yy-BzU">
-                                <rect key="frame" x="20" y="210" width="353" height="34"/>
-                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Email" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="efB-EQ-feO">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="efB-EQ-feO">
                                 <rect key="frame" x="20" y="259" width="353" height="34"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -177,32 +174,36 @@ please sign in and continue!</string>
                                 <rect key="frame" x="20" y="478" width="353" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Create Account"/>
+                                <connections>
+                                    <action selector="createBtn:" destination="Ley-cy-Pwt" eventType="touchUpInside" id="bps-hX-fat"/>
+                                </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Pasword" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XEX-07-DYT">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XEX-07-DYT">
                                 <rect key="frame" x="20" y="308" width="353" height="34"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3mb-J7-eF5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="3mb-J7-eF5" firstAttribute="trailing" secondItem="XEX-07-DYT" secondAttribute="trailing" constant="20" id="3Nb-9O-KGh"/>
-                            <constraint firstItem="3mb-J7-eF5" firstAttribute="trailing" secondItem="Kt6-yy-BzU" secondAttribute="trailing" constant="20" id="4ol-kQ-MY6"/>
-                            <constraint firstItem="Kt6-yy-BzU" firstAttribute="leading" secondItem="3mb-J7-eF5" secondAttribute="leading" constant="20" id="8gp-1v-Wwf"/>
-                            <constraint firstItem="efB-EQ-feO" firstAttribute="top" secondItem="Kt6-yy-BzU" secondAttribute="bottom" constant="15" id="AD5-5v-17C"/>
                             <constraint firstItem="3mb-J7-eF5" firstAttribute="trailing" secondItem="efB-EQ-feO" secondAttribute="trailing" constant="20" id="Mu2-sU-vnd"/>
                             <constraint firstItem="XEX-07-DYT" firstAttribute="top" secondItem="efB-EQ-feO" secondAttribute="bottom" constant="15" id="QxY-Dc-XFZ"/>
                             <constraint firstItem="efB-EQ-feO" firstAttribute="leading" secondItem="3mb-J7-eF5" secondAttribute="leading" constant="20" id="Yh9-Jo-OZA"/>
+                            <constraint firstItem="efB-EQ-feO" firstAttribute="top" secondItem="3mb-J7-eF5" secondAttribute="top" constant="156" id="afZ-zd-EDY"/>
                             <constraint firstItem="a4f-xU-eSY" firstAttribute="leading" secondItem="3mb-J7-eF5" secondAttribute="leading" constant="20" id="bLO-hD-VlW"/>
                             <constraint firstItem="3mb-J7-eF5" firstAttribute="trailing" secondItem="a4f-xU-eSY" secondAttribute="trailing" constant="20" id="ceu-w7-ZIm"/>
-                            <constraint firstItem="Kt6-yy-BzU" firstAttribute="top" secondItem="3mb-J7-eF5" secondAttribute="top" constant="107" id="ctE-cH-bN8"/>
                             <constraint firstItem="a4f-xU-eSY" firstAttribute="top" secondItem="XEX-07-DYT" secondAttribute="bottom" constant="136" id="i0G-2y-qwO"/>
                             <constraint firstItem="XEX-07-DYT" firstAttribute="leading" secondItem="3mb-J7-eF5" secondAttribute="leading" constant="20" id="leh-8B-GHS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Create Account" id="LVk-Ck-eci"/>
+                    <connections>
+                        <outlet property="emailCreate" destination="efB-EQ-feO" id="veL-I1-eJc"/>
+                        <outlet property="passwordCreate" destination="XEX-07-DYT" id="nKc-uR-czI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O0M-Tu-YGf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

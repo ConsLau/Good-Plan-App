@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>809928831366-a218fhc5as16u90gqh091n0fphl37srk.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.809928831366-a218fhc5as16u90gqh091n0fphl37srk</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDcXF9eKJorW-WFcxKYtYYjGHU7S40ZhB4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>809928831366</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>edu.monash.Hiu-Lam-Lau-A4-FinalApplication</string>
+	<key>PROJECT_ID</key>
+	<string>goodplan-37cb0</string>
+	<key>STORAGE_BUCKET</key>
+	<string>goodplan-37cb0.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:809928831366:ios:dbba8bf37bcb04aca5fc07</string>
+</dict>
+</plist>
