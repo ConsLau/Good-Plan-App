@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import Firebase
 
 class loginPageViewController: UIViewController {
 
@@ -16,14 +17,32 @@ class loginPageViewController: UIViewController {
     
     
     @IBAction func signinBtn(_ sender: Any) {
+        guard let email = emailInput.text, !email.isEmpty,
+                      let password = passwordInput.text, !password.isEmpty else {
+                    displayMessage(title: "Error", message: "Please enter email and password")
+                    return
+                }
         
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+            guard let strongSelf = self else {
+                return
+            }
+            
+            if let error = error {
+                strongSelf.displayMessage(title: "Error", message: error.localizedDescription)
+            } else {
+                // Login successful, perform any action or segue to the next screen
+                print("Logged in successfully")
+                // strongSelf.performSegue(withIdentifier: "yourSegueIdentifier", sender: nil)
+            }
+        }
 
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+
     }
     
     func displayMessage(title: String, message: String ){

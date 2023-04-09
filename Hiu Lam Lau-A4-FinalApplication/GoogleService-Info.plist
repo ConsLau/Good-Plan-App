@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>809928831366-a218fhc5as16u90gqh091n0fphl37srk.apps.googleusercontent.com</string>
+	<string>66427240488-a1s80mvvc0l85uch0u1q9f0l1bp0rd43.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.809928831366-a218fhc5as16u90gqh091n0fphl37srk</string>
+	<string>com.googleusercontent.apps.66427240488-a1s80mvvc0l85uch0u1q9f0l1bp0rd43</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDcXF9eKJorW-WFcxKYtYYjGHU7S40ZhB4</string>
+	<string>AIzaSyDr_FD5DoLSBXuKBbhGsY4jzL0oUqX749A</string>
 	<key>GCM_SENDER_ID</key>
-	<string>809928831366</string>
+	<string>66427240488</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>edu.monash.Hiu-Lam-Lau-A4-FinalApplication</string>
 	<key>PROJECT_ID</key>
-	<string>goodplan-37cb0</string>
+	<string>goodplan-2e1b2</string>
 	<key>STORAGE_BUCKET</key>
-	<string>goodplan-37cb0.appspot.com</string>
+	<string>goodplan-2e1b2.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:809928831366:ios:dbba8bf37bcb04aca5fc07</string>
+	<string>1:66427240488:ios:9c111d21769efe1de9351d</string>
 </dict>
 </plist>
