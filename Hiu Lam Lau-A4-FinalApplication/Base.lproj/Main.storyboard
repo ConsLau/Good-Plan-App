@@ -56,13 +56,13 @@ please sign in and continue!</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jhe-T9-uFX">
-                                <rect key="frame" x="20" y="737.33333333333337" width="142.33333333333334" height="15.666666666666629"/>
+                                <rect key="frame" x="70.000000000000014" y="737.33333333333337" width="142.33333333333337" height="15.666666666666629"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gb4-FB-5Cu">
-                                <rect key="frame" x="167.33333333333334" y="730" width="118.66666666666666" height="30"/>
+                                <rect key="frame" x="217.33333333333334" y="730" width="114.66666666666666" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Create Account">
                                     <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
@@ -76,21 +76,21 @@ please sign in and continue!</string>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="aWI-xa-bNm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="96" id="1wz-tG-rE4"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gb4-FB-5Cu" secondAttribute="trailing" constant="107" id="2Ch-Mb-YLU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gb4-FB-5Cu" secondAttribute="trailing" constant="61" id="27Q-p0-Cpr"/>
                             <constraint firstItem="gb4-FB-5Cu" firstAttribute="top" secondItem="e2m-Me-AaB" secondAttribute="bottom" constant="2.6699999999999999" id="2Zk-g3-1ED"/>
                             <constraint firstItem="e2m-Me-AaB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="6LV-Ok-TMb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="e2m-Me-AaB" secondAttribute="trailing" constant="20" id="76w-Wq-A7k"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Up5-gg-bak" secondAttribute="trailing" constant="20" id="9vb-dP-XaR"/>
-                            <constraint firstItem="gb4-FB-5Cu" firstAttribute="leading" secondItem="Jhe-T9-uFX" secondAttribute="trailing" constant="5" id="BHl-Zg-Qw4"/>
+                            <constraint firstItem="gb4-FB-5Cu" firstAttribute="leading" secondItem="Jhe-T9-uFX" secondAttribute="trailing" constant="5" id="BZl-TK-9SQ"/>
                             <constraint firstItem="e2m-Me-AaB" firstAttribute="top" secondItem="4oz-HQ-Q7P" secondAttribute="bottom" constant="171" id="Bc8-ep-2oR"/>
-                            <constraint firstItem="gb4-FB-5Cu" firstAttribute="leading" secondItem="Jhe-T9-uFX" secondAttribute="trailing" constant="5" id="Bzi-9U-oSz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4oz-HQ-Q7P" secondAttribute="trailing" constant="20" id="DHJ-de-lLZ"/>
                             <constraint firstItem="8mF-Bk-iWy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="IUA-qY-uv7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Jhe-T9-uFX" secondAttribute="bottom" constant="65" id="LyC-ZV-ooQ"/>
                             <constraint firstItem="Up5-gg-bak" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="242" id="Wkh-MI-Zsy"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8mF-Bk-iWy" secondAttribute="trailing" constant="20" id="XX5-r4-3eQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aWI-xa-bNm" secondAttribute="trailing" constant="97" id="bRr-2R-5HC"/>
-                            <constraint firstItem="Jhe-T9-uFX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="dFy-BT-O4y"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gb4-FB-5Cu" secondAttribute="bottom" constant="58" id="bgc-Xg-vlR"/>
+                            <constraint firstItem="Jhe-T9-uFX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="70" id="d41-Jb-w6z"/>
                             <constraint firstItem="8mF-Bk-iWy" firstAttribute="top" secondItem="aWI-xa-bNm" secondAttribute="bottom" constant="20" id="inD-uL-6pK"/>
                             <constraint firstItem="4oz-HQ-Q7P" firstAttribute="top" secondItem="8mF-Bk-iWy" secondAttribute="bottom" constant="10" id="m2N-oM-ikx"/>
                             <constraint firstItem="Up5-gg-bak" firstAttribute="top" secondItem="4oz-HQ-Q7P" secondAttribute="bottom" constant="5" id="nbu-aS-k2E"/>
@@ -117,7 +117,7 @@ please sign in and continue!</string>
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Email" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NXd-7f-2Gu">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NXd-7f-2Gu">
                                 <rect key="frame" x="20" y="274" width="353" height="34"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -127,6 +127,9 @@ please sign in and continue!</string>
                                 <rect key="frame" x="20" y="620" width="353" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Continute"/>
+                                <connections>
+                                    <action selector="continuteBtn:" destination="7IC-vR-NX5" eventType="touchUpInside" id="tn9-Jj-Esu"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forget Password?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LWi-Uv-4IM">
                                 <rect key="frame" x="70.999999999999986" y="173" width="250.66666666666663" height="36"/>
@@ -151,6 +154,9 @@ please sign in and continue!</string>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Forget Reset" id="Oui-fp-9NA"/>
+                    <connections>
+                        <outlet property="emailnput" destination="NXd-7f-2Gu" id="3Rz-TF-NSb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gt4-0M-aqz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
