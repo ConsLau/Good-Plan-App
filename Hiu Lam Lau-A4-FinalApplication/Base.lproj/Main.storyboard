@@ -166,7 +166,7 @@ please sign in and continue!</string>
         <!--Home Page-->
         <scene sceneID="cyC-fa-kOh">
             <objects>
-                <viewController title="Home Page" id="Lqm-kM-6g1" sceneMemberID="viewController">
+                <viewController title="Home Page" id="Lqm-kM-6g1" customClass="homePageViewController" customModule="Good_Plan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hl0-r8-jxv">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -179,12 +179,6 @@ please sign in and continue!</string>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Occupation: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFb-8f-png">
                                 <rect key="frame" x="76.666666666666671" y="362" width="97.000000000000014" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Neg-nl-DU5">
-                                <rect key="frame" x="76.666666666666671" y="444" width="83.000000000000014" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -207,16 +201,13 @@ please sign in and continue!</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Db-bp-cju">
-                                <rect key="frame" x="274.66666666666669" y="403" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSJ-xa-hpZ">
                                 <rect key="frame" x="20" y="645" width="353" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Logout"/>
+                                <connections>
+                                    <action selector="logoutBtn:" destination="Lqm-kM-6g1" eventType="touchUpInside" id="wXf-Zz-u6z"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J7l-tM-idT">
                                 <rect key="frame" x="76.666666666666686" y="173" width="240" height="128"/>
@@ -226,8 +217,8 @@ please sign in and continue!</string>
                                     <constraint firstAttribute="width" constant="240" id="Eex-go-keK"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Cv-mp-yYL">
-                                <rect key="frame" x="274.66666666666669" y="444" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Db-bp-cju">
+                                <rect key="frame" x="76.666666666666671" y="444" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -236,30 +227,32 @@ please sign in and continue!</string>
                         <viewLayoutGuide key="safeArea" id="D8G-2T-Tol"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="8Cv-mp-yYL" firstAttribute="centerY" secondItem="Neg-nl-DU5" secondAttribute="centerY" id="Jk9-25-DOq"/>
+                            <constraint firstItem="QdD-7v-3rl" firstAttribute="top" secondItem="hFb-8f-png" secondAttribute="bottom" constant="20" id="9dR-Lw-aFA"/>
+                            <constraint firstItem="7Db-bp-cju" firstAttribute="top" secondItem="QdD-7v-3rl" secondAttribute="bottom" constant="20" id="EjY-33-6E2"/>
                             <constraint firstItem="hFb-8f-png" firstAttribute="top" secondItem="Sfk-AB-8Sp" secondAttribute="bottom" constant="20" id="N5n-kd-ZwW"/>
                             <constraint firstItem="J7l-tM-idT" firstAttribute="centerX" secondItem="Hl0-r8-jxv" secondAttribute="centerX" id="NbK-G3-v0D"/>
-                            <constraint firstItem="Neg-nl-DU5" firstAttribute="leading" secondItem="QdD-7v-3rl" secondAttribute="leading" id="RRd-3S-12e"/>
                             <constraint firstItem="hFb-8f-png" firstAttribute="leading" secondItem="Sfk-AB-8Sp" secondAttribute="leading" id="T8L-OC-Z0M"/>
                             <constraint firstItem="QdD-7v-3rl" firstAttribute="leading" secondItem="hFb-8f-png" secondAttribute="leading" id="VeX-bY-y4e"/>
-                            <constraint firstItem="Neg-nl-DU5" firstAttribute="top" secondItem="QdD-7v-3rl" secondAttribute="bottom" constant="20" id="XFg-N9-04E"/>
                             <constraint firstItem="Sfk-AB-8Sp" firstAttribute="leading" secondItem="J7l-tM-idT" secondAttribute="leading" id="XRu-9T-GJT"/>
-                            <constraint firstItem="7Db-bp-cju" firstAttribute="trailing" secondItem="8Cv-mp-yYL" secondAttribute="trailing" id="ayA-cZ-UEI"/>
                             <constraint firstItem="8Eo-yK-5nq" firstAttribute="centerY" secondItem="Sfk-AB-8Sp" secondAttribute="centerY" id="fCZ-Da-fEb"/>
                             <constraint firstItem="gSJ-xa-hpZ" firstAttribute="leading" secondItem="D8G-2T-Tol" secondAttribute="leading" constant="20" id="fJa-DC-e3S"/>
-                            <constraint firstItem="gSJ-xa-hpZ" firstAttribute="top" secondItem="Neg-nl-DU5" secondAttribute="bottom" constant="180" id="htz-W1-p4M"/>
                             <constraint firstItem="8Eo-yK-5nq" firstAttribute="trailing" secondItem="J7l-tM-idT" secondAttribute="trailing" id="ibO-L5-P6g"/>
                             <constraint firstItem="u2Q-mA-5nv" firstAttribute="centerY" secondItem="hFb-8f-png" secondAttribute="centerY" id="kJc-KU-JZe"/>
-                            <constraint firstItem="7Db-bp-cju" firstAttribute="centerY" secondItem="QdD-7v-3rl" secondAttribute="centerY" id="kZ8-Ik-yRE"/>
+                            <constraint firstItem="7Db-bp-cju" firstAttribute="leading" secondItem="QdD-7v-3rl" secondAttribute="leading" id="nuI-5h-TRK"/>
                             <constraint firstItem="D8G-2T-Tol" firstAttribute="trailing" secondItem="gSJ-xa-hpZ" secondAttribute="trailing" constant="20" id="oTO-Zx-bA5"/>
                             <constraint firstItem="QdD-7v-3rl" firstAttribute="top" secondItem="hFb-8f-png" secondAttribute="bottom" constant="20" id="tFb-kA-PF0"/>
-                            <constraint firstItem="u2Q-mA-5nv" firstAttribute="trailing" secondItem="7Db-bp-cju" secondAttribute="trailing" id="tgu-7d-Eki"/>
+                            <constraint firstItem="gSJ-xa-hpZ" firstAttribute="top" secondItem="7Db-bp-cju" secondAttribute="bottom" constant="180" id="tRa-8N-HSZ"/>
                             <constraint firstItem="J7l-tM-idT" firstAttribute="top" secondItem="D8G-2T-Tol" secondAttribute="top" constant="70" id="w7H-uO-Bki"/>
                             <constraint firstItem="8Eo-yK-5nq" firstAttribute="trailing" secondItem="u2Q-mA-5nv" secondAttribute="trailing" id="xh6-93-RVZ"/>
                             <constraint firstItem="Sfk-AB-8Sp" firstAttribute="top" secondItem="J7l-tM-idT" secondAttribute="bottom" constant="20" id="zEv-8l-0ge"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="f1z-d1-pGN"/>
+                    <connections>
+                        <outlet property="emailText" destination="7Db-bp-cju" id="zts-xC-Stt"/>
+                        <outlet property="nameText" destination="8Eo-yK-5nq" id="H0n-2t-Rfq"/>
+                        <outlet property="occupationText" destination="u2Q-mA-5nv" id="ZKW-5S-jvY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ngf-G8-a7G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

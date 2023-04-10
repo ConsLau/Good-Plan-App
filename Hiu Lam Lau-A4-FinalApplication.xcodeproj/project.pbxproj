@@ -23,6 +23,7 @@
 		4B6E82EE29E3419500F95529 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 4B6E82ED29E3419500F95529 /* FirebaseFirestore */; };
 		4B6E82F029E3419500F95529 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4B6E82EF29E3419500F95529 /* FirebaseFirestoreSwift */; };
 		4B6E82F229E34DA800F95529 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B6E82F129E34DA800F95529 /* GoogleService-Info.plist */; };
+		4B6E82F529E43F8600F95529 /* homePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6E82F429E43F8600F95529 /* homePageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		4B6E82B829DFF0A200F95529 /* accountCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = accountCreateViewController.swift; sourceTree = "<group>"; };
 		4B6E82E129E33E9D00F95529 /* accountDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = accountDetails.swift; sourceTree = "<group>"; };
 		4B6E82F129E34DA800F95529 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4B6E82F429E43F8600F95529 /* homePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homePageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 		4B6E829F29DF06E100F95529 /* Hiu Lam Lau-A4-FinalApplication */ = {
 			isa = PBXGroup;
 			children = (
+				4B6E82F329E43F6700F95529 /* HomePage */,
 				4B6E82CA29E2EFA100F95529 /* Main */,
 				4B6E82A029DF06E100F95529 /* AppDelegate.swift */,
 				4B6E82A229DF06E100F95529 /* SceneDelegate.swift */,
@@ -164,6 +167,14 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		4B6E82F329E43F6700F95529 /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				4B6E82F429E43F8600F95529 /* homePageViewController.swift */,
+			);
+			path = HomePage;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -250,6 +261,7 @@
 				4B6E82E229E33E9D00F95529 /* accountDetails.swift in Sources */,
 				4B6E82B529DFF06100F95529 /* loginPageViewController.swift in Sources */,
 				4B6E82B729DFF08900F95529 /* passwordResetViewController.swift in Sources */,
+				4B6E82F529E43F8600F95529 /* homePageViewController.swift in Sources */,
 				4B6E82A129DF06E100F95529 /* AppDelegate.swift in Sources */,
 				4B6E82B929DFF0A200F95529 /* accountCreateViewController.swift in Sources */,
 				4B6E82A329DF06E100F95529 /* SceneDelegate.swift in Sources */,
