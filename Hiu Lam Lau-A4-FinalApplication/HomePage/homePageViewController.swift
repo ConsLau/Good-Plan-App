@@ -8,16 +8,16 @@
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
+import PhotosUI
 
-class homePageViewController: UIViewController {
+class homePageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     
     
     @IBOutlet weak var nameText: UILabel!
     @IBOutlet weak var occupationText: UILabel!
     @IBOutlet weak var emailText: UILabel!
-   
-    
+    @IBOutlet weak var picView: UIImageView!
     
     
     
@@ -29,6 +29,14 @@ class homePageViewController: UIViewController {
         } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)
         }
+    }
+    
+    
+    @IBAction func picBtn(_ sender: Any) {
+        let imagePickerController = UIImagePickerController()
+                imagePickerController.delegate = self
+                imagePickerController.sourceType = .photoLibrary
+                present(imagePickerController, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -68,6 +76,15 @@ class homePageViewController: UIViewController {
             }
         }
     }
+    
+    // UIImagePickerControllerDelegate method
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            if let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+                picView.image = selectedImage
+            }
+            dismiss(animated: true, completion: nil)
+        }
+
 }
     /*
     // MARK: - Navigation
