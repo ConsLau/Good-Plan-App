@@ -7,9 +7,12 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestoreSwift
+import Firebase
 import FirebaseFirestore
 import PhotosUI
 import FirebaseStorage
+
 
 class homePageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -45,6 +48,7 @@ class homePageViewController: UIViewController, UIImagePickerControllerDelegate,
 
         // Do any additional setup after loading the view.
         fetchUserData()
+        fetchUserImage()
     }
     
 
@@ -74,6 +78,30 @@ class homePageViewController: UIViewController, UIImagePickerControllerDelegate,
                 }
             } else {
                 print("Error fetching user data: \(error?.localizedDescription ?? "No user data found")")
+            }
+        }
+    }
+    
+    func fetchUserImage() {
+        guard let user = Auth.auth().currentUser else {
+            print("No user is signed in.")
+            return
+        }
+        
+        let storageRef = Storage.storage().reference()
+        let imagePath = "user_images/\(user.uid)/profile_image.jpg"
+        
+        storageRef.child(imagePath).getData(maxSize: 10 * 1024 * 1024) { (data, error) in
+            if let error = error {
+                print("Error downloading image: \(error.localizedDescription)")
+            } else {
+                if let imageData = data, let image = UIImage(data: imageData) {
+                    DispatchQueue.main.async {
+                        self.picView.image = image
+                    }
+                } else {
+                    print("Error converting data to UIImage.")
+                }
             }
         }
     }
@@ -115,14 +143,6 @@ class homePageViewController: UIViewController, UIImagePickerControllerDelegate,
     }
 
 }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 

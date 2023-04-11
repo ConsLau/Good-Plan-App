@@ -12,7 +12,12 @@ import FirebaseFirestore
 class accountCreateViewController: UIViewController {
 
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
+        // Do any additional setup after loading the view.
+    }
+    
     @IBOutlet weak var emailCreate: UITextField!
     @IBOutlet weak var passwordCreate: UITextField!
     @IBOutlet weak var nameCreate: UITextField!
@@ -37,20 +42,12 @@ class accountCreateViewController: UIViewController {
                 strongSelf.showCreateAccount(name: name, occupation: occupation, email: email, password: password)
                 return
             }
-
-
+            
             strongSelf.emailCreate.isHidden = true
             strongSelf.passwordCreate.isHidden = true
-
         })
-        
-
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
     
     func showCreateAccount(name: String, occupation: String, email: String, password: String){
         let alert = UIAlertController(title: "Create Account", message: "Would you like to create an account", preferredStyle: .alert)
@@ -59,12 +56,6 @@ class accountCreateViewController: UIViewController {
                 guard let strongSelf = self else{
                     return
                 }
-                
-//                guard error == nil else {
-//                    // show ac creation
-//                    print("Account creation failed")
-//                    return
-//                }
                 
                 guard error == nil, let user = result?.user else {
                                     print("Account creation failed")
@@ -105,14 +96,5 @@ class accountCreateViewController: UIViewController {
         
         self.present(alertController, animated: true, completion: nil)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
