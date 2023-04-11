@@ -42,7 +42,13 @@ class loginPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        emailInput.text = ""
+        passwordInput.text = ""
     }
     
     func displayMessage(title: String, message: String ){

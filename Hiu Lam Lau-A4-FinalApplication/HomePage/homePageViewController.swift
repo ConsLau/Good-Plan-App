@@ -22,7 +22,13 @@ class homePageViewController: UIViewController {
     
     
     @IBAction func logoutBtn(_ sender: Any) {
-
+        do {
+            try Auth.auth().signOut()
+            // Navigate back to the login screen
+            self.navigationController?.popViewController(animated: true)
+        } catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
+        }
     }
     
     override func viewDidLoad() {

@@ -161,7 +161,7 @@ please sign in and continue!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gt4-0M-aqz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1610" y="-374"/>
+            <point key="canvasLocation" x="1727" y="-770"/>
         </scene>
         <!--Home Page-->
         <scene sceneID="cyC-fa-kOh">
@@ -201,6 +201,12 @@ please sign in and continue!</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Db-bp-cju">
+                                <rect key="frame" x="76.666666666666671" y="444" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSJ-xa-hpZ">
                                 <rect key="frame" x="20" y="645" width="353" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
@@ -217,12 +223,17 @@ please sign in and continue!</string>
                                     <constraint firstAttribute="width" constant="240" id="Eex-go-keK"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Db-bp-cju">
-                                <rect key="frame" x="76.666666666666671" y="444" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZP6-zJ-MCE">
+                                <rect key="frame" x="0.0" y="774" width="393" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Home" image="house" catalog="system" id="rJJ-jM-gj9"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="VYS-EV-D9L"/>
+                                    <barButtonItem title="calendar" image="calendar" catalog="system" id="ywd-7C-OJQ"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="nGd-pE-f0s"/>
+                                    <barButtonItem title="Blog" image="note.text" catalog="system" id="3ch-2h-8wG"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="D8G-2T-Tol"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -256,7 +267,7 @@ please sign in and continue!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ngf-G8-a7G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="862" y="763"/>
+            <point key="canvasLocation" x="1726" y="589"/>
         </scene>
         <!--AccountCreate-->
         <scene sceneID="x6v-HU-qga">
@@ -328,7 +339,7 @@ please sign in and continue!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O0M-Tu-YGf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1610" y="342"/>
+            <point key="canvasLocation" x="1726" y="-113"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="V6O-Um-DIn">
@@ -350,6 +361,9 @@ please sign in and continue!</string>
         </scene>
     </scenes>
     <resources>
+        <image name="calendar" catalog="system" width="128" height="107"/>
+        <image name="house" catalog="system" width="128" height="104"/>
+        <image name="note.text" catalog="system" width="128" height="107"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
