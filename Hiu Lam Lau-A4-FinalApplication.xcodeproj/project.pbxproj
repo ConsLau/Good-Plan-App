@@ -24,9 +24,11 @@
 		4B6E82F029E3419500F95529 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4B6E82EF29E3419500F95529 /* FirebaseFirestoreSwift */; };
 		4B6E82F229E34DA800F95529 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B6E82F129E34DA800F95529 /* GoogleService-Info.plist */; };
 		4B6E82F529E43F8600F95529 /* homePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6E82F429E43F8600F95529 /* homePageViewController.swift */; };
+		758138016E59A39D944AB666 /* Pods_Hiu_Lam_Lau_A4_FinalApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B0C84AEBA0B723510BB8828 /* Pods_Hiu_Lam_Lau_A4_FinalApplication.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B0C84AEBA0B723510BB8828 /* Pods_Hiu_Lam_Lau_A4_FinalApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hiu_Lam_Lau_A4_FinalApplication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B6E829D29DF06E100F95529 /* Good Plan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Good Plan.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B6E82A029DF06E100F95529 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B6E82A229DF06E100F95529 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +43,8 @@
 		4B6E82E129E33E9D00F95529 /* accountDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = accountDetails.swift; sourceTree = "<group>"; };
 		4B6E82F129E34DA800F95529 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4B6E82F429E43F8600F95529 /* homePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homePageViewController.swift; sourceTree = "<group>"; };
+		9A8B8548229772408D18C3CE /* Pods-Hiu Lam Lau-A4-FinalApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hiu Lam Lau-A4-FinalApplication.release.xcconfig"; path = "Target Support Files/Pods-Hiu Lam Lau-A4-FinalApplication/Pods-Hiu Lam Lau-A4-FinalApplication.release.xcconfig"; sourceTree = "<group>"; };
+		DEB9EB7B52122BCC26A6A46B /* Pods-Hiu Lam Lau-A4-FinalApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hiu Lam Lau-A4-FinalApplication.debug.xcconfig"; path = "Target Support Files/Pods-Hiu Lam Lau-A4-FinalApplication/Pods-Hiu Lam Lau-A4-FinalApplication.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,7 @@
 				4B6E82EE29E3419500F95529 /* FirebaseFirestore in Frameworks */,
 				4B6E82EA29E3419500F95529 /* FirebaseDatabase in Frameworks */,
 				4B6E82E829E3419500F95529 /* FirebaseAuth in Frameworks */,
+				758138016E59A39D944AB666 /* Pods_Hiu_Lam_Lau_A4_FinalApplication.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +69,8 @@
 			children = (
 				4B6E829F29DF06E100F95529 /* Hiu Lam Lau-A4-FinalApplication */,
 				4B6E829E29DF06E100F95529 /* Products */,
+				FE4652CED05D9BD825080D48 /* Pods */,
+				DE46281CE4B94C2AEDFBAEAE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -175,6 +182,24 @@
 			path = HomePage;
 			sourceTree = "<group>";
 		};
+		DE46281CE4B94C2AEDFBAEAE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3B0C84AEBA0B723510BB8828 /* Pods_Hiu_Lam_Lau_A4_FinalApplication.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FE4652CED05D9BD825080D48 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DEB9EB7B52122BCC26A6A46B /* Pods-Hiu Lam Lau-A4-FinalApplication.debug.xcconfig */,
+				9A8B8548229772408D18C3CE /* Pods-Hiu Lam Lau-A4-FinalApplication.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -182,9 +207,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4B6E82B129DF06E100F95529 /* Build configuration list for PBXNativeTarget "Hiu Lam Lau-A4-FinalApplication" */;
 			buildPhases = (
+				61995419054E108DF4C3BFCC /* [CP] Check Pods Manifest.lock */,
 				4B6E829929DF06E100F95529 /* Sources */,
 				4B6E829A29DF06E100F95529 /* Frameworks */,
 				4B6E829B29DF06E100F95529 /* Resources */,
+				27A2D624618AFD914717486B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -227,7 +254,7 @@
 			);
 			mainGroup = 4B6E829429DF06E100F95529;
 			packageReferences = (
-				4B6E82E629E3419500F95529 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				4B6E82E629E3419500F95529 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */,
 			);
 			productRefGroup = 4B6E829E29DF06E100F95529 /* Products */;
 			projectDirPath = "";
@@ -251,6 +278,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		27A2D624618AFD914717486B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Hiu Lam Lau-A4-FinalApplication/Pods-Hiu Lam Lau-A4-FinalApplication-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Hiu Lam Lau-A4-FinalApplication/Pods-Hiu Lam Lau-A4-FinalApplication-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Hiu Lam Lau-A4-FinalApplication/Pods-Hiu Lam Lau-A4-FinalApplication-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		61995419054E108DF4C3BFCC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Hiu Lam Lau-A4-FinalApplication-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4B6E829929DF06E100F95529 /* Sources */ = {
@@ -406,6 +475,7 @@
 		};
 		4B6E82B229DF06E100F95529 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DEB9EB7B52122BCC26A6A46B /* Pods-Hiu Lam Lau-A4-FinalApplication.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -433,6 +503,7 @@
 		};
 		4B6E82B329DF06E100F95529 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A8B8548229772408D18C3CE /* Pods-Hiu Lam Lau-A4-FinalApplication.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -482,7 +553,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		4B6E82E629E3419500F95529 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		4B6E82E629E3419500F95529 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
@@ -495,27 +566,27 @@
 /* Begin XCSwiftPackageProductDependency section */
 		4B6E82E729E3419500F95529 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4B6E82E629E3419500F95529 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 4B6E82E629E3419500F95529 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
 			productName = FirebaseAuth;
 		};
 		4B6E82E929E3419500F95529 /* FirebaseDatabase */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4B6E82E629E3419500F95529 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 4B6E82E629E3419500F95529 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
 			productName = FirebaseDatabase;
 		};
 		4B6E82EB29E3419500F95529 /* FirebaseDatabaseSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4B6E82E629E3419500F95529 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 4B6E82E629E3419500F95529 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
 			productName = FirebaseDatabaseSwift;
 		};
 		4B6E82ED29E3419500F95529 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4B6E82E629E3419500F95529 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 4B6E82E629E3419500F95529 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
 			productName = FirebaseFirestore;
 		};
 		4B6E82EF29E3419500F95529 /* FirebaseFirestoreSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4B6E82E629E3419500F95529 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 4B6E82E629E3419500F95529 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
 			productName = FirebaseFirestoreSwift;
 		};
 /* End XCSwiftPackageProductDependency section */

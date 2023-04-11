@@ -9,6 +9,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 import PhotosUI
+import FirebaseStorage
 
 class homePageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -80,10 +81,38 @@ class homePageViewController: UIViewController, UIImagePickerControllerDelegate,
     // UIImagePickerControllerDelegate method
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             if let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                picView.image = selectedImage
-            }
-            dismiss(animated: true, completion: nil)
+                    picView.image = selectedImage
+                    uploadImageToFirebase(image: selectedImage)
+                }
+                dismiss(animated: true, completion: nil)
         }
+    
+    
+    func uploadImageToFirebase(image: UIImage) {
+        guard let user = Auth.auth().currentUser else {
+            print("No user is signed in.")
+            return
+        }
+
+        guard let imageData = image.jpegData(compressionQuality: 0.5) else {
+            print("Could not convert image to data.")
+            return
+        }
+
+        let storageRef = Storage.storage().reference()
+        let imagePath = "user_images/\(user.uid)/profile_image.jpg"
+
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpeg"
+
+        storageRef.child(imagePath).putData(imageData, metadata: metadata) { (metadata, error) in
+            if let error = error {
+                print("Error uploading image: \(error.localizedDescription)")
+            } else {
+                print("Image uploaded successfully.")
+            }
+        }
+    }
 
 }
     /*
