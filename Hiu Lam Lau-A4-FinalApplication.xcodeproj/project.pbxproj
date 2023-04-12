@@ -99,7 +99,6 @@
 		4B6E82D929E33DDC00F95529 /* Register */ = {
 			isa = PBXGroup;
 			children = (
-				4B6E82E329E33F1C00F95529 /* Service */,
 				4B6E82DB29E33E0000F95529 /* Model */,
 				4B6E82DA29E33DED00F95529 /* ViewController */,
 			);
@@ -152,13 +151,6 @@
 				4B6E82B629DFF08900F95529 /* passwordResetViewController.swift */,
 			);
 			path = ViewController;
-			sourceTree = "<group>";
-		};
-		4B6E82E329E33F1C00F95529 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		4B6E82F329E43F6700F95529 /* HomePage */ = {

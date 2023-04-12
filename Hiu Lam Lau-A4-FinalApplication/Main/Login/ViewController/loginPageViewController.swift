@@ -17,6 +17,7 @@ class loginPageViewController: UIViewController {
     
     
     @IBAction func signinBtn(_ sender: Any) {
+        //check if the input field is empty or not
         guard let email = emailInput.text, !email.isEmpty,
                       let password = passwordInput.text, !password.isEmpty else {
                     displayMessage(title: "Error", message: "Please enter email and password")
@@ -31,7 +32,7 @@ class loginPageViewController: UIViewController {
             if let error = error {
                 strongSelf.displayMessage(title: "Error", message: error.localizedDescription)
             } else {
-                // Login successful, perform any action or segue to the next screen
+                strongSelf.displayMessage(title: "Welcome", message: "Login successful")
                 print("Logged in successfully")
                 strongSelf.performSegue(withIdentifier: "homePage", sender: nil)
             }
@@ -44,12 +45,14 @@ class loginPageViewController: UIViewController {
         
     }
     
+    // return from logout page
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         emailInput.text = ""
         passwordInput.text = ""
     }
+    
     
     func displayMessage(title: String, message: String ){
         let alertController = UIAlertController(title: title, message: message,
@@ -60,16 +63,5 @@ class loginPageViewController: UIViewController {
         
         self.present(alertController, animated: true, completion: nil)
     }
-    
-
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        // Get the new view controller using segue.destination.
-//        // Pass the selected object to the new view controller.
-//    }
-    
 
 }
