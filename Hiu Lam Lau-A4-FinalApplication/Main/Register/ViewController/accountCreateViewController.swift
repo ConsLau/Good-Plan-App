@@ -5,10 +5,10 @@
 //  Created by Cons Lau on 7/4/2023.
 //
 // Reference 1: https://www.youtube.com/watch?v=ife5YK-Keng&list=PL5PR3UyfTWvck0dxs18MiJiFp7r3oRAk-
-// Reference 2(spinner): https://www.youtube.com/watch?v=FIXU6d370K8
-// Reference 3: animation controll: OpenAI, ChatGPT, 13 Apr. 2023, https://chat.openai.com/
-// Reference 4: firebase database input: OpenAI, ChatGPT, 13 Apr. 2023, https://chat.openai.com/
-// Reference 5: Segue return back to login page: OpenAI, ChatGPT, 13 Apr. 2023, https://chat.openai.com/
+// Reference 2: (How To Add Spinner (Activity Indicator) to iOS App in Swift - 2020) https://www.youtube.com/watch?v=FIXU6d370K8
+// Reference 3: (animation controll) OpenAI, ChatGPT, 13 Apr. 2023, https://chat.openai.com/
+// Reference 4: (firebase database input) OpenAI, ChatGPT, 13 Apr. 2023, https://chat.openai.com/
+// Reference 5: (Segue return back to login page) OpenAI, ChatGPT, 13 Apr. 2023, https://chat.openai.com/
 
 import UIKit
 import FirebaseAuth
