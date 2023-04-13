@@ -78,6 +78,13 @@ please sign in and continue!</string>
                                     <constraint firstAttribute="height" constant="100" id="nfm-fk-p1a"/>
                                 </constraints>
                             </activityIndicatorView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login Image" translatesAutoresizingMaskIntoConstraints="NO" id="hjn-j8-w0L">
+                                <rect key="frame" x="151" y="201" width="90" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="VQS-Y7-ktm"/>
+                                    <constraint firstAttribute="height" constant="90" id="rDq-NW-X5s"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -87,14 +94,19 @@ please sign in and continue!</string>
                             <constraint firstItem="gb4-FB-5Cu" firstAttribute="top" secondItem="e2m-Me-AaB" secondAttribute="bottom" constant="2.6699999999999999" id="2Zk-g3-1ED"/>
                             <constraint firstItem="e2m-Me-AaB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="6LV-Ok-TMb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="e2m-Me-AaB" secondAttribute="trailing" constant="20" id="76w-Wq-A7k"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hjn-j8-w0L" secondAttribute="trailing" constant="152" id="8wq-2c-PMS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Up5-gg-bak" secondAttribute="trailing" constant="20" id="9vb-dP-XaR"/>
                             <constraint firstItem="gb4-FB-5Cu" firstAttribute="leading" secondItem="Jhe-T9-uFX" secondAttribute="trailing" constant="5" id="BZl-TK-9SQ"/>
                             <constraint firstItem="e2m-Me-AaB" firstAttribute="top" secondItem="4oz-HQ-Q7P" secondAttribute="bottom" constant="171" id="Bc8-ep-2oR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4oz-HQ-Q7P" secondAttribute="trailing" constant="20" id="DHJ-de-lLZ"/>
+                            <constraint firstItem="aWI-xa-bNm" firstAttribute="top" secondItem="hjn-j8-w0L" secondAttribute="bottom" constant="14" id="DK7-Zs-ewJ"/>
                             <constraint firstItem="8mF-Bk-iWy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="IUA-qY-uv7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Jhe-T9-uFX" secondAttribute="bottom" constant="65" id="LyC-ZV-ooQ"/>
+                            <constraint firstItem="hjn-j8-w0L" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Osj-J5-yer"/>
                             <constraint firstItem="Up5-gg-bak" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="242" id="Wkh-MI-Zsy"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8mF-Bk-iWy" secondAttribute="trailing" constant="20" id="XX5-r4-3eQ"/>
+                            <constraint firstItem="hjn-j8-w0L" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="98" id="Xrw-b5-XxG"/>
+                            <constraint firstItem="hjn-j8-w0L" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="151" id="Zz9-ae-VPh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aWI-xa-bNm" secondAttribute="trailing" constant="97" id="bRr-2R-5HC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gb4-FB-5Cu" secondAttribute="bottom" constant="58" id="bgc-Xg-vlR"/>
                             <constraint firstItem="Jhe-T9-uFX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="70" id="d41-Jb-w6z"/>
@@ -103,6 +115,8 @@ please sign in and continue!</string>
                             <constraint firstItem="4oz-HQ-Q7P" firstAttribute="top" secondItem="8mF-Bk-iWy" secondAttribute="bottom" constant="10" id="m2N-oM-ikx"/>
                             <constraint firstItem="Up5-gg-bak" firstAttribute="top" secondItem="4oz-HQ-Q7P" secondAttribute="bottom" constant="5" id="nbu-aS-k2E"/>
                             <constraint firstItem="Jhe-T9-uFX" firstAttribute="top" secondItem="e2m-Me-AaB" secondAttribute="bottom" constant="10" id="oSv-hP-h46"/>
+                            <constraint firstItem="8mF-Bk-iWy" firstAttribute="top" secondItem="aWI-xa-bNm" secondAttribute="bottom" constant="20" id="ohU-1D-sZU"/>
+                            <constraint firstItem="hjn-j8-w0L" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qQp-Oe-LWZ"/>
                             <constraint firstItem="aWI-xa-bNm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="202" id="rHM-Sf-LWc"/>
                             <constraint firstItem="4oz-HQ-Q7P" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="t2A-8O-lvF"/>
                             <constraint firstItem="5in-gv-ZSs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="uAJ-at-V6H"/>
@@ -452,6 +466,7 @@ please sign in and continue!</string>
         <segue reference="D1I-vf-vJY"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="Login Image" width="29" height="29"/>
         <image name="calendar.badge.plus" catalog="system" width="128" height="108"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="note.text.badge.plus" catalog="system" width="128" height="108"/>

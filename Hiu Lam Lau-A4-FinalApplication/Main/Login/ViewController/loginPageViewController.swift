@@ -7,6 +7,7 @@
 // Reference 1: (Swift: Firebase Email/Password Log In & Authentication (Swift 5) Xcode 11 - 2023) https://www.youtube.com/watch?v=ife5YK-Keng&list=PL5PR3UyfTWvck0dxs18MiJiFp7r3oRAk-
 // Reference 2: (Firebase SwiftUI Auth, Login, Registration, Password Reset, Sign Out - Bug Fix In Description) https://www.youtube.com/watch?v=5gIuYHn9nOc&t=2680s
 // Reference 3: (View setting after return from logout page) OpenAI, ChatGPT, 13 Apr. 2023, https://chat.openai.com/
+// Reference 4: (HOW TO ADD IMAGES TO IOS APP - Swift (2020)) https://www.youtube.com/watch?v=Tb9J08y5a4w
 
 import UIKit
 import FirebaseAuth
@@ -18,12 +19,13 @@ class loginPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         spinner.isHidden =  true
+        
     }
     
     @IBOutlet weak var emailInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
-    
+
     
     @IBAction func signinBtn(_ sender: Any) {
         
