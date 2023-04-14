@@ -17,19 +17,17 @@ import FirebaseStorage
 
 class homePageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    
-    
     @IBOutlet weak var nameText: UILabel!
     @IBOutlet weak var occupationText: UILabel!
     @IBOutlet weak var emailText: UILabel!
-    @IBOutlet weak var picView: UIImageView!
+    @IBOutlet weak var imageView: UIImageView!
     
     
     
     @IBAction func logoutBtn(_ sender: Any) {
         do {
             try Auth.auth().signOut()
-            // Navigate back to the login screen
+            // Navigate to the login screen
             self.navigationController?.popViewController(animated: true)
         } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)
@@ -37,7 +35,7 @@ class homePageViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     
-    @IBAction func picBtn(_ sender: Any) {
+    @IBAction func picUploadBtn(_ sender: Any) {
         let imagePickerController = UIImagePickerController()
                 imagePickerController.delegate = self
                 imagePickerController.sourceType = .photoLibrary
@@ -60,9 +58,9 @@ class homePageViewController: UIViewController, UIImagePickerControllerDelegate,
         }
         
         let db = Firestore.firestore()
-        let userRef = db.collection("users").document(user.uid)
+        let userData = db.collection("users").document(user.uid)
         
-        userRef.getDocument { (document, error) in
+        userData.getDocument { (document, error) in
             if let document = document, document.exists {
                 let data = document.data()
                 let name = data?["name"] as? String ?? ""
@@ -70,7 +68,7 @@ class homePageViewController: UIViewController, UIImagePickerControllerDelegate,
                 let email = data?["email"] as? String ?? ""
 
                 
-                // Update UI with the fetched data
+                // Update UI view with the fetched data
                 DispatchQueue.main.async {
                     self.nameText.text = "\(name)"
                     self.occupationText.text = "\(occupation)"
@@ -84,6 +82,7 @@ class homePageViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     func fetchUserImage() {
+        // check user sign in
         guard let user = Auth.auth().currentUser else {
             print("No user is signed in.")
             return
@@ -98,7 +97,7 @@ class homePageViewController: UIViewController, UIImagePickerControllerDelegate,
             } else {
                 if let imageData = data, let image = UIImage(data: imageData) {
                     DispatchQueue.main.async {
-                        self.picView.image = image
+                        self.imageView.image = image
                     }
                 } else {
                     print("Error converting data to UIImage.")
@@ -110,19 +109,21 @@ class homePageViewController: UIViewController, UIImagePickerControllerDelegate,
     // UIImagePickerControllerDelegate method
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             if let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                    picView.image = selectedImage
-                    uploadImageToFirebase(image: selectedImage)
+                    imageView.image = selectedImage
+                    saveImageToFirebase(image: selectedImage)
                 }
                 dismiss(animated: true, completion: nil)
         }
     
     
-    func uploadImageToFirebase(image: UIImage) {
+    func saveImageToFirebase(image: UIImage) {
+        // check user sign in
         guard let user = Auth.auth().currentUser else {
             print("No user is signed in.")
             return
         }
 
+        // check image compression
         guard let imageData = image.jpegData(compressionQuality: 0.5) else {
             print("Could not convert image to data.")
             return
@@ -137,10 +138,22 @@ class homePageViewController: UIViewController, UIImagePickerControllerDelegate,
         storageRef.child(imagePath).putData(imageData, metadata: metadata) { (metadata, error) in
             if let error = error {
                 print("Error uploading image: \(error.localizedDescription)")
+                self.displayMessage(title: "Error", message: "Error uploading image: \(error.localizedDescription)")
             } else {
                 print("Image uploaded successfully.")
+                self.displayMessage(title: "Image uploaded successfully", message: "")
             }
         }
+    }
+    
+    func displayMessage(title: String, message: String ){
+        let alertController = UIAlertController(title: title, message: message,
+        preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: .default,
+        handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
     }
 
 }

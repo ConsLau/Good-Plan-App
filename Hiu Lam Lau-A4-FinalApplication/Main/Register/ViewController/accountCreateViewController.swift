@@ -9,6 +9,7 @@
 // Reference 3: (animation controll) OpenAI, ChatGPT, 13 Apr. 2023, https://chat.openai.com/
 // Reference 4: (firebase database input) OpenAI, ChatGPT, 13 Apr. 2023, https://chat.openai.com/
 // Reference 5: (Segue return back to login page) OpenAI, ChatGPT, 13 Apr. 2023, https://chat.openai.com/
+// Reference 6: (Password Authentication) https://firebase.google.com/docs/auth/ios/password-aut
 
 import UIKit
 import FirebaseAuth
@@ -16,7 +17,6 @@ import FirebaseFirestore
 import Firebase
 
 class accountCreateViewController: UIViewController {
-
     
     override func viewDidLoad() {
         super.viewDidLoad()

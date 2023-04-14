@@ -8,6 +8,7 @@
 // Reference 2: (Firebase SwiftUI Auth, Login, Registration, Password Reset, Sign Out - Bug Fix In Description) https://www.youtube.com/watch?v=5gIuYHn9nOc&t=2680s
 // Reference 3: (View setting after return from logout page) OpenAI, ChatGPT, 13 Apr. 2023, https://chat.openai.com/
 // Reference 4: (HOW TO ADD IMAGES TO IOS APP - Swift (2020)) https://www.youtube.com/watch?v=Tb9J08y5a4w
+// Reference 5: (Password Authentication) https://firebase.google.com/docs/auth/ios/password-auth
 
 import UIKit
 import FirebaseAuth
@@ -46,6 +47,8 @@ class loginPageViewController: UIViewController {
                 return
             }
             
+            // withEmail: emailInput.text!
+            
             if let error = error {
                 strongSelf.displayMessage(title: "Error", message: error.localizedDescription, actionHandler: nil)
                 strongSelf.spinner.stopAnimating()
@@ -60,10 +63,9 @@ class loginPageViewController: UIViewController {
     }
 
 
-    // return from logout page
+    // Navigate from logout page
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         emailInput.text = ""
         passwordInput.text = ""
     }

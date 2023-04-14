@@ -276,7 +276,7 @@ please sign in and continue!</string>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Upload pofile picture"/>
                                 <connections>
-                                    <action selector="picBtn:" destination="wJL-5P-UFz" eventType="touchUpInside" id="CdI-lQ-MLU"/>
+                                    <action selector="picUploadBtn:" destination="wJL-5P-UFz" eventType="touchUpInside" id="ztN-sf-dus"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3cr-30-YLz">
@@ -331,9 +331,9 @@ please sign in and continue!</string>
                     <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="brc-Hk-9li"/>
                     <connections>
                         <outlet property="emailText" destination="WGy-Fw-HSh" id="63b-ae-Fjd"/>
+                        <outlet property="imageView" destination="Lkf-jR-Nvt" id="cYm-q7-Vf8"/>
                         <outlet property="nameText" destination="KNg-6o-cTu" id="Z6H-Jh-u38"/>
                         <outlet property="occupationText" destination="VnS-ZL-beT" id="xUi-Ew-xho"/>
-                        <outlet property="picView" destination="Lkf-jR-Nvt" id="cYm-q7-Vf8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TTu-Lc-OHQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
