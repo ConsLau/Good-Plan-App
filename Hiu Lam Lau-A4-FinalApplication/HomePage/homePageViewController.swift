@@ -4,7 +4,10 @@
 //
 //  Created by Cons Lau on 10/4/2023.
 //
-// Toolbar creation reference: https://www.youtube.com/watch?v=EFcMNSP0K9w
+// Reference 1: (Toolbar creation) https://www.youtube.com/watch?v=EFcMNSP0K9w
+// Reference 2: (Firebase Storage - How To Upload & Download Images To Firebase Storage (Swift Xcode Tutorial)) https://www.youtube.com/watch?v=_Z53zF2R6r0
+// Rference 3: (Swift: Upload Photos to Firebase Storage (and Download, Swift 5) - Xcode 11 - 2020) https://www.youtube.com/watch?v=TAF6cPZxmmI
+// Reference 3: (fetching user data and pull user image) OpenAI, ChatGPT, 13 Apr. 2023, https://chat.openai.com/
 
 import UIKit
 import FirebaseAuth
@@ -45,9 +48,8 @@ class homePageViewController: UIViewController, UIImagePickerControllerDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         fetchUserData()
-        fetchUserImage()
+        pullUserImage()
     }
     
 
@@ -57,9 +59,10 @@ class homePageViewController: UIViewController, UIImagePickerControllerDelegate,
             return
         }
         
-        let db = Firestore.firestore()
-        let userData = db.collection("users").document(user.uid)
+        let fireBase = Firestore.firestore()
+        let userData = fireBase.collection("users").document(user.uid)
         
+        // fetch data from firebase
         userData.getDocument { (document, error) in
             if let document = document, document.exists {
                 let data = document.data()
@@ -80,8 +83,9 @@ class homePageViewController: UIViewController, UIImagePickerControllerDelegate,
             }
         }
     }
+
     
-    func fetchUserImage() {
+    func pullUserImage() {
         // check user sign in
         guard let user = Auth.auth().currentUser else {
             print("No user is signed in.")
@@ -107,16 +111,16 @@ class homePageViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     // UIImagePickerControllerDelegate method
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            if let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                    imageView.image = selectedImage
-                    saveImageToFirebase(image: selectedImage)
-                }
-                dismiss(animated: true, completion: nil)
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            imageView.image = selectedImage
+            pushImageToFirebase(image: selectedImage)
         }
+        dismiss(animated: true, completion: nil)
+    }
     
     
-    func saveImageToFirebase(image: UIImage) {
+    func pushImageToFirebase(image: UIImage) {
         // check user sign in
         guard let user = Auth.auth().currentUser else {
             print("No user is signed in.")
@@ -130,19 +134,21 @@ class homePageViewController: UIViewController, UIImagePickerControllerDelegate,
         }
 
         let storageRef = Storage.storage().reference()
-        let imagePath = "user_images/\(user.uid)/profile_image.jpg"
 
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg"
 
-        storageRef.child(imagePath).putData(imageData, metadata: metadata) { (metadata, error) in
-            if let error = error {
-                print("Error uploading image: \(error.localizedDescription)")
-                self.displayMessage(title: "Error", message: "Error uploading image: \(error.localizedDescription)")
-            } else {
-                print("Image uploaded successfully.")
-                self.displayMessage(title: "Image uploaded successfully", message: "")
+        storageRef.child("user_images/\(user.uid)/profile_image.jpg").putData(imageData, metadata: metadata) { (metadata, error) in
+            
+            guard error == nil else {
+                print("Error uploading image: \(error!.localizedDescription)")
+                self.displayMessage(title: "Error", message: "Error uploading image: \(error!.localizedDescription)")
+                return
             }
+            
+            print("Image uploaded successfully.")
+            self.displayMessage(title: "Image uploaded successfully", message: "")
+
         }
     }
     
