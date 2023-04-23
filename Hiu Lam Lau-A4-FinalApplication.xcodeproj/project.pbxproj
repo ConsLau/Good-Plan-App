@@ -14,6 +14,7 @@
 		4B62002D29F5766700605CAF /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B62002B29F5766700605CAF /* Task+CoreDataProperties.swift */; };
 		4B62002F29F5866900605CAF /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B62002E29F5866900605CAF /* DatabaseProtocol.swift */; };
 		4B62003129F5887B00605CAF /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B62003029F5887B00605CAF /* CoreDataController.swift */; };
+		4B62003329F591CC00605CAF /* CreateTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B62003229F591CC00605CAF /* CreateTaskViewController.swift */; };
 		4B62FFDE29E5756A00605CAF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 4B62FFDD29E5756A00605CAF /* FirebaseAuth */; };
 		4B62FFE029E5756A00605CAF /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 4B62FFDF29E5756A00605CAF /* FirebaseDatabase */; };
 		4B62FFE229E5756A00605CAF /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4B62FFE129E5756A00605CAF /* FirebaseDatabaseSwift */; };
@@ -42,6 +43,7 @@
 		4B62002B29F5766700605CAF /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4B62002E29F5866900605CAF /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
 		4B62003029F5887B00605CAF /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
+		4B62003229F591CC00605CAF /* CreateTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskViewController.swift; sourceTree = "<group>"; };
 		4B62FFE929E575C500605CAF /* Good Plan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Good Plan.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B62FFEA29E5760900605CAF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4B6E82A029DF06E100F95529 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				4B62002629F537B900605CAF /* Tasks.swift */,
 				4B62002829F537F200605CAF /* ToDoListTableViewController.swift */,
 				4B62003029F5887B00605CAF /* CoreDataController.swift */,
+				4B62003229F591CC00605CAF /* CreateTaskViewController.swift */,
 			);
 			path = ToDoList;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				4B62002D29F5766700605CAF /* Task+CoreDataProperties.swift in Sources */,
 				4B62002C29F5766700605CAF /* Task+CoreDataClass.swift in Sources */,
 				4B62002129F5313900605CAF /* ToDoListModel.xcdatamodeld in Sources */,
+				4B62003329F591CC00605CAF /* CreateTaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
