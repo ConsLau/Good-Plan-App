@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B62002129F5313900605CAF /* ToDoListModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B62001F29F5313900605CAF /* ToDoListModel.xcdatamodeld */; };
+		4B62002729F537B900605CAF /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B62002629F537B900605CAF /* Tasks.swift */; };
+		4B62002929F537F200605CAF /* ToDoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B62002829F537F200605CAF /* ToDoListTableViewController.swift */; };
+		4B62002C29F5766700605CAF /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B62002A29F5766700605CAF /* Task+CoreDataClass.swift */; };
+		4B62002D29F5766700605CAF /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B62002B29F5766700605CAF /* Task+CoreDataProperties.swift */; };
+		4B62002F29F5866900605CAF /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B62002E29F5866900605CAF /* DatabaseProtocol.swift */; };
+		4B62003129F5887B00605CAF /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B62003029F5887B00605CAF /* CoreDataController.swift */; };
 		4B62FFDE29E5756A00605CAF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 4B62FFDD29E5756A00605CAF /* FirebaseAuth */; };
 		4B62FFE029E5756A00605CAF /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 4B62FFDF29E5756A00605CAF /* FirebaseDatabase */; };
 		4B62FFE229E5756A00605CAF /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4B62FFE129E5756A00605CAF /* FirebaseDatabaseSwift */; };
@@ -28,6 +35,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B62002029F5313900605CAF /* ToDoListModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ToDoListModel.xcdatamodel; sourceTree = "<group>"; };
+		4B62002629F537B900605CAF /* Tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
+		4B62002829F537F200605CAF /* ToDoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListTableViewController.swift; sourceTree = "<group>"; };
+		4B62002A29F5766700605CAF /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4B62002B29F5766700605CAF /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4B62002E29F5866900605CAF /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
+		4B62003029F5887B00605CAF /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		4B62FFE929E575C500605CAF /* Good Plan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Good Plan.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B62FFEA29E5760900605CAF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4B6E82A029DF06E100F95529 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +75,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B62001E29F530FC00605CAF /* ToDoList */ = {
+			isa = PBXGroup;
+			children = (
+				4B62002E29F5866900605CAF /* DatabaseProtocol.swift */,
+				4B62002A29F5766700605CAF /* Task+CoreDataClass.swift */,
+				4B62002B29F5766700605CAF /* Task+CoreDataProperties.swift */,
+				4B62001F29F5313900605CAF /* ToDoListModel.xcdatamodeld */,
+				4B62002629F537B900605CAF /* Tasks.swift */,
+				4B62002829F537F200605CAF /* ToDoListTableViewController.swift */,
+				4B62003029F5887B00605CAF /* CoreDataController.swift */,
+			);
+			path = ToDoList;
+			sourceTree = "<group>";
+		};
 		4B6E829429DF06E100F95529 = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +100,7 @@
 		4B6E829F29DF06E100F95529 /* Hiu Lam Lau-A4-FinalApplication */ = {
 			isa = PBXGroup;
 			children = (
+				4B62001E29F530FC00605CAF /* ToDoList */,
 				4B6E82F329E43F6700F95529 /* HomePage */,
 				4B6E82CA29E2EFA100F95529 /* Main */,
 				4B6E82A029DF06E100F95529 /* AppDelegate.swift */,
@@ -246,12 +275,19 @@
 			files = (
 				4B6E82A529DF06E100F95529 /* ViewController.swift in Sources */,
 				4B6E82E229E33E9D00F95529 /* accountDetails.swift in Sources */,
+				4B62003129F5887B00605CAF /* CoreDataController.swift in Sources */,
+				4B62002929F537F200605CAF /* ToDoListTableViewController.swift in Sources */,
 				4B6E82B529DFF06100F95529 /* loginPageViewController.swift in Sources */,
 				4B6E82B729DFF08900F95529 /* passwordResetViewController.swift in Sources */,
 				4B6E82F529E43F8600F95529 /* homePageViewController.swift in Sources */,
+				4B62002F29F5866900605CAF /* DatabaseProtocol.swift in Sources */,
 				4B6E82A129DF06E100F95529 /* AppDelegate.swift in Sources */,
 				4B6E82B929DFF0A200F95529 /* accountCreateViewController.swift in Sources */,
 				4B6E82A329DF06E100F95529 /* SceneDelegate.swift in Sources */,
+				4B62002729F537B900605CAF /* Tasks.swift in Sources */,
+				4B62002D29F5766700605CAF /* Task+CoreDataProperties.swift in Sources */,
+				4B62002C29F5766700605CAF /* Task+CoreDataClass.swift in Sources */,
+				4B62002129F5313900605CAF /* ToDoListModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,6 +547,19 @@
 			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		4B62001F29F5313900605CAF /* ToDoListModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4B62002029F5313900605CAF /* ToDoListModel.xcdatamodel */,
+			);
+			currentVersion = 4B62002029F5313900605CAF /* ToDoListModel.xcdatamodel */;
+			path = ToDoListModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4B6E829529DF06E100F95529 /* Project object */;
 }
