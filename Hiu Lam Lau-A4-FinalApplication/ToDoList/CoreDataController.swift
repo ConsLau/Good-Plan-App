@@ -45,12 +45,12 @@ class CoreDataController: NSObject, DatabaseProtocol {
     }
     
     func addTask(taskName: String, taskDesc: String, taskDate: Date, isComplete: isComplete) -> Task {
-        let task = NSEntityDescription.insertNewObject(forEntityName: "Task", into: persistentContainer.viewContext) as! Tasks
+        let task = NSEntityDescription.insertNewObject(forEntityName: "Task", into: persistentContainer.viewContext) as! Task
         
         task.taskName = taskName
         task.taskDesc = taskDesc
         task.taskDate = taskDate
-        task.isComplete = isComplete
+        task.taskIsComplete = isComplete
         
         return task
     }

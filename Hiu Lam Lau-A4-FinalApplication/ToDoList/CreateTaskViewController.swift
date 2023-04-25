@@ -6,24 +6,48 @@
 //
 
 import UIKit
+import CoreData
 
 class CreateTaskViewController: UIViewController {
 
+    
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var descTextField: UITextField!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var isCompleteSegmentedControl: UISegmentedControl!
+
+    weak var databaseController: DatabaseProtocol?
+    var selectedDate: Date?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        databaseController = appDelegate?.databaseController
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func datePicker(_ sender: UIDatePicker) {
+            selectedDate = sender.date
     }
-    */
+    
+    
+    @IBAction func confirmBtn(_ sender: Any) {
+        self.createTask()
+        
+    }
+    
+    func createTask() {
+        guard let taskName = nameTextField.text,
+              let taskDesc = descTextField.text,
+              let isComplete = isComplete(rawValue: Int32(isCompleteSegmentedControl.selectedSegmentIndex)),
+              let taskDate = selectedDate
+        else {
+            return
+        }
+        
+        let _ = databaseController?.addTask(taskName: taskName, taskDesc: taskDesc, taskDate: taskDate, isComplete: isComplete)
+        
+        navigationController?.popViewController(animated: true)
+    }
 
 }
