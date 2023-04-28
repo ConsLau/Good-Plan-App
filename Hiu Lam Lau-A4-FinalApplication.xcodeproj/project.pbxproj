@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4B33E71B29F78ADF00E1A8AB /* MultcastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33E71A29F78ADF00E1A8AB /* MultcastDelegate.swift */; };
+		4B33E71D29F7B16800E1A8AB /* AllTaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33E71C29F7B16800E1A8AB /* AllTaskTableViewController.swift */; };
 		4B62002129F5313900605CAF /* ToDoListModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B62001F29F5313900605CAF /* ToDoListModel.xcdatamodeld */; };
 		4B62002929F537F200605CAF /* ToDoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B62002829F537F200605CAF /* ToDoListTableViewController.swift */; };
 		4B62002C29F5766700605CAF /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B62002A29F5766700605CAF /* Task+CoreDataClass.swift */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		4B33E71A29F78ADF00E1A8AB /* MultcastDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultcastDelegate.swift; sourceTree = "<group>"; };
+		4B33E71C29F7B16800E1A8AB /* AllTaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTaskTableViewController.swift; sourceTree = "<group>"; };
 		4B62002029F5313900605CAF /* ToDoListModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ToDoListModel.xcdatamodel; sourceTree = "<group>"; };
 		4B62002829F537F200605CAF /* ToDoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListTableViewController.swift; sourceTree = "<group>"; };
 		4B62002A29F5766700605CAF /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				4B62002829F537F200605CAF /* ToDoListTableViewController.swift */,
 				4B62003029F5887B00605CAF /* CoreDataController.swift */,
 				4B62003229F591CC00605CAF /* CreateTaskViewController.swift */,
+				4B33E71C29F7B16800E1A8AB /* AllTaskTableViewController.swift */,
 			);
 			path = ToDoList;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				4B62002929F537F200605CAF /* ToDoListTableViewController.swift in Sources */,
 				4B6E82B529DFF06100F95529 /* loginPageViewController.swift in Sources */,
 				4B6E82B729DFF08900F95529 /* passwordResetViewController.swift in Sources */,
+				4B33E71D29F7B16800E1A8AB /* AllTaskTableViewController.swift in Sources */,
 				4B6E82F529E43F8600F95529 /* homePageViewController.swift in Sources */,
 				4B62002F29F5866900605CAF /* DatabaseProtocol.swift in Sources */,
 				4B6E82A129DF06E100F95529 /* AppDelegate.swift in Sources */,

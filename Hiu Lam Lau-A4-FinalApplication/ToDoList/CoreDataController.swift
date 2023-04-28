@@ -8,12 +8,13 @@
 import UIKit
 import CoreData
 
-class CoreDataController: NSObject, DatabaseProtocol {
+class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsControllerDelegate {
     var listeners = MulticastDelegate<DatabaseListener>()
     var persistentContainer: NSPersistentContainer
+    var TaskFetchedResultsController: NSFetchedResultsController<Task>?
     
     override init() {
-        persistentContainer = NSPersistentContainer(name: "GoodPlan-DataModel")
+        persistentContainer = NSPersistentContainer(name: "ToDoListModel")
         persistentContainer.loadPersistentStores() { (description, error ) in
             if let error = error {
                 fatalError("Failed to load Core Data Stack with error: \(error)")
@@ -58,20 +59,29 @@ class CoreDataController: NSObject, DatabaseProtocol {
     func deleteTask(task: Task) {
         persistentContainer.viewContext.delete(task)
     }
-    
-    func fetchTask() -> [Task]{
-        var task = [Task]()
-        
-        let request: NSFetchRequest<Task> = Task.fetchRequest()
-        
-        do{
-            try task = persistentContainer.viewContext.fetch(request)
-        } catch {
-            print("Fetch Request failed with error: \(error)")
-        }
-        
-        return task
-    }
-    
 
+    func fetchTask() -> [Task] {
+        let request: NSFetchRequest<Task> = Task.fetchRequest()
+        let nameSortDescriptor = NSSortDescriptor(key: "taskName", ascending: true)
+        request.sortDescriptors = [nameSortDescriptor]
+            if TaskFetchedResultsController == nil {
+
+                TaskFetchedResultsController =
+                NSFetchedResultsController<Task>(fetchRequest: request,
+                                                      managedObjectContext: persistentContainer.viewContext,
+                                                      sectionNameKeyPath: nil, cacheName: nil)
+                // Set this class to be the results delegate
+                TaskFetchedResultsController?.delegate = self
+
+                do {
+                    try TaskFetchedResultsController?.performFetch()
+                } catch {
+                    print("Fetch Request Failed: \(error)")
+                }
+            }
+            if let task = TaskFetchedResultsController?.fetchedObjects {
+                return task
+            }
+            return [Task]()
+        }
 }

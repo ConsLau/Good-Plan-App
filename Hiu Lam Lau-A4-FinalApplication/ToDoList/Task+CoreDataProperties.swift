@@ -14,6 +14,7 @@ enum isComplete: Int32{
     case inComplete = 1
 }
 
+
 extension Task {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Task> {
@@ -27,9 +28,7 @@ extension Task {
 
 }
 
-extension Task : Identifiable {
 
-}
 
 extension Task{
     var taskIsComplete: isComplete{
@@ -41,4 +40,8 @@ extension Task{
             self.isComplete = newValue.rawValue
         }
     }
+}
+
+extension Task : Identifiable {
+
 }

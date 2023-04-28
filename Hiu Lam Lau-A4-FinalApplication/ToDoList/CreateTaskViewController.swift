@@ -10,7 +10,6 @@ import CoreData
 
 class CreateTaskViewController: UIViewController {
 
-    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descTextField: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -24,30 +23,29 @@ class CreateTaskViewController: UIViewController {
         
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
+        
     }
     
     @IBAction func datePicker(_ sender: UIDatePicker) {
             selectedDate = sender.date
     }
     
-    
     @IBAction func confirmBtn(_ sender: Any) {
-        self.createTask()
+        guard let taskName = nameTextField.text,
+                      let taskDesc = descTextField.text,
+                      let taskDate = selectedDate
+                else {
+                    print("error")
+                    return
+                }
+                
+        let isCompleteStatus = isComplete(rawValue: Int32(isCompleteSegmentedControl.selectedSegmentIndex)) ?? .inComplete
         
+        let _ = databaseController?.addTask(taskName: taskName, taskDesc: taskDesc, taskDate: taskDate, isComplete: isCompleteStatus)
+                print("task added")
+                
+                navigationController?.popViewController(animated: true)
     }
     
-    func createTask() {
-        guard let taskName = nameTextField.text,
-              let taskDesc = descTextField.text,
-              let isComplete = isComplete(rawValue: Int32(isCompleteSegmentedControl.selectedSegmentIndex)),
-              let taskDate = selectedDate
-        else {
-            return
-        }
-        
-        let _ = databaseController?.addTask(taskName: taskName, taskDesc: taskDesc, taskDate: taskDate, isComplete: isComplete)
-        
-        navigationController?.popViewController(animated: true)
-    }
 
 }
