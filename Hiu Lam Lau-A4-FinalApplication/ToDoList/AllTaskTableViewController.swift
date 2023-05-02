@@ -20,6 +20,8 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
         
+        
+        
     }
     
     
@@ -38,6 +40,18 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
         tableView.reloadData()
     }
     
+//    func taskForDate(date: Date) -> [Task]{
+//
+//        var daysTask = [Task]()
+//        for task in allTask{
+//            if(Calendar.current.isDate(task.taskDate!, inSameDayAs: date)){
+//                daysTask.append(task)
+//            }
+//        }
+//
+//        return daysTask
+//    }
+    
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -48,6 +62,7 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return allTask.count
+//        return self.taskForDate(date: selectedDate).count
     }
     
     
@@ -91,33 +106,5 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
-    
-    
-    
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }

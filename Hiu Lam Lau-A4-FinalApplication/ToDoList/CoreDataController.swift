@@ -59,6 +59,8 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     func deleteTask(task: Task) {
         persistentContainer.viewContext.delete(task)
     }
+    
+    
 
     func fetchTask() -> [Task] {
         let request: NSFetchRequest<Task> = Task.fetchRequest()
@@ -73,12 +75,14 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
                 // Set this class to be the results delegate
                 TaskFetchedResultsController?.delegate = self
 
-                do {
-                    try TaskFetchedResultsController?.performFetch()
-                } catch {
-                    print("Fetch Request Failed: \(error)")
-                }
             }
+        
+        
+        do {
+            try TaskFetchedResultsController?.performFetch()
+        } catch {
+            print("Fetch Request Failed: \(error)")
+        }
             if let task = TaskFetchedResultsController?.fetchedObjects {
                 return task
             }
