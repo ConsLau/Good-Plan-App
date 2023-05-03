@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4B099E7629FBDCEC00B7ACC2 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B099E7529FBDCEC00B7ACC2 /* CalendarViewController.swift */; };
 		4B099E7829FC1B4B00B7ACC2 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B099E7729FC1B4B00B7ACC2 /* CalendarHelper.swift */; };
-		4B099E7A29FCAAC500B7ACC2 /* WeeklyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B099E7929FCAAC500B7ACC2 /* WeeklyViewController.swift */; };
 		4B33E71B29F78ADF00E1A8AB /* MultcastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33E71A29F78ADF00E1A8AB /* MultcastDelegate.swift */; };
 		4B33E71D29F7B16800E1A8AB /* AllTaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33E71C29F7B16800E1A8AB /* AllTaskTableViewController.swift */; };
 		4B57423029FBDB2300FCA6C7 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B57422F29FBDB2300FCA6C7 /* CalendarCell.swift */; };
@@ -43,7 +42,6 @@
 /* Begin PBXFileReference section */
 		4B099E7529FBDCEC00B7ACC2 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		4B099E7729FC1B4B00B7ACC2 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
-		4B099E7929FCAAC500B7ACC2 /* WeeklyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyViewController.swift; sourceTree = "<group>"; };
 		4B33E71A29F78ADF00E1A8AB /* MultcastDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultcastDelegate.swift; sourceTree = "<group>"; };
 		4B33E71C29F7B16800E1A8AB /* AllTaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTaskTableViewController.swift; sourceTree = "<group>"; };
 		4B57422F29FBDB2300FCA6C7 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
@@ -93,7 +91,6 @@
 				4B57422F29FBDB2300FCA6C7 /* CalendarCell.swift */,
 				4B099E7529FBDCEC00B7ACC2 /* CalendarViewController.swift */,
 				4B099E7729FC1B4B00B7ACC2 /* CalendarHelper.swift */,
-				4B099E7929FCAAC500B7ACC2 /* WeeklyViewController.swift */,
 			);
 			path = CalendarView;
 			sourceTree = "<group>";
@@ -299,7 +296,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B099E7A29FCAAC500B7ACC2 /* WeeklyViewController.swift in Sources */,
 				4B6E82A529DF06E100F95529 /* ViewController.swift in Sources */,
 				4B6E82E229E33E9D00F95529 /* accountDetails.swift in Sources */,
 				4B62003129F5887B00605CAF /* CoreDataController.swift in Sources */,
@@ -466,6 +462,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Hiu Lam Lau-A4-FinalApplication/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -493,6 +490,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Hiu Lam Lau-A4-FinalApplication/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

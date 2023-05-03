@@ -4,13 +4,15 @@
 //
 //  Created by Cons Lau on 28/4/2023.
 //
+// Reference 1 (Weekly Calendar Swift Xcode Tutorial | Daily Events List): https://www.youtube.com/watch?v=E-bFeJLsvW0&t=311s
+// Reference 2 (Monthly Calendar View App SwiftUI Xcode Tutorial): https://www.youtube.com/watch?v=jBvkFKhnYLI
 
 import UIKit
 
 var selectedDate = Date()
 
 class CalendarViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var monthLabel: UILabel!
     
@@ -19,12 +21,13 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     var totalSquares = [String]()
     var selectedIndexPath: IndexPath?
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setCellView()
         setMonthView()
+        addTaskBtn.tintColor = UIColor.darkGray
     }
     
     func setCellView(){
@@ -54,7 +57,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
             count += 1
         }
         
-        monthLabel.text = CalendarHelper().monthString(date: selectedDate).prefix(3) + "" + CalendarHelper().yearString(date: selectedDate)
+        monthLabel.text = CalendarHelper().monthString(date: selectedDate).prefix(3) + CalendarHelper().yearString(date: selectedDate)
         
         collectionView.reloadData()
     }
@@ -65,10 +68,10 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calendarCell", for: indexPath) as! CalendarCell
-
+        
         cell.dateOfMonth.text = totalSquares[indexPath.item]
-
-
+        
+        
         // Update the cell background color based on the selected index path
         if indexPath == selectedIndexPath {
             cell.backgroundColor = .lightGray
@@ -77,18 +80,16 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         } else {
             cell.backgroundColor = .white
         }
-
+        
         return cell
     }
     
-
-
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            // Update the selected index path and reload the data to apply the background color changes
-            selectedIndexPath = indexPath
-            collectionView.reloadData()
-        }
+        // Update the selected index path and reload the data to apply the background color changes
+        performSegue(withIdentifier: "addTask", sender: nil)
+        selectedIndexPath = indexPath
+        collectionView.reloadData()
+    }
     
     
     @IBAction func previousBtn(_ sender: Any) {
@@ -101,10 +102,18 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         setMonthView()
     }
     
-   
+    
     override open var shouldAutorotate: Bool{
         return false
     }
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? AllTaskTableViewController {
+            
+            if let selectedindexPath = collectionView.indexPathsForSelectedItems?.first{
+                controller.selectedDate = totalSquares[selectedindexPath.item]
+            }
+        }
+    }
+    
 }

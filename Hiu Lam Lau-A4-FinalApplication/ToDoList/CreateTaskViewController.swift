@@ -15,6 +15,8 @@ class CreateTaskViewController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var isCompleteSegmentedControl: UISegmentedControl!
 
+    @IBOutlet weak var confirmBtn: UIButton!
+    
     weak var databaseController: DatabaseProtocol?
     var selectedDate: Date?
     
@@ -23,6 +25,8 @@ class CreateTaskViewController: UIViewController {
         
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
+        
+        confirmBtn.tintColor = UIColor.darkGray
         
     }
     

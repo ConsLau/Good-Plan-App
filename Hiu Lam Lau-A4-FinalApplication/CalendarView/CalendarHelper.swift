@@ -4,6 +4,7 @@
 //
 //  Created by Cons Lau on 29/4/2023.
 //
+// Reference 1 (Monthly Calendar View App SwiftUI Xcode Tutorial): https://www.youtube.com/watch?v=jBvkFKhnYLI
 
 import Foundation
 import UIKit

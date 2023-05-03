@@ -60,22 +60,38 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         persistentContainer.viewContext.delete(task)
     }
     
+    func updateTask(task: Task) {
+        let context = persistentContainer.viewContext
+        
+        do {
+            try context.save()
+        } catch {
+            print("Failed to update task: \(error)")
+        }
+        
+        listeners.invoke { (listener) in
+            if listener.listenerType == .task {
+                listener.onTaskChange(change: .update, tasks: fetchTask())
+            }
+        }
+    }
     
-
+    
+    
     func fetchTask() -> [Task] {
         let request: NSFetchRequest<Task> = Task.fetchRequest()
         let nameSortDescriptor = NSSortDescriptor(key: "taskName", ascending: true)
         request.sortDescriptors = [nameSortDescriptor]
-            if TaskFetchedResultsController == nil {
-
-                TaskFetchedResultsController =
-                NSFetchedResultsController<Task>(fetchRequest: request,
-                                                      managedObjectContext: persistentContainer.viewContext,
-                                                      sectionNameKeyPath: nil, cacheName: nil)
-                // Set this class to be the results delegate
-                TaskFetchedResultsController?.delegate = self
-
-            }
+        if TaskFetchedResultsController == nil {
+            
+            TaskFetchedResultsController =
+            NSFetchedResultsController<Task>(fetchRequest: request,
+                                             managedObjectContext: persistentContainer.viewContext,
+                                             sectionNameKeyPath: nil, cacheName: nil)
+            // Set this class to be the results delegate
+            TaskFetchedResultsController?.delegate = self
+            
+        }
         
         
         do {
@@ -83,9 +99,9 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         } catch {
             print("Fetch Request Failed: \(error)")
         }
-            if let task = TaskFetchedResultsController?.fetchedObjects {
-                return task
-            }
-            return [Task]()
+        if let task = TaskFetchedResultsController?.fetchedObjects {
+            return task
         }
+        return [Task]()
+    }
 }
