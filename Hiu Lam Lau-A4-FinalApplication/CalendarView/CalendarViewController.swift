@@ -10,6 +10,7 @@
 import UIKit
 
 var selectedDate = Date()
+var selectedMonth: String?
 
 class CalendarViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -112,8 +113,10 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
             
             if let selectedindexPath = collectionView.indexPathsForSelectedItems?.first{
                 controller.selectedDate = totalSquares[selectedindexPath.item]
+                controller.selectedMonth = CalendarHelper().monthString(date: selectedDate)
             }
         }
     }
     
 }
+

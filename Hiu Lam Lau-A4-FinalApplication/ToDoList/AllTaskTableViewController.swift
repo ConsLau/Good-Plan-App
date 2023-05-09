@@ -4,18 +4,23 @@
 //
 //  Created by Cons Lau on 25/4/2023.
 //
+// Reference 1 (How can I add an image to my table cell in swift?): https://stackoverflow.com/questions/35531441/how-can-i-add-an-image-to-my-table-cell-in-swift
+// Reference 2(Swift: Double Tap to like Feature (Xcode 11, 2020) - iOS Development): https://www.youtube.com/watch?v=4XKZPdp-0TA&t=180s
 
 import UIKit
 
 class AllTaskTableViewController: UITableViewController, DatabaseListener {
     
-    var selectedDate: String?
+    
     // variables
+    var selectedDate: String?
+    var selectedMonth: String?
     var allTask: [Task] = []
     var filteredTask: [Task] = []
     var listenerType = ListenerType.task
     weak var databaseController: DatabaseProtocol?
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,10 +29,8 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
         
-        print(selectedDate)
-        
+        print(selectedDate!)
     }
-    
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,18 +49,28 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
         tableView.reloadData()
     }
     
+    func onBlogChange(change: DatabaseChange, blogs: [Blog]) {
+        
+    }
+    
+    
     func selecteDateResults(){
         filteredTask = allTask.filter({(task: Task) -> Bool in
-            return (dateConvert(date: task.taskDate!) == selectedDate)
+            return checkDateMonth(selectedDay: selectedDate!, selectedMonth: selectedMonth!, taskDate: task.taskDate!)
         })
         
         tableView.reloadData()
     }
     
-    func dateConvert(date: Date) -> String {
+    func checkDateMonth(selectedDay: String, selectedMonth: String, taskDate: Date) -> Bool {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d"
-        return dateFormatter.string(from: date)
+        let day = dateFormatter.string(from: taskDate)
+
+        dateFormatter.dateFormat = "MMMM"
+        let month = dateFormatter.string(from: taskDate)
+
+        return selectedDay == day && selectedMonth == month
     }
     
     // MARK: - Table view data source
@@ -70,16 +83,15 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return filteredTask.count
-        //        return self.taskForDate(date: selectedDate).count
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row < filteredTask.count {
             let task = filteredTask[indexPath.row]
             if task.taskIsComplete == .inComplete {
-                cell.backgroundColor = UIColor.lightGray
+                cell.imageView?.image = UIImage(named:"Uncheck")
             } else {
-                cell.backgroundColor = UIColor.white
+                cell.imageView?.image = UIImage(named:"Checked")
             }
         }
     }
@@ -98,6 +110,7 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
             }
             
             databaseController?.updateTask(task: task)
+            tableView.reloadRows(at: [indexPath], with: .automatic)
         }
     }
     
@@ -112,7 +125,13 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
             content.text = task.taskName
             content.secondaryText = task.taskDesc
             
+            if task.taskIsComplete == .complete {
+                content.image = UIImage(named:"Checked")
+            } else {
+                content.image = UIImage(named:"Uncheck")
+            }
         }
+        
         taskCell.contentConfiguration = content
         taskCell.selectionStyle = .none
         
@@ -147,8 +166,5 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
         }
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
-    
+
 }

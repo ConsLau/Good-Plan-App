@@ -15,11 +15,13 @@ enum DatabaseChange {
 
 enum ListenerType{
     case task
+    case blog
 }
 
 protocol DatabaseListener: AnyObject{
     var listenerType: ListenerType{get set}
     func onTaskChange(change: DatabaseChange, tasks: [Task])
+    func onBlogChange(change: DatabaseChange, blogs: [Blog])
 }
 
 protocol DatabaseProtocol: AnyObject{
@@ -29,4 +31,13 @@ protocol DatabaseProtocol: AnyObject{
     func addTask(taskName: String, taskDesc:String, taskDate: Date, isComplete: isComplete)-> Task
     func deleteTask(task: Task)
     func updateTask(task: Task)
+}
+
+protocol DatabaseProtocolBlog: AnyObject{
+    func cleanup()
+    func addListener(listener: DatabaseListener)
+    func removeListener(listener: DatabaseListener)
+    func addBlog(blogTitle: String, blogContent:String, blogImage:String, isLocalImage: Bool)-> Blog
+    func deleteTask(blog: Blog)
+    //func updateTask(blog: Blog)
 }
