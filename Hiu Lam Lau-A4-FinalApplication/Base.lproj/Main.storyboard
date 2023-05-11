@@ -12,7 +12,7 @@
         <!--loginPage-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="loginPage" id="BYZ-38-t0r" customClass="loginPageViewController" customModule="Good_Plan" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginPageViewController" title="loginPage" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="loginPageViewController" customModule="Good_Plan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -192,23 +192,15 @@ please sign in and continue!</string>
         <scene sceneID="jCq-q6-d74">
             <objects>
                 <viewController id="Zp8-DH-B86" customClass="AllBlogViewController" customModule="Good_Plan" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="IPq-GS-zDf">
+                    <view key="view" contentMode="scaleToFill" id="IPq-GS-zDf">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tNW-W3-cDM">
-                                <rect key="frame" x="159" y="667" width="75" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
-                                <connections>
-                                    <segue destination="kGX-mO-LlH" kind="show" identifier="showBlogs" id="5o6-oG-e8n"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8FR-Mh-Aia">
-                                <rect key="frame" x="0.0" y="103" width="393" height="564"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="607"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="111" id="otZ-ga-TOv">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BlogCell" rowHeight="111" id="otZ-ga-TOv" customClass="BlogTableViewCell" customModule="Good_Plan" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="111"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="otZ-ga-TOv" id="Yon-eU-EaV">
@@ -244,28 +236,40 @@ please sign in and continue!</string>
                                                 <constraint firstItem="NAT-0J-tsQ" firstAttribute="top" secondItem="Yon-eU-EaV" secondAttribute="top" constant="10" id="y6F-2W-Loy"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="blogImage" destination="NAT-0J-tsQ" id="6PV-b0-IjB"/>
+                                            <outlet property="blogTitle" destination="SZ7-fU-ib4" id="ihg-2Z-EUq"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tNW-W3-cDM">
+                                <rect key="frame" x="122" y="732" width="149" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Create new blog"/>
+                                <connections>
+                                    <segue destination="kGX-mO-LlH" kind="show" identifier="showBlogs" id="5o6-oG-e8n"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NtD-X1-fw5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="tNW-W3-cDM" firstAttribute="top" secondItem="NtD-X1-fw5" secondAttribute="top" constant="564" id="BPD-sH-MUJ"/>
-                            <constraint firstItem="tNW-W3-cDM" firstAttribute="leading" secondItem="NtD-X1-fw5" secondAttribute="leading" constant="159" id="DEh-bI-v3n"/>
+                            <constraint firstAttribute="bottom" secondItem="tNW-W3-cDM" secondAttribute="bottom" constant="85" id="06B-AJ-MdO"/>
+                            <constraint firstItem="NtD-X1-fw5" firstAttribute="bottom" secondItem="8FR-Mh-Aia" secondAttribute="bottom" constant="10" id="Ej7-rt-L5k"/>
                             <constraint firstItem="NtD-X1-fw5" firstAttribute="trailing" secondItem="8FR-Mh-Aia" secondAttribute="trailing" id="F0H-fT-Obp"/>
+                            <constraint firstAttribute="trailing" secondItem="tNW-W3-cDM" secondAttribute="trailing" constant="122" id="QJr-cy-VUT"/>
+                            <constraint firstItem="tNW-W3-cDM" firstAttribute="leading" secondItem="IPq-GS-zDf" secondAttribute="leading" constant="122" id="Rqa-TO-tiX"/>
+                            <constraint firstItem="tNW-W3-cDM" firstAttribute="centerX" secondItem="IPq-GS-zDf" secondAttribute="centerX" id="YDk-5a-VhM"/>
                             <constraint firstItem="8FR-Mh-Aia" firstAttribute="top" secondItem="NtD-X1-fw5" secondAttribute="top" id="ZY0-Dk-hf0"/>
-                            <constraint firstItem="NtD-X1-fw5" firstAttribute="trailing" secondItem="tNW-W3-cDM" secondAttribute="trailing" constant="159" id="aso-SZ-LMC"/>
                             <constraint firstItem="8FR-Mh-Aia" firstAttribute="leading" secondItem="NtD-X1-fw5" secondAttribute="leading" id="e1E-0u-hSb"/>
-                            <constraint firstItem="tNW-W3-cDM" firstAttribute="top" secondItem="8FR-Mh-Aia" secondAttribute="bottom" id="s6F-L5-y3x"/>
-                            <constraint firstItem="NtD-X1-fw5" firstAttribute="bottom" secondItem="tNW-W3-cDM" secondAttribute="bottom" constant="67" id="wHL-Zd-kqF"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Blog" image="note.text.badge.plus" catalog="system" id="iiF-oF-kvV"/>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="blogIMage" destination="NAT-0J-tsQ" id="rjQ-sF-yg7"/>
+                        <outlet property="blogTable" destination="8FR-Mh-Aia" id="lEa-sS-DQ6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M1S-Ov-hBl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -312,8 +316,8 @@ please sign in and continue!</string>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="blogImage" destination="UHL-JV-Csl" id="Zbi-M0-MfM"/>
-                                    <outlet property="blogTitle" destination="dYb-gA-zPf" id="NnQ-SD-K38"/>
+                                    <outlet property="blogImage" destination="UHL-JV-Csl" id="6u2-Lv-EVV"/>
+                                    <outlet property="blogTitle" destination="dYb-gA-zPf" id="sDz-IK-3Ai"/>
                                     <segue destination="5pS-oK-M6m" kind="show" identifier="showBlogDetails" id="sih-KB-4QR"/>
                                 </connections>
                             </tableViewCell>
@@ -882,7 +886,7 @@ please sign in and continue!</string>
         <!--Home Page-->
         <scene sceneID="aav-BR-zc6">
             <objects>
-                <viewController title="Home Page" id="wJL-5P-UFz" customClass="homePageViewController" customModule="Good_Plan" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="homePageViewController" title="Home Page" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wJL-5P-UFz" customClass="homePageViewController" customModule="Good_Plan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sqd-AA-NxO">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1003,7 +1007,7 @@ please sign in and continue!</string>
         <!--Tab Bar Controller-->
         <scene sceneID="nTX-iX-tFK">
             <objects>
-                <tabBarController id="fAb-5V-otr" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fAb-5V-otr" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="8QG-dW-42O"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xtG-Xs-eN4">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>

@@ -69,6 +69,14 @@ class loginPageViewController: UIViewController {
         passwordInput.text = ""
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if Auth.auth().currentUser != nil {
+            self.performSegue(withIdentifier: "homePage", sender: nil)
+        }
+    }
+    
     
     func displayMessage(title: String, message: String ,actionHandler: ((UIAlertAction) -> Void)? = nil){
         let alertController = UIAlertController(title: title, message: message,

@@ -10,6 +10,5 @@ import UIKit
 class BlogTableViewCell: UITableViewCell {
 
     @IBOutlet weak var blogImage: UIImageView!
-    
     @IBOutlet weak var blogTitle: UILabel!
 }
