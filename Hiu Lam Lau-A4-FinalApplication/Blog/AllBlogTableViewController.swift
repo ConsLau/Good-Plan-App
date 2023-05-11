@@ -129,5 +129,14 @@ class AllBlogTableViewController: UITableViewController, DatabaseListener {
             
         }
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showBlogDetails" {
+            if let blogDetailsViewController = segue.destination as? BlogDetailsViewController, let selectedIndexPath = tableView.indexPathForSelectedRow {
+                blogDetailsViewController.selectedBlog = allBlogs[selectedIndexPath.row]
+            }
+        }
+    }
 
 }

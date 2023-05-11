@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4B099E7629FBDCEC00B7ACC2 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B099E7529FBDCEC00B7ACC2 /* CalendarViewController.swift */; };
 		4B099E7829FC1B4B00B7ACC2 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B099E7729FC1B4B00B7ACC2 /* CalendarHelper.swift */; };
+		4B1B87DC2A0CA7C3006EA689 /* BlogDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1B87DB2A0CA7C3006EA689 /* BlogDetailsViewController.swift */; };
 		4B33E71B29F78ADF00E1A8AB /* MultcastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33E71A29F78ADF00E1A8AB /* MultcastDelegate.swift */; };
 		4B33E71D29F7B16800E1A8AB /* AllTaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33E71C29F7B16800E1A8AB /* AllTaskTableViewController.swift */; };
 		4B3AAD672A03DA760050AB8B /* BlogModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B3AAD652A03DA760050AB8B /* BlogModel.xcdatamodeld */; };
@@ -45,12 +46,14 @@
 		4B6E82B929DFF0A200F95529 /* accountCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6E82B829DFF0A200F95529 /* accountCreateViewController.swift */; };
 		4B6E82E229E33E9D00F95529 /* accountDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6E82E129E33E9D00F95529 /* accountDetails.swift */; };
 		4B6E82F529E43F8600F95529 /* homePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6E82F429E43F8600F95529 /* homePageViewController.swift */; };
+		4B9FF3DD2A0CBCE700C3AF7D /* AllBlogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9FF3DC2A0CBCE700C3AF7D /* AllBlogViewController.swift */; };
 		4BAB4D712A06688800FD5D45 /* BlogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAB4D702A06688800FD5D45 /* BlogTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4B099E7529FBDCEC00B7ACC2 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		4B099E7729FC1B4B00B7ACC2 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
+		4B1B87DB2A0CA7C3006EA689 /* BlogDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogDetailsViewController.swift; sourceTree = "<group>"; };
 		4B33E71A29F78ADF00E1A8AB /* MultcastDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultcastDelegate.swift; sourceTree = "<group>"; };
 		4B33E71C29F7B16800E1A8AB /* AllTaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTaskTableViewController.swift; sourceTree = "<group>"; };
 		4B3AAD662A03DA760050AB8B /* BlogModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BlogModel.xcdatamodel; sourceTree = "<group>"; };
@@ -83,6 +86,7 @@
 		4B6E82B829DFF0A200F95529 /* accountCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = accountCreateViewController.swift; sourceTree = "<group>"; };
 		4B6E82E129E33E9D00F95529 /* accountDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = accountDetails.swift; sourceTree = "<group>"; };
 		4B6E82F429E43F8600F95529 /* homePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homePageViewController.swift; sourceTree = "<group>"; };
+		4B9FF3DC2A0CBCE700C3AF7D /* AllBlogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllBlogViewController.swift; sourceTree = "<group>"; };
 		4BAB4D702A06688800FD5D45 /* BlogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,6 +119,8 @@
 				4B3AAD762A04C5DF0050AB8B /* AllImageCollectionViewController.swift */,
 				4B3AAD782A04CFB60050AB8B /* ImageCell.swift */,
 				4BAB4D702A06688800FD5D45 /* BlogTableViewCell.swift */,
+				4B1B87DB2A0CA7C3006EA689 /* BlogDetailsViewController.swift */,
+				4B9FF3DC2A0CBCE700C3AF7D /* AllBlogViewController.swift */,
 			);
 			path = Blog;
 			sourceTree = "<group>";
@@ -342,6 +348,7 @@
 				4B6E82B529DFF06100F95529 /* loginPageViewController.swift in Sources */,
 				4B099E7829FC1B4B00B7ACC2 /* CalendarHelper.swift in Sources */,
 				4B3AAD6B2A03DFA30050AB8B /* Blog+CoreDataProperties.swift in Sources */,
+				4B9FF3DD2A0CBCE700C3AF7D /* AllBlogViewController.swift in Sources */,
 				4B6E82B729DFF08900F95529 /* passwordResetViewController.swift in Sources */,
 				4B33E71D29F7B16800E1A8AB /* AllTaskTableViewController.swift in Sources */,
 				4B6E82F529E43F8600F95529 /* homePageViewController.swift in Sources */,
@@ -350,6 +357,7 @@
 				4B6E82A129DF06E100F95529 /* AppDelegate.swift in Sources */,
 				4B3AAD672A03DA760050AB8B /* BlogModel.xcdatamodeld in Sources */,
 				4B3AAD712A040C570050AB8B /* AllBlogTableViewController.swift in Sources */,
+				4B1B87DC2A0CA7C3006EA689 /* BlogDetailsViewController.swift in Sources */,
 				4B099E7629FBDCEC00B7ACC2 /* CalendarViewController.swift in Sources */,
 				4B6E82B929DFF0A200F95529 /* accountCreateViewController.swift in Sources */,
 				4B6E82A329DF06E100F95529 /* SceneDelegate.swift in Sources */,
