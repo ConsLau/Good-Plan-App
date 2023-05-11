@@ -73,9 +73,25 @@ class AllBlogTableViewController: UITableViewController, DatabaseListener {
             let blogs = allBlogs[indexPath.row]
             blogCell.blogTitle.text = blogs.blogTitle
             
-            if let imageUrlString = blogs.blogImage {
-                let image = UIImage(contentsOfFile: imageUrlString)
-                blogCell.blogImage.image = image
+            // test
+            if let imageName = blogs.blogImage {
+                        let documentDirectoryPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+                        let imagePath = "\(documentDirectoryPath)/\(imageName)"
+                        let imageURL = URL(fileURLWithPath: imagePath)
+                        
+                        if FileManager.default.fileExists(atPath: imageURL.path) {
+                            blogCell.blogImage.image = UIImage(contentsOfFile: imageURL.path)
+                        } else {
+                            print("Image file not found at path: \(imageURL.path)")
+                        }
+                    
+            
+//            if let imageUrlString = blogs.blogImage {
+//                blogCell.blogImage.image = UIImage(contentsOfFile: imageUrlString)
+            
+                
+//                let imageURL = URL(string: imageUrlString)
+//                blogCell.imageView?.image = UIImage(contentsOfFile: imageUrlString)
 //                if blogs.isLocalImage?.boolValue ?? false, let imageUrl = URL(string: imageUrlString) {
 //                    // Load image from local storage
 //                    DispatchQueue.global().async {

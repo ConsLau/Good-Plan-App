@@ -76,19 +76,25 @@ class CreateBlogViewController: UIViewController, UIImagePickerControllerDelegat
             // Save the image to documents directory and get the file path
             let imageName = UUID().uuidString + ".jpg"
             if let data = blogImage.jpegData(compressionQuality: 1.0),
-               let fileURL = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(imageName) {
+               let fileURL = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent(imageName) {
                 do {
                     try data.write(to: fileURL)
+                    
+                    if FileManager.default.fileExists(atPath: fileURL.path) {
+                        print("File exists at \(fileURL.path)")
+                    } else {
+                        print("File does not exist")
+                    }
                 }
                 catch {
-                    print(error.localizedDescription)
+                    print(error)
                 }
                 // Save blog details to Core Data
                 let isLocalImage = imageView.tag == 1
                 let _ = blogCoreDataController?.addBlog(blogTitle: blogTitle, blogContent: blogContent, blogImage: fileURL.absoluteString, isLocalImage: isLocalImage)
                 //blogCoreDataController?.cleanup()
                 print("Add successfully")
-                print(fileURL)
+                print(blogImage)
                 
                 navigationController?.popViewController(animated: true)
             }

@@ -7,7 +7,6 @@
 // Reference 1: (Toolbar creation) https://www.youtube.com/watch?v=EFcMNSP0K9w
 // Reference 2: (Firebase Storage - How To Upload & Download Images To Firebase Storage (Swift Xcode Tutorial)) https://www.youtube.com/watch?v=_Z53zF2R6r0
 // Rference 3: (Swift: Upload Photos to Firebase Storage (and Download, Swift 5) - Xcode 11 - 2020) https://www.youtube.com/watch?v=TAF6cPZxmmI
-// Reference 3: (fetching user data and pull user image) OpenAI, ChatGPT, 13 Apr. 2023, https://chat.openai.com/
 
 import UIKit
 import FirebaseAuth

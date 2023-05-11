@@ -55,7 +55,11 @@ class BlogCoreDataController: NSObject, DatabaseProtocolBlog,  NSFetchedResultsC
         
         blog.blogTitle = blogTitle
         blog.blogContent = blogContent
-        blog.blogImage = blogImage
+        
+        // test
+        blog.blogImage = URL(string: blogImage)?.lastPathComponent
+        
+//        blog.blogImage = blogImage
         blog.isLocalImage = NSNumber(value: isLocalImage)
         
         cleanup()
