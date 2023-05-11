@@ -4,6 +4,11 @@
 //
 //  Created by Cons Lau on 11/5/2023.
 //
+// Reference 1 Swift: TableView w/ Custom Cells Tutorial (2021, iOS) - 2021: https://www.youtube.com/watch?v=R2Ng8Vj2yhY
+// Reference 2 What does main.sync in global().async mean?: https://stackoverflow.com/questions/42772907/what-does-main-sync-in-global-async-mean
+// Reference 3 Swift: Multiple Inheritance from classes Error UIViewController and UIIMagePickerController: https://stackoverflow.com/questions/28598014/swift-multiple-inheritance-from-classes-error-uiviewcontroller-and-uiimagepicke
+// Reference 4 Security of runtime process in iOS and iPadOS: https://support.apple.com/en-au/guide/security/sec15bfe098e/web
+
 
 import UIKit
 

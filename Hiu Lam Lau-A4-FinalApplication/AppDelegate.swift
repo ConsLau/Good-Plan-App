@@ -4,6 +4,7 @@
 //
 //  Created by Cons Lau on 6/4/2023.
 //
+// Reference 1 Handling User Auth State Changes - Swift & Firebase Part 3: https://www.youtube.com/watch?v=n6eR9lJDiyY
 
 import UIKit
 import Firebase
@@ -34,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.window?.makeKeyAndVisible()
             }else{
                 // login in
-                    let controller = storyboard.instantiateViewController(withIdentifier: "loginPageViewController") as!UIViewController
+                let controller = storyboard.instantiateViewController(withIdentifier: "loginPageViewController") 
                     
                     self.window?.rootViewController = controller
                     self.window?.makeKeyAndVisible()
