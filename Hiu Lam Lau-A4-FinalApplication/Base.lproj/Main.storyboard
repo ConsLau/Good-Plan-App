@@ -1038,7 +1038,6 @@ please sign in and continue!</string>
                         <outlet property="occupationCreate" destination="Nny-S5-yeR" id="mZ4-n1-EVQ"/>
                         <outlet property="passwordCreate" destination="XEX-07-DYT" id="nKc-uR-czI"/>
                         <outlet property="spinner" destination="Afc-QQ-5ZS" id="Wkd-dp-U6e"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="backToLogin" id="1SM-9O-zMX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O0M-Tu-YGf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1064,9 +1063,6 @@ please sign in and continue!</string>
             <point key="canvasLocation" x="-390.07633587786256" y="-15.492957746478874"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="D1I-vf-vJY"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="Login Image" width="29" height="29"/>
         <image name="arrowshape.left.fill" catalog="system" width="128" height="104"/>

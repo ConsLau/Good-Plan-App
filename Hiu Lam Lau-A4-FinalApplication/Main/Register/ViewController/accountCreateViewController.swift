@@ -88,7 +88,7 @@ class accountCreateViewController: UIViewController {
                     } else {
                         print("Document successfully added!")
                         strongSelf.displayMessage(title: "Welcome", message: "Account successfully created!",actionHandler: { _ in
-                            strongSelf.performSegue(withIdentifier: "backToLogin", sender: nil)
+                            self?.navigationController?.popViewController(animated: true)
                         })
                     }
                 }
