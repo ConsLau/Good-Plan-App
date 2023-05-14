@@ -39,6 +39,15 @@ class CreateTaskViewController: UIViewController {
             
         }
         
+        
+        self.navigationController?.navigationController?.isNavigationBarHidden = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // Hide the navigation bar of the initial navigation controller
+        self.navigationController?.navigationController?.isNavigationBarHidden = true
     }
     
     @IBAction func datePicker(_ sender: UIDatePicker) {

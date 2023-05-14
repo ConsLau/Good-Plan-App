@@ -28,7 +28,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         super.viewDidLoad()
         setCellView()
         setMonthView()
-        addTaskBtn.tintColor = UIColor.darkGray
+
     }
     
     func setCellView(){

@@ -30,14 +30,17 @@ class AllBlogViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         blogTable.dataSource = self
         blogTable.delegate = self
+        
+        self.navigationController?.navigationController?.isNavigationBarHidden = false
 
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         blogCoreDataController?.addListener(listener: self)
+        
+        self.navigationController?.navigationController?.isNavigationBarHidden = true
     }
     
 
