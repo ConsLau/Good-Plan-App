@@ -269,7 +269,7 @@ please sign in and continue!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M1S-Ov-hBl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1991.6030534351144" y="2664.7887323943664"/>
+            <point key="canvasLocation" x="1969" y="2875"/>
         </scene>
         <!--Blog Details View Controller-->
         <scene sceneID="cil-OK-iQt">
@@ -321,7 +321,7 @@ please sign in and continue!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hzz-iU-vYE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3017.5572519083967" y="2245.7746478873241"/>
+            <point key="canvasLocation" x="3189" y="3199"/>
         </scene>
         <!--Create New Blog-->
         <scene sceneID="EV7-FO-LMI">
@@ -416,7 +416,7 @@ please sign in and continue!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Uw-Nk-Sjj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3017.5572519083967" y="3081.6901408450708"/>
+            <point key="canvasLocation" x="3189" y="2515"/>
         </scene>
         <!--All Image Collection View Controller-->
         <scene sceneID="QSf-Ha-vt8">
@@ -465,7 +465,7 @@ please sign in and continue!</string>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sPd-Oo-6Ts" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4295.419847328244" y="3081.6901408450708"/>
+            <point key="canvasLocation" x="4395" y="2515"/>
         </scene>
         <!--Calendar View Controller-->
         <scene sceneID="Ewd-iD-D1h">
@@ -635,7 +635,7 @@ please sign in and continue!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pa9-Q1-mwG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2817.5572519083967" y="1222.5352112676057"/>
+            <point key="canvasLocation" x="2789" y="1493"/>
         </scene>
         <!--Lists-->
         <scene sceneID="pW3-gY-dZn">
@@ -684,7 +684,7 @@ please sign in and continue!</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e9U-ad-IqD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3834.3511450381679" y="784.50704225352115"/>
+            <point key="canvasLocation" x="3795" y="1847"/>
         </scene>
         <!--Create New Task-->
         <scene sceneID="cFY-ZM-LV0">
@@ -802,7 +802,7 @@ please sign in and continue!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Hy-4a-AmJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3834.3511450381679" y="1548.5915492957747"/>
+            <point key="canvasLocation" x="3795" y="1032"/>
         </scene>
         <!--Home Page-->
         <scene sceneID="aav-BR-zc6">
@@ -813,42 +813,42 @@ please sign in and continue!</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NtX-M6-XQB">
-                                <rect key="frame" x="75.666666666666671" y="293.66666666666669" width="50" height="21"/>
+                                <rect key="frame" x="75.666666666666671" y="296" width="50" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Occupation: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9y1-ez-ghF">
-                                <rect key="frame" x="75.666666666666671" y="334.66666666666669" width="97.000000000000014" height="21"/>
+                                <rect key="frame" x="75.666666666666671" y="337" width="97.000000000000014" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZM-BK-FDO">
-                                <rect key="frame" x="75.666666666666671" y="375.66666666666669" width="46" height="21"/>
+                                <rect key="frame" x="75.666666666666671" y="378" width="46" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VnS-ZL-beT">
-                                <rect key="frame" x="275.66666666666669" y="334.66666666666669" width="42" height="21"/>
+                                <rect key="frame" x="275.66666666666669" y="337" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNg-6o-cTu">
-                                <rect key="frame" x="276.33333333333331" y="293.66666666666669" width="41.333333333333314" height="21"/>
+                                <rect key="frame" x="276.33333333333331" y="296" width="41.333333333333314" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGy-Fw-HSh">
-                                <rect key="frame" x="75.666666666666671" y="416.66666666666669" width="42" height="21"/>
+                                <rect key="frame" x="75.666666666666671" y="419" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Obp-Z9-J23">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Obp-Z9-J23">
                                 <rect key="frame" x="20" y="617.66666666666663" width="353" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Logout"/>
@@ -856,7 +856,7 @@ please sign in and continue!</string>
                                     <action selector="logoutBtn:" destination="wJL-5P-UFz" eventType="touchUpInside" id="9VZ-mM-qVG"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dnd-U1-WYT">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dnd-U1-WYT">
                                 <rect key="frame" x="20" y="682" width="353" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Upload pofile picture"/>
@@ -865,7 +865,7 @@ please sign in and continue!</string>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3cr-30-YLz">
-                                <rect key="frame" x="75.666666666666686" y="135.66666666666666" width="242" height="147.99999999999997"/>
+                                <rect key="frame" x="75.666666666666686" y="138" width="242" height="148"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lkf-jR-Nvt">
                                         <rect key="frame" x="48" y="13" width="147" height="123"/>
@@ -876,7 +876,7 @@ please sign in and continue!</string>
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemGray2Color"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="242" id="2Te-aa-86H"/>
                                     <constraint firstAttribute="trailing" secondItem="Lkf-jR-Nvt" secondAttribute="trailing" constant="47" id="S77-R9-BVc"/>
@@ -892,7 +892,6 @@ please sign in and continue!</string>
                         <constraints>
                             <constraint firstItem="WGy-Fw-HSh" firstAttribute="leading" secondItem="cZM-BK-FDO" secondAttribute="leading" id="3Ka-HP-bM3"/>
                             <constraint firstItem="cZM-BK-FDO" firstAttribute="top" secondItem="9y1-ez-ghF" secondAttribute="bottom" constant="20" id="84E-e3-Eoq"/>
-                            <constraint firstItem="Obp-Z9-J23" firstAttribute="top" secondItem="WGy-Fw-HSh" secondAttribute="bottom" constant="180" id="8vB-aE-Bk5"/>
                             <constraint firstItem="Vha-bf-MOq" firstAttribute="bottom" secondItem="Dnd-U1-WYT" secondAttribute="bottom" constant="52" id="Bhh-bu-eqK"/>
                             <constraint firstItem="cZM-BK-FDO" firstAttribute="leading" secondItem="9y1-ez-ghF" secondAttribute="leading" id="DWL-qt-37E"/>
                             <constraint firstItem="3cr-30-YLz" firstAttribute="centerX" secondItem="Sqd-AA-NxO" secondAttribute="centerX" id="E8B-UC-Kl6"/>
@@ -907,6 +906,7 @@ please sign in and continue!</string>
                             <constraint firstItem="Dnd-U1-WYT" firstAttribute="top" secondItem="Obp-Z9-J23" secondAttribute="bottom" constant="30" id="Yvz-1B-yZx"/>
                             <constraint firstItem="KNg-6o-cTu" firstAttribute="trailing" secondItem="3cr-30-YLz" secondAttribute="trailing" id="eS0-qU-nTV"/>
                             <constraint firstItem="NtX-M6-XQB" firstAttribute="top" secondItem="3cr-30-YLz" secondAttribute="bottom" constant="10" id="m0K-QL-xxS"/>
+                            <constraint firstItem="Obp-Z9-J23" firstAttribute="top" secondItem="WGy-Fw-HSh" secondAttribute="bottom" constant="177.66999999999999" id="naE-xq-l66"/>
                             <constraint firstItem="Vha-bf-MOq" firstAttribute="trailing" secondItem="Obp-Z9-J23" secondAttribute="trailing" constant="20" id="oOE-LI-LG5"/>
                             <constraint firstItem="cZM-BK-FDO" firstAttribute="top" secondItem="9y1-ez-ghF" secondAttribute="bottom" constant="20" id="t3y-f1-GJo"/>
                             <constraint firstItem="WGy-Fw-HSh" firstAttribute="top" secondItem="cZM-BK-FDO" secondAttribute="bottom" constant="20" id="yXP-oJ-L8O"/>
@@ -917,13 +917,15 @@ please sign in and continue!</string>
                     <connections>
                         <outlet property="emailText" destination="WGy-Fw-HSh" id="63b-ae-Fjd"/>
                         <outlet property="imageView" destination="Lkf-jR-Nvt" id="cYm-q7-Vf8"/>
+                        <outlet property="logoutBtn" destination="Obp-Z9-J23" id="BuU-4N-284"/>
                         <outlet property="nameText" destination="KNg-6o-cTu" id="Z6H-Jh-u38"/>
                         <outlet property="occupationText" destination="VnS-ZL-beT" id="xUi-Ew-xho"/>
+                        <outlet property="picUploadBtn" destination="Dnd-U1-WYT" id="dfp-DV-0hC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TTu-Lc-OHQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2813" y="48"/>
+            <point key="canvasLocation" x="1740" y="735"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="nTX-iX-tFK">
@@ -1064,7 +1066,7 @@ please sign in and continue!</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gy7-D3-wXA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1890.8396946564885" y="1222.5352112676057"/>
+            <point key="canvasLocation" x="1740" y="1493"/>
         </scene>
         <!--Blog-->
         <scene sceneID="wLC-5t-9gD">
@@ -1083,7 +1085,7 @@ please sign in and continue!</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pyt-hD-0qa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1064.885496183206" y="2664.7887323943664"/>
+            <point key="canvasLocation" x="1036" y="2875"/>
         </scene>
     </scenes>
     <resources>
@@ -1095,6 +1097,9 @@ please sign in and continue!</string>
         <image name="note.text.badge.plus" catalog="system" width="128" height="108"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tintColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -23,8 +23,13 @@ class homePageViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var occupationText: UILabel!
     @IBOutlet weak var emailText: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+
+    
+    @IBOutlet weak var logoutBtn: UIButton! 
+    @IBOutlet weak var picUploadBtn: UIButton!
     
     
+
     
     @IBAction func logoutBtn(_ sender: Any) {
         do {
@@ -44,12 +49,16 @@ class homePageViewController: UIViewController, UIImagePickerControllerDelegate,
                 present(imagePickerController, animated: true, completion: nil)
     }
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        fetchUserData()
+        
         pullUserImage()
+        fetchUserData()
+        
     }
+
     
 
     func fetchUserData(){

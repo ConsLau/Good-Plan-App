@@ -19,6 +19,8 @@
 		4B3AAD732A040C770050AB8B /* CreateBlogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3AAD722A040C770050AB8B /* CreateBlogViewController.swift */; };
 		4B3AAD772A04C5DF0050AB8B /* AllImageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3AAD762A04C5DF0050AB8B /* AllImageCollectionViewController.swift */; };
 		4B3AAD792A04CFB60050AB8B /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3AAD782A04CFB60050AB8B /* ImageCell.swift */; };
+		4B4725EF2A10D183000F0D61 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4725EE2A10D183000F0D61 /* Theme.swift */; };
+		4B4725F12A10D539000F0D61 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4725F02A10D539000F0D61 /* ThemeManager.swift */; };
 		4B57423029FBDB2300FCA6C7 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B57422F29FBDB2300FCA6C7 /* CalendarCell.swift */; };
 		4B62002129F5313900605CAF /* ToDoListModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B62001F29F5313900605CAF /* ToDoListModel.xcdatamodeld */; };
 		4B62002929F537F200605CAF /* ToDoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B62002829F537F200605CAF /* ToDoListTableViewController.swift */; };
@@ -62,6 +64,8 @@
 		4B3AAD722A040C770050AB8B /* CreateBlogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBlogViewController.swift; sourceTree = "<group>"; };
 		4B3AAD762A04C5DF0050AB8B /* AllImageCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllImageCollectionViewController.swift; sourceTree = "<group>"; };
 		4B3AAD782A04CFB60050AB8B /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		4B4725EE2A10D183000F0D61 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		4B4725F02A10D539000F0D61 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		4B57422F29FBDB2300FCA6C7 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		4B62002029F5313900605CAF /* ToDoListModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ToDoListModel.xcdatamodel; sourceTree = "<group>"; };
 		4B62002829F537F200605CAF /* ToDoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListTableViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +126,15 @@
 			path = Blog;
 			sourceTree = "<group>";
 		};
+		4B4725EB2A10D144000F0D61 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				4B4725EE2A10D183000F0D61 /* Theme.swift */,
+				4B4725F02A10D539000F0D61 /* ThemeManager.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
 		4B57422E29FBDADF00FCA6C7 /* CalendarView */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +172,7 @@
 			children = (
 				4B62002E29F5866900605CAF /* DatabaseProtocol.swift */,
 				4B33E71A29F78ADF00E1A8AB /* MultcastDelegate.swift */,
+				4B4725EB2A10D144000F0D61 /* Theme */,
 				4B3AAD642A03D7DE0050AB8B /* Blog */,
 				4B57422E29FBDADF00FCA6C7 /* CalendarView */,
 				4B62001E29F530FC00605CAF /* ToDoList */,
@@ -350,6 +364,7 @@
 				4B33E71D29F7B16800E1A8AB /* AllTaskTableViewController.swift in Sources */,
 				4B6E82F529E43F8600F95529 /* homePageViewController.swift in Sources */,
 				4B62002F29F5866900605CAF /* DatabaseProtocol.swift in Sources */,
+				4B4725EF2A10D183000F0D61 /* Theme.swift in Sources */,
 				4B3AAD792A04CFB60050AB8B /* ImageCell.swift in Sources */,
 				4B6E82A129DF06E100F95529 /* AppDelegate.swift in Sources */,
 				4B3AAD672A03DA760050AB8B /* BlogModel.xcdatamodeld in Sources */,
@@ -360,6 +375,7 @@
 				4B62002D29F5766700605CAF /* Task+CoreDataProperties.swift in Sources */,
 				4B3AAD6F2A03F4570050AB8B /* BlogCoreDataController.swift in Sources */,
 				4B57423029FBDB2300FCA6C7 /* CalendarCell.swift in Sources */,
+				4B4725F12A10D539000F0D61 /* ThemeManager.swift in Sources */,
 				4B33E71B29F78ADF00E1A8AB /* MultcastDelegate.swift in Sources */,
 				4B62002C29F5766700605CAF /* Task+CoreDataClass.swift in Sources */,
 				4B62002129F5313900605CAF /* ToDoListModel.xcdatamodeld in Sources */,
