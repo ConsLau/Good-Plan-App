@@ -18,6 +18,12 @@ class accountCreateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         spinner.isHidden = true
+        
+        // keyboard
+        //Looks for single or multiple taps.
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+
+        view.addGestureRecognizer(tap)
     }
     
     @IBOutlet weak var spinner: UIActivityIndicatorView!
@@ -26,6 +32,11 @@ class accountCreateViewController: UIViewController {
     @IBOutlet weak var nameCreate: UITextField!
     @IBOutlet weak var occupationCreate: UITextField!
     
+    //Calls this function when the tap is recognized.
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
     
     @IBAction func createBtn(_ sender: Any) {
         spinner.isHidden = false

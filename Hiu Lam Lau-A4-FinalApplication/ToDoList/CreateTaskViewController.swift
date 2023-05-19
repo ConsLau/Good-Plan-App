@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 import UserNotifications
+import Firebase
+import FirebaseAuth
 
 class CreateTaskViewController: UIViewController {
 
@@ -30,7 +32,6 @@ class CreateTaskViewController: UIViewController {
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
         
-        confirmBtn.tintColor = UIColor.darkGray
         
         notificationCentre.requestAuthorization(options: [.alert, .sound]) { (permissionGranted, error) in
             if(!permissionGranted){
@@ -40,14 +41,27 @@ class CreateTaskViewController: UIViewController {
         }
         
         
-        self.navigationController?.navigationController?.isNavigationBarHidden = false
+        //self.navigationController?.navigationController?.isNavigationBarHidden = false
+        
+        //Looks for single or multiple taps.
+        // keyboard
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+
+        view.addGestureRecognizer(tap)
+        
+    }
+    
+    //Calls this function when the tap is recognized.
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         // Hide the navigation bar of the initial navigation controller
-        self.navigationController?.navigationController?.isNavigationBarHidden = true
+        //self.navigationController?.navigationController?.isNavigationBarHidden = true
     }
     
     @IBAction func datePicker(_ sender: UIDatePicker) {
@@ -56,8 +70,10 @@ class CreateTaskViewController: UIViewController {
     
     @IBAction func confirmBtn(_ sender: Any) {
         guard let taskName = nameTextField.text,
-                      let taskDesc = descTextField.text,
-                      let taskDate = selectedDate
+              let taskDesc = descTextField.text,
+              let taskDate = selectedDate,
+              //user
+              let userID = Auth.auth().currentUser?.uid // fetch userID from Firebase
                 else {
                     print("error")
                     return
@@ -65,8 +81,9 @@ class CreateTaskViewController: UIViewController {
                 
         let isCompleteStatus = isComplete(rawValue: Int32(isCompleteSegmentedControl.selectedSegmentIndex)) ?? .inComplete
         
-        let _ = databaseController?.addTask(taskName: taskName, taskDesc: taskDesc, taskDate: taskDate, isComplete: isCompleteStatus)
+        let _ = databaseController?.addTask(taskName: taskName, taskDesc: taskDesc, taskDate: taskDate, isComplete: isCompleteStatus, userID: userID)
                 print("task added")
+        print(userID)
                 
                 navigationController?.popViewController(animated: true)
         

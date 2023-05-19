@@ -15,6 +15,18 @@ class passwordResetViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // keyboard
+        //Looks for single or multiple taps.
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+
+        view.addGestureRecognizer(tap)
+    }
+    
+    //Calls this function when the tap is recognized.
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     @IBOutlet weak var emailnput: UITextField!

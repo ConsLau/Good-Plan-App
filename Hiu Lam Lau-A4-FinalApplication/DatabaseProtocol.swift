@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 enum DatabaseChange {
     case add
@@ -28,7 +29,7 @@ protocol DatabaseProtocol: AnyObject{
     func cleanup()
     func addListener(listener: DatabaseListener)
     func removeListener(listener: DatabaseListener)
-    func addTask(taskName: String, taskDesc:String, taskDate: Date, isComplete: isComplete)-> Task
+    func addTask(taskName: String, taskDesc:String, taskDate: Date, isComplete: isComplete, userID: String)-> Task
     func deleteTask(task: Task)
     func updateTask(task: Task)
 }
@@ -37,7 +38,7 @@ protocol DatabaseProtocolBlog: AnyObject{
     func cleanup()
     func addListener(listener: DatabaseListener)
     func removeListener(listener: DatabaseListener)
-    func addBlog(blogTitle: String, blogContent:String, blogImage:String, isLocalImage: Bool)-> Blog
+    func addBlog(blogTitle: String, blogContent:String, blogImage:String, isLocalImage: Bool, userID: String)-> Blog
     func deleteTask(blog: Blog)
     //func updateTask(blog: Blog)
 }

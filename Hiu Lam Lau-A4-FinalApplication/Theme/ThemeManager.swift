@@ -20,17 +20,19 @@ class ThemeManager {
     )
 
     func applyTheme(to window: UIWindow?) {
-        window?.tintColor = currentTheme.buttonBackgroundColor
-        window?.backgroundColor = currentTheme.backgroundColor
 
-        UINavigationBar.appearance().barTintColor = currentTheme.buttonTextColor
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: currentTheme.textColor]
         
-        UIButton.appearance().tintColor = currentTheme.buttonBackgroundColor
-        UIButton.appearance().backgroundColor = nil
-        
-        UILabel.appearance().textColor = currentTheme.textColor
-        
+        //        window?.tintColor = currentTheme.buttonBackgroundColor
+//        window?.backgroundColor = currentTheme.backgroundColor
+//
+//        UINavigationBar.appearance().barTintColor = currentTheme.buttonTextColor
+//        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: currentTheme.textColor]
+//
+//        UIButton.appearance().tintColor = currentTheme.buttonBackgroundColor
+//        UIButton.appearance().backgroundColor = nil
+//
+//        UILabel.appearance().textColor = currentTheme.textColor
+//
     }
     
 }

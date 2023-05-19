@@ -36,6 +36,11 @@ class homePageViewController: UIViewController, UIImagePickerControllerDelegate,
             try Auth.auth().signOut()
             // Navigate to the login screen
             self.navigationController?.popViewController(animated: true)
+            
+            // root view controller
+            if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+                        sceneDelegate.switchRootViewController(identifier: "NavController")
+                    }
         } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)
         }

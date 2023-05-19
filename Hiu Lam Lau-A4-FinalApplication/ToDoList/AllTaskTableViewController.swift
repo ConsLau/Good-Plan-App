@@ -29,7 +29,6 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
         
-        print(selectedDate!)
     }
     
     
@@ -45,6 +44,7 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
     
     func onTaskChange(change: DatabaseChange, tasks: [Task]) {
         allTask = tasks
+        filteredTask = allTask
         selecteDateResults()
         tableView.reloadData()
     }

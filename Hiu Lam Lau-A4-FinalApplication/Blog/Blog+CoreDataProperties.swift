@@ -20,6 +20,7 @@ extension Blog {
     @NSManaged public var blogContent: String?
     @NSManaged public var blogImage: String?
     @NSManaged public var isLocalImage: NSNumber?
+    @NSManaged public var userID: String?
 
 }
 

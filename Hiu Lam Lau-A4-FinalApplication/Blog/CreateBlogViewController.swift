@@ -6,12 +6,17 @@
 //
 
 import UIKit
+import CoreData
+import Firebase
+import FirebaseAuth
+import AVFoundation
 
 protocol ImageSelectionDelegate: AnyObject {
     func didSelectImage(imageURL: URL)
 }
 
 class CreateBlogViewController: UIViewController, UIImagePickerControllerDelegate , ImageSelectionDelegate & UINavigationControllerDelegate {
+    
     
     
     // variable
@@ -29,6 +34,18 @@ class CreateBlogViewController: UIViewController, UIImagePickerControllerDelegat
 
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         blogCoreDataController = appDelegate?.blogDatabaseController as? BlogCoreDataController
+        
+        //Looks for single or multiple taps.
+        // keyboard
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+
+        view.addGestureRecognizer(tap)
+    }
+    
+    //Calls this function when the tap is recognized.
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     
@@ -39,10 +56,20 @@ class CreateBlogViewController: UIViewController, UIImagePickerControllerDelegat
         let actionSheet = UIAlertController(title: nil, message: "Select Option:",
                                             preferredStyle: .actionSheet)
         
+//        let cameraAction = UIAlertAction(title: "Camera", style: .default) { action in
+//            controller.sourceType = .camera
+//            self.present(controller, animated: true, completion: nil)
+//        }
+        
         let cameraAction = UIAlertAction(title: "Camera", style: .default) { action in
-            controller.sourceType = .camera
-            self.present(controller, animated: true, completion: nil)
+            if self.checkCameraAccess() {
+                controller.sourceType = .camera
+                self.present(controller, animated: true, completion: nil)
+            } else {
+                // Here, you might want to display an alert to the user explaining that camera access is needed.
+            }
         }
+        
         
         let libraryAction = UIAlertAction(title: "Photo Library", style: .default) { action in
             controller.sourceType = .photoLibrary
@@ -67,9 +94,14 @@ class CreateBlogViewController: UIViewController, UIImagePickerControllerDelegat
     
     @IBAction func addBlogBtn(_ sender: Any) {
         guard let blogTitle = titleInput.text, !blogTitle.isEmpty,
-                  let blogContent = contentInput.text, !blogContent.isEmpty,
-                  let blogImage = imageView.image else {
-                print("Missing blog details")
+              let blogContent = contentInput.text, !blogContent.isEmpty,
+              let blogImage = imageView.image,
+              // user
+              let userID = Auth.auth().currentUser?.uid
+        else {
+            print("Missing blog details")
+            
+
                 return
             }
             
@@ -91,15 +123,36 @@ class CreateBlogViewController: UIViewController, UIImagePickerControllerDelegat
                 }
                 // Save blog details to Core Data
                 let isLocalImage = imageView.tag == 1
-                let _ = blogCoreDataController?.addBlog(blogTitle: blogTitle, blogContent: blogContent, blogImage: fileURL.absoluteString, isLocalImage: isLocalImage)
+                let _ = blogCoreDataController?.addBlog(blogTitle: blogTitle, blogContent: blogContent, blogImage: fileURL.absoluteString, isLocalImage: isLocalImage, userID: userID)
                 //blogCoreDataController?.cleanup()
                 print("Add successfully")
                 print(blogImage)
                 
                 navigationController?.popViewController(animated: true)
             }
+        }
+
+    func checkCameraAccess() -> Bool {
+        var hasAccess = false
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
+        case .authorized: // The user has previously granted access to the camera.
+            hasAccess = true
+
+        case .notDetermined: // The user has not yet been asked for camera access.
+            AVCaptureDevice.requestAccess(for: .video) { granted in
+                if granted { hasAccess = true }
+            }
+
+        case .denied: // The user has previously denied access.
+            return false
+
+        case .restricted: // The user can't grant access due to restrictions.
+            return false
+        @unknown default:
+            return false
+        }
+        return hasAccess
     }
-    
 
     func didSelectImage(imageURL: URL) {
         URLSession.shared.dataTask(with: imageURL) { data, response, error in

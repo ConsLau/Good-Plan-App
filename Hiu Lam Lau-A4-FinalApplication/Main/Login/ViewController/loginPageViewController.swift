@@ -20,6 +20,17 @@ class loginPageViewController: UIViewController {
         super.viewDidLoad()
         spinner.isHidden =  true
         
+        //Looks for single or multiple taps.
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+
+        view.addGestureRecognizer(tap)
+        
+    }
+    
+    //Calls this function when the tap is recognized.
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     @IBOutlet weak var emailInput: UITextField!
@@ -53,8 +64,16 @@ class loginPageViewController: UIViewController {
                 strongSelf.spinner.stopAnimating()
             } else {
                 strongSelf.displayMessage(title: "Welcome", message: "Login successful", actionHandler: { _ in
+
+                    strongSelf.navigationController?.isNavigationBarHidden = true
                     strongSelf.performSegue(withIdentifier: "homePage", sender: nil)
                 })
+                
+                // root view controller
+                if let sceneDelegate = strongSelf.view.window?.windowScene?.delegate as? SceneDelegate {
+                            sceneDelegate.switchRootViewController(identifier: "TabBarController")
+                        }
+                
                 print("Logged in successfully")
                 strongSelf.spinner.stopAnimating()
             }
@@ -73,6 +92,7 @@ class loginPageViewController: UIViewController {
         super.viewWillAppear(animated)
         
         if Auth.auth().currentUser != nil {
+            self.navigationController?.isNavigationBarHidden = true
             self.performSegue(withIdentifier: "homePage", sender: nil)
         }
     }

@@ -78,9 +78,9 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         if indexPath == selectedIndexPath {
             cell.backgroundColor = .lightGray
         } else if let day = Int(totalSquares[indexPath.item]), CalendarHelper().isCurrentDate(day: day) {
-            cell.backgroundColor = .gray
+            cell.backgroundColor = .separator
         } else {
-            cell.backgroundColor = .white
+            cell.backgroundColor = .systemBackground
         }
         
         return cell

@@ -62,6 +62,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
+    
+    
+    // root view controller
+    func switchRootViewController(identifier: String) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: identifier)
+        window?.rootViewController = viewController
+        window?.makeKeyAndVisible()
+    }
 
 
 }

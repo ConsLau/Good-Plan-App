@@ -7,11 +7,14 @@
 
 import UIKit
 import CoreData
+import Firebase
+import FirebaseAuth
 
 class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsControllerDelegate {
     var listeners = MulticastDelegate<DatabaseListener>()
     var persistentContainer: NSPersistentContainer
     var TaskFetchedResultsController: NSFetchedResultsController<Task>?
+    var TaskFetchedResultsControllerUser: String = ""
     
     override init() {
         persistentContainer = NSPersistentContainer(name: "ToDoListModel")
@@ -45,13 +48,17 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         listeners.removeDelegate(listener)
     }
     
-    func addTask(taskName: String, taskDesc: String, taskDate: Date, isComplete: isComplete) -> Task {
+    func addTask(taskName: String, taskDesc: String, taskDate: Date, isComplete: isComplete, userID: String) -> Task {
         let task = NSEntityDescription.insertNewObject(forEntityName: "Task", into: persistentContainer.viewContext) as! Task
         
         task.taskName = taskName
         task.taskDesc = taskDesc
         task.taskDate = taskDate
         task.taskIsComplete = isComplete
+        // user
+        task.userID = userID
+        print("addTask \(userID)")
+
         
         return task
     }
@@ -80,28 +87,56 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     
     func fetchTask() -> [Task] {
         let request: NSFetchRequest<Task> = Task.fetchRequest()
+
+        // user
+//        // Fetch the current user's ID from Firebase
+        guard let userID = Auth.auth().currentUser?.uid else {
+            print("No user is currently logged in.")
+            return [Task]()
+        }
+
+        // Add a predicate to the fetch request to only fetch tasks with the same userID
+        request.predicate = NSPredicate(format: "userID == %@", userID)
+        print(userID)
+
+
         let nameSortDescriptor = NSSortDescriptor(key: "taskName", ascending: true)
         request.sortDescriptors = [nameSortDescriptor]
-        if TaskFetchedResultsController == nil {
-            
+        
+        TaskFetchedResultsControllerUser = Auth.auth().currentUser!.uid
+//        if TaskFetchedResultsController == nil {
+        if TaskFetchedResultsControllerUser == userID {
+
             TaskFetchedResultsController =
             NSFetchedResultsController<Task>(fetchRequest: request,
                                              managedObjectContext: persistentContainer.viewContext,
                                              sectionNameKeyPath: nil, cacheName: nil)
             // Set this class to be the results delegate
             TaskFetchedResultsController?.delegate = self
-            
+
         }
-        
-        
+
+
+//        do {
+//            try TaskFetchedResultsController?.performFetch()
+//        } catch {
+//            print("Fetch Request Failed: \(error)")
+//        }
+//        if let task = TaskFetchedResultsController?.fetchedObjects {
+//            return task
+//        }
+
         do {
             try TaskFetchedResultsController?.performFetch()
+            let tasks = TaskFetchedResultsController?.fetchedObjects ?? []
+            for task in tasks {
+                print("Fetched task with userID: \(task.userID)")
+            }
+            return tasks
         } catch {
             print("Fetch Request Failed: \(error)")
         }
-        if let task = TaskFetchedResultsController?.fetchedObjects {
-            return task
-        }
         return [Task]()
+        
     }
 }
