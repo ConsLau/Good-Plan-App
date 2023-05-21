@@ -17,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var blogDatabaseController: DatabaseProtocolBlog?
     var window: UIWindow?
     var authListener: AuthStateDidChangeListenerHandle?
+    //bar
+    var persistentContainer: NSPersistentContainer!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -24,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         databaseController = CoreDataController()
         blogDatabaseController = BlogCoreDataController()
         
-        let authListener = Auth.auth().addStateDidChangeListener{ auth, user in
+        _ = Auth.auth().addStateDidChangeListener{ auth, user in
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             if user != nil{
@@ -41,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     self.window?.makeKeyAndVisible()
             }
         }
+        
 
         return true
     }

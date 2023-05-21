@@ -12,7 +12,8 @@ import UIKit
 var selectedDate = Date()
 var selectedMonth: String?
 
-class CalendarViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class CalendarViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
+    
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var monthLabel: UILabel!
@@ -23,9 +24,20 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     var totalSquares = [String]()
     var selectedIndexPath: IndexPath?
     
+    //table
+    var allTaskTableViewController: AllTaskTableViewController?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Get the AllTaskTableViewController
+            for child in self.children {
+                if let childVC = child as? AllTaskTableViewController {
+                    allTaskTableViewController = childVC
+                }
+            }
+        
         setCellView()
         setMonthView()
 
@@ -88,9 +100,16 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // Update the selected index path and reload the data to apply the background color changes
-        performSegue(withIdentifier: "addTask", sender: nil)
+//        performSegue(withIdentifier: "addTask", sender: nil)
         selectedIndexPath = indexPath
         collectionView.reloadData()
+        
+        // Call the update method in AllTaskTableViewController
+        if indexPath.item < totalSquares.count {
+            let day = totalSquares[indexPath.item]
+            allTaskTableViewController?.updateSelectedDate(selectedDay: day, selectedMonth: CalendarHelper().monthString(date: selectedDate))
+        }
+
     }
     
     
@@ -111,12 +130,13 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? AllTaskTableViewController {
-            
+
             if let selectedindexPath = collectionView.indexPathsForSelectedItems?.first{
                 controller.selectedDate = totalSquares[selectedindexPath.item]
                 controller.selectedMonth = CalendarHelper().monthString(date: selectedDate)
             }
         }
+        
     }
     
 }

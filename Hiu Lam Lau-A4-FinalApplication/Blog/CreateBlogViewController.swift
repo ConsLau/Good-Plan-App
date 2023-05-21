@@ -25,7 +25,7 @@ class CreateBlogViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var contentInput: UITextField!
     
-    
+
     var blogCoreDataController: BlogCoreDataController?
 
     

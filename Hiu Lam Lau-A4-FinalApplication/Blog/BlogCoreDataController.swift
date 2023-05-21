@@ -117,7 +117,7 @@ class BlogCoreDataController: NSObject, DatabaseProtocolBlog,  NSFetchedResultsC
                 try BlogFetchedResultsController?.performFetch()
                 let blogs = BlogFetchedResultsController?.fetchedObjects ?? []
                 for blog in blogs {
-                    print("Fetched task with userID: \(blog.userID)")
+                    print("Fetched task with userID: \(String(describing: blog.userID))")
                 }
                 return blogs
             } catch {

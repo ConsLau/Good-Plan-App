@@ -12,6 +12,7 @@
 		4B1B87DC2A0CA7C3006EA689 /* BlogDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1B87DB2A0CA7C3006EA689 /* BlogDetailsViewController.swift */; };
 		4B33E71B29F78ADF00E1A8AB /* MultcastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33E71A29F78ADF00E1A8AB /* MultcastDelegate.swift */; };
 		4B33E71D29F7B16800E1A8AB /* AllTaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33E71C29F7B16800E1A8AB /* AllTaskTableViewController.swift */; };
+		4B3531122A17ECCB0010AA5A /* ProgressCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3531112A17ECCB0010AA5A /* ProgressCheck.swift */; };
 		4B3AAD672A03DA760050AB8B /* BlogModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B3AAD652A03DA760050AB8B /* BlogModel.xcdatamodeld */; };
 		4B3AAD6A2A03DFA30050AB8B /* Blog+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3AAD682A03DFA30050AB8B /* Blog+CoreDataClass.swift */; };
 		4B3AAD6B2A03DFA30050AB8B /* Blog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3AAD692A03DFA30050AB8B /* Blog+CoreDataProperties.swift */; };
@@ -57,6 +58,7 @@
 		4B1B87DB2A0CA7C3006EA689 /* BlogDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogDetailsViewController.swift; sourceTree = "<group>"; };
 		4B33E71A29F78ADF00E1A8AB /* MultcastDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultcastDelegate.swift; sourceTree = "<group>"; };
 		4B33E71C29F7B16800E1A8AB /* AllTaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTaskTableViewController.swift; sourceTree = "<group>"; };
+		4B3531112A17ECCB0010AA5A /* ProgressCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCheck.swift; sourceTree = "<group>"; };
 		4B3AAD662A03DA760050AB8B /* BlogModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BlogModel.xcdatamodel; sourceTree = "<group>"; };
 		4B3AAD682A03DFA30050AB8B /* Blog+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Blog+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4B3AAD692A03DFA30050AB8B /* Blog+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Blog+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				4B6E82A929DF06E100F95529 /* Assets.xcassets */,
 				4B6E82AE29DF06E100F95529 /* Info.plist */,
 				4B62FFEA29E5760900605CAF /* GoogleService-Info.plist */,
+				4B3531112A17ECCB0010AA5A /* ProgressCheck.swift */,
 			);
 			path = "Hiu Lam Lau-A4-FinalApplication";
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				4B4725F12A10D539000F0D61 /* ThemeManager.swift in Sources */,
 				4B33E71B29F78ADF00E1A8AB /* MultcastDelegate.swift in Sources */,
 				4B62002C29F5766700605CAF /* Task+CoreDataClass.swift in Sources */,
+				4B3531122A17ECCB0010AA5A /* ProgressCheck.swift in Sources */,
 				4B62002129F5313900605CAF /* ToDoListModel.xcdatamodeld in Sources */,
 				4B62003329F591CC00605CAF /* CreateTaskViewController.swift in Sources */,
 			);

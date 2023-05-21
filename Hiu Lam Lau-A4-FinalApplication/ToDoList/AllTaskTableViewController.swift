@@ -53,11 +53,19 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
         
     }
     
+
     
     func selecteDateResults(){
+        guard let selectedDate = selectedDate, let selectedMonth = selectedMonth else { return }
         filteredTask = allTask.filter({(task: Task) -> Bool in
-            return checkDateMonth(selectedDay: selectedDate!, selectedMonth: selectedMonth!, taskDate: task.taskDate!)
+            return checkDateMonth(selectedDay: selectedDate, selectedMonth: selectedMonth, taskDate: task.taskDate!)
         })
+//        filteredTask = allTask.filter({(task: Task) -> Bool in
+//                if let taskDate = task.taskDate {
+//                    return checkDateMonth(selectedDay: selectedDate, selectedMonth: selectedMonth, taskDate: taskDate)
+//                }
+//                return false
+//            })
         
         tableView.reloadData()
     }
@@ -164,6 +172,13 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
         } else if editingStyle == .insert {
             
         }
+    }
+    
+    // new table view
+    func updateSelectedDate(selectedDay: String, selectedMonth: String) {
+        self.selectedDate = selectedDay
+        self.selectedMonth = selectedMonth
+        self.selecteDateResults()
     }
     
 
