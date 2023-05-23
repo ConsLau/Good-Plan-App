@@ -56,7 +56,8 @@ struct ProgressCheck: View {
                             Text("Back")
                                 .foregroundColor(Color("ButtonBackgroundColour"))
                         }
-                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.leading, 10)
 
                         Text("Daily task completion").padding(20)
                         ZStack {
