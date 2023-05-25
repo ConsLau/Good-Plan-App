@@ -242,6 +242,29 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
             }
         }
     }
+    
+    // task complete
+    func hasIncompleteTasksOn(date: Date) -> Bool {
+        // Fetch the tasks
+        let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "taskDate == %@ AND userID == %@", date as NSDate, Auth.auth().currentUser!.uid)
+        let tasks: [Task]
+        do {
+            tasks = try persistentContainer.viewContext.fetch(fetchRequest)
+        } catch {
+            print("Fetch request failed: \(error)")
+            return false
+        }
+
+        // Check if any tasks are incomplete
+        for task in tasks {
+            if task.taskIsComplete == .inComplete {
+                return true
+            }
+        }
+
+        return false
+    }
 
 }
 

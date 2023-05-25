@@ -56,7 +56,15 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
 
     
     func selecteDateResults(){
-        guard let selectedDate = selectedDate, let selectedMonth = selectedMonth else { return }
+        guard let selectedDate = selectedDate, let selectedMonth = selectedMonth else {
+            let calendar = Calendar.current
+            let today = Date()
+            selectedDate = "\(calendar.component(.day, from: today))"
+            selectedMonth = "\(calendar.component(.month, from: today))"
+            selecteDateResults()
+            return
+        }
+        print( selectedDate, selectedMonth)
         filteredTask = allTask.filter({(task: Task) -> Bool in
             return checkDateMonth(selectedDay: selectedDate, selectedMonth: selectedMonth, taskDate: task.taskDate!)
         })
@@ -144,7 +152,7 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
         taskCell.selectionStyle = .none
         
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(doubleTapGestureHandler(_:)))
-        gestureRecognizer.numberOfTapsRequired = 2
+        gestureRecognizer.numberOfTapsRequired = 1
         taskCell.addGestureRecognizer(gestureRecognizer)
         
         return taskCell
@@ -179,6 +187,14 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
         self.selectedDate = selectedDay
         self.selectedMonth = selectedMonth
         self.selecteDateResults()
+    }
+    
+    // task date
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? CalendarViewController {
+            controller.allTaskCount = allTask.count
+        }
+        
     }
     
 

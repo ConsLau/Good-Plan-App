@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Screenshot 2023-04-23 at 10.57.58 pm-20.png",
+      "filename" : "My project-20.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Screenshot 2023-04-23 at 10.57.58 pm-20@2x.png",
+      "filename" : "My project-20@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Screenshot 2023-04-23 at 10.57.58 pm-20@3x.png",
+      "filename" : "My project-20@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

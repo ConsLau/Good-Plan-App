@@ -8,6 +8,8 @@
 // Reference 2 (Monthly Calendar View App SwiftUI Xcode Tutorial): https://www.youtube.com/watch?v=jBvkFKhnYLI
 
 import UIKit
+import CoreData
+import FirebaseAuth
 
 var selectedDate = Date()
 var selectedMonth: String?
@@ -27,6 +29,9 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     //table
     var allTaskTableViewController: AllTaskTableViewController?
     
+    // task date
+    var allTaskCount: Int = 0
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,12 +46,17 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         setCellView()
         setMonthView()
 
+        //task date
+
         
     }
     
+    // task date
+    
+    
     func setCellView(){
         let width = (collectionView.frame.size.width - 2)/8
-        let height = (collectionView.frame.size.width - 2)/8
+        let height = (collectionView.frame.size.width - 2)/7
         
         let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         flowLayout.itemSize = CGSize(width: width, height: height)
@@ -70,8 +80,8 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
             
             count += 1
         }
-        
-        monthLabel.text = CalendarHelper().monthString(date: selectedDate).prefix(3) + CalendarHelper().yearString(date: selectedDate)
+        let space = " "
+        monthLabel.text = CalendarHelper().monthString(date: selectedDate).prefix(3) + space + CalendarHelper().yearString(date: selectedDate)
         
         collectionView.reloadData()
     }
@@ -82,21 +92,28 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calendarCell", for: indexPath) as! CalendarCell
-        
+
         cell.dateOfMonth.text = totalSquares[indexPath.item]
-        
-        
+
+
         // Update the cell background color based on the selected index path
         if indexPath == selectedIndexPath {
             cell.backgroundColor = .lightGray
         } else if let day = Int(totalSquares[indexPath.item]), CalendarHelper().isCurrentDate(day: day) {
             cell.backgroundColor = .separator
+        } else if allTaskCount > 0 {
+            cell.backgroundColor = .blue
         } else {
             cell.backgroundColor = .systemBackground
         }
-        
+
         return cell
+        
+        
+        
     }
+
+
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // Update the selected index path and reload the data to apply the background color changes

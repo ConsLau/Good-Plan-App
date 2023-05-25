@@ -10,26 +10,26 @@ import FirebaseAuth
 import CoreData
 
 // Grid
-struct GridBackground: View {
-    let rows = 10
-    let columns = 10
-    
-    var body: some View {
-        VStack(spacing: 0) {
-            ForEach(0..<rows, id: \.self) { _ in
-                HStack(spacing: 0) {
-                    ForEach(0..<columns, id: \.self) { _ in
-                        Rectangle()
-                            .fill(Color("ButtonBackgroundColour").opacity(0.2))
-                        //Change color as per your needs
-                            .frame(width: 30, height: 15)
-                    }
-                }
-            }
-        }
-        .cornerRadius(15)
-    }
-}
+//struct GridBackground: View {
+//    let rows = 10
+//    let columns = 10
+//
+//    var body: some View {
+//        VStack(spacing: 0) {
+//            ForEach(0..<rows, id: \.self) { _ in
+//                HStack(spacing: 0) {
+//                    ForEach(0..<columns, id: \.self) { _ in
+//                        Rectangle()
+//                            .fill(Color("ButtonBackgroundColour").opacity(0.2))
+//                        //Change color as per your needs
+//                            .frame(width: 30, height: 15)
+//                    }
+//                }
+//            }
+//        }
+//        .cornerRadius(15)
+//    }
+//}
 
 struct ProgressCheck: View {
 
@@ -45,9 +45,9 @@ struct ProgressCheck: View {
     var body: some View {
             ScrollView(.vertical, showsIndicators: false) {
                 ZStack {
-                    Color.gray
-                        .opacity(0.1)
-                        .edgesIgnoringSafeArea(.all)
+//                    Color.gray
+//                        .opacity(0.1)
+//                        .edgesIgnoringSafeArea(.all)
 
                     VStack {
                         Button(action: {
@@ -62,7 +62,7 @@ struct ProgressCheck: View {
                         Text("Daily task completion").padding(20)
                         ZStack {
                             ProgressBar(progress: self.$dailyProgressValue)
-                            GridBackground()
+                            //GridBackground()
                         }
                         .frame(width: 150, height: 150)
                         .padding(10)
@@ -71,7 +71,7 @@ struct ProgressCheck: View {
                         Text("Weekly task completion").padding(20)
                         ZStack {
                             ProgressBar(progress: self.$weeklyProgressValue)
-                            GridBackground()
+                            //GridBackground()
                         }
                         .frame(width: 150, height: 150)
                         .padding(10)
@@ -79,7 +79,7 @@ struct ProgressCheck: View {
                         Text("Monthly task completion").padding(20)
                         ZStack {
                             ProgressBar(progress: self.$monthlyProgressValue)
-                            GridBackground()
+                            //GridBackground()
                         }
                         .frame(width: 150, height: 150)
                         .padding(30)
@@ -101,7 +101,9 @@ struct ProgressCheck: View {
                             }
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.leading, 10)
+                        .padding(.leading, 20)
+                        .padding(.top, 20)
+                        .padding(.bottom, 20)
                         .background(Color("ButtonBackgroundColour").opacity(0.2))
                         Spacer()
                     }
@@ -139,8 +141,8 @@ struct ProgressBar: View {
         ZStack {
             Circle()
                 .stroke(lineWidth: 20)
-                .opacity(0.6)
-                .foregroundColor(Color("BackgroundColour"))
+                .opacity(1.0)
+                .foregroundColor(Color("ButtonTextColour"))
 
             Circle()
                 .trim(from: 0.0, to: CGFloat(min(self.progress, 1.0)))
