@@ -80,34 +80,47 @@ class AllBlogViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let blogCell = tableView.dequeueReusableCell(withIdentifier: "BlogCell", for: indexPath) as! BlogTableViewCell
 
-        
+
         if indexPath.row < allBlogs.count{
             let blogs = allBlogs[indexPath.row]
             blogCell.blogTitle.text = blogs.blogTitle
             
+            // Displaying the creation date
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            if let creationDate = blogs.createDate {
+                blogCell.blogDate.text = dateFormatter.string(from: creationDate)
+            }
+
             // test
             if let imageName = blogs.blogImage {
                         let documentDirectoryPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
                         let imagePath = "\(documentDirectoryPath)/\(imageName)"
                         let imageURL = URL(fileURLWithPath: imagePath)
-                        
+
                         if FileManager.default.fileExists(atPath: imageURL.path) {
                             blogCell.blogImage.image = UIImage(contentsOfFile: imageURL.path)
                         } else {
                             print("Image file not found at path: \(imageURL.path)")
                         }
             }
-            
+
+
+
         }
         
         blogCell.selectionStyle = .none
         
         return blogCell
     }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
             let blog = allBlogs[indexPath.row]
+            
+            //allBlogs.remove(at: indexPath.row)
+            //tableView.deleteRows(at: [indexPath], with: .automatic)
             blogCoreDataController?.deleteTask(blog: blog)
         } else if editingStyle == .insert {
             

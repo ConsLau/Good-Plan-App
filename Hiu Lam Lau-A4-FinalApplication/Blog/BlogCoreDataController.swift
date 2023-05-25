@@ -68,6 +68,9 @@ class BlogCoreDataController: NSObject, DatabaseProtocolBlog,  NSFetchedResultsC
         // user
         blog.userID = userID
         
+        // date
+        blog.createDate = Date()
+        
         cleanup()
         
         return blog
@@ -126,4 +129,14 @@ class BlogCoreDataController: NSObject, DatabaseProtocolBlog,  NSFetchedResultsC
             return [Blog]()         
         }
     
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        if controller == BlogFetchedResultsController {
+            listeners.invoke { listener in
+                if listener.listenerType == .blog {
+                    listener.onBlogChange(change: .update, blogs: fetchBlog())
+                }
+            }
+        }
+    }
 }

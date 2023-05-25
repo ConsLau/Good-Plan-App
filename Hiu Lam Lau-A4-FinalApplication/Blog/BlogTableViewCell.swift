@@ -11,4 +11,5 @@ class BlogTableViewCell: UITableViewCell {
 
     @IBOutlet weak var blogImage: UIImageView!
     @IBOutlet weak var blogTitle: UILabel!
+    @IBOutlet weak var blogDate: UILabel!
 }

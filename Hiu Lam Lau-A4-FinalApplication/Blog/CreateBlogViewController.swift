@@ -23,9 +23,10 @@ class CreateBlogViewController: UIViewController, UIImagePickerControllerDelegat
     
     @IBOutlet weak var titleInput: UITextField!
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var contentInput: UITextField!
+    //@IBOutlet weak var contentInput: UITextField!
     
-
+    @IBOutlet weak var contentInput: UITextView!
+    
     var blogCoreDataController: BlogCoreDataController?
 
     
@@ -40,6 +41,7 @@ class CreateBlogViewController: UIViewController, UIImagePickerControllerDelegat
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
 
         view.addGestureRecognizer(tap)
+
     }
     
     //Calls this function when the tap is recognized.

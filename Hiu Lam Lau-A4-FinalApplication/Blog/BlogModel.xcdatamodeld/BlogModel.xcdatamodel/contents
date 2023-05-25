@@ -4,6 +4,7 @@
         <attribute name="blogContent" optional="YES" attributeType="String"/>
         <attribute name="blogImage" optional="YES" attributeType="String"/>
         <attribute name="blogTitle" optional="YES" attributeType="String"/>
+        <attribute name="createDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="isLocalImage" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
         <attribute name="userID" optional="YES" attributeType="String"/>
     </entity>

@@ -13,8 +13,9 @@ class BlogDetailsViewController: UIViewController {
     
     @IBOutlet weak var blogTitle: UILabel!
     @IBOutlet weak var blogImage: UIImageView!
-    @IBOutlet weak var blogContent: UILabel!
+//    @IBOutlet weak var blogContent: UILabel!
     
+    @IBOutlet weak var blogContent: UITextView!
     var selectedBlog: Blog?
     
     override func viewDidLoad() {

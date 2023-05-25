@@ -231,6 +231,17 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         
         return [Int]()
     }
+    
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        if controller == TaskFetchedResultsController {
+            listeners.invoke { listener in
+                if listener.listenerType == .task {
+                    listener.onTaskChange(change: .update, tasks: fetchTask())
+                }
+            }
+        }
+    }
 
 }
 
