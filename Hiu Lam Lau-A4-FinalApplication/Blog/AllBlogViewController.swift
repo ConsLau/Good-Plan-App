@@ -13,6 +13,9 @@
 import UIKit
 
 class AllBlogViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DatabaseListener {
+
+
+    
     
 
     @IBOutlet weak var blogTable: UITableView!
@@ -53,6 +56,12 @@ class AllBlogViewController: UIViewController, UITableViewDelegate, UITableViewD
     func onTaskChange(change: DatabaseChange, tasks: [Task]) {
         
     }
+    
+    
+    func onTaskCategoryChange(change: DatabaseChange, taskCategory: [Task]) {
+        
+    }
+    
     
     func onBlogChange(change: DatabaseChange, blogs: [Blog]) {
         allBlogs = blogs

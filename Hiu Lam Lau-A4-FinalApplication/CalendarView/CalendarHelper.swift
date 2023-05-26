@@ -74,18 +74,25 @@ class CalendarHelper{
         
     }
 
-    func isCurrentDate(day: Int) -> Bool {
-        let calendar = Calendar.current
-        let today = Date()
-        let currentDay = calendar.component(.day, from: today)
-        let currentMonth = calendar.component(.month, from: today)
-        let currentYear = calendar.component(.year, from: today)
-        
-        let month = calendar.component(.month, from: selectedDate)
-        let year = calendar.component(.year, from: selectedDate)
-        
-        return day == currentDay && month == currentMonth && year == currentYear
+//    func isCurrentDate(day: Int) -> Bool { 
+//        let calendar = Calendar.current
+//        let today = Date()
+//        let currentDay = calendar.component(.day, from: today)
+//        let currentMonth = calendar.component(.month, from: today)
+//        let currentYear = calendar.component(.year, from: today)
+//
+//        let month = calendar.component(.month, from: selectedDate)
+//        let year = calendar.component(.year, from: selectedDate)
+//
+//        return day == currentDay && month == currentMonth && year == currentYear
+//    }
+    
+    func isCurrentDate(date: Date) -> Bool {
+        let currentDateString = DateFormatter.localizedString(from: Date(), dateStyle: .medium, timeStyle: .none)
+        let dateString = DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
+        return currentDateString == dateString
     }
+
 
     
 }

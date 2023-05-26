@@ -14,9 +14,8 @@ import FirebaseAuth
 var selectedDate = Date()
 var selectedMonth: String?
 
-class CalendarViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
-    
-    
+class CalendarViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, DatabaseListener {
+
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var monthLabel: UILabel!
     
@@ -30,8 +29,26 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     var allTaskTableViewController: AllTaskTableViewController?
     
     // task date
-    var allTaskCount: Int = 0
+    var allTask: [Task] = []
+    weak var databaseController: DatabaseProtocol?
+    var listenerType = ListenerType.task
+    
+    func onTaskChange(change: DatabaseChange, tasks: [Task]) {
+        allTask = tasks
+    }
+    
+    func onBlogChange(change: DatabaseChange, blogs: [Blog]) {
+        
+    }
+    
+    func onTaskCategoryChange(change: DatabaseChange, taskCategory: [Task]) {
+        
+    }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        databaseController?.addListener(listener: self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,9 +63,10 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         setCellView()
         setMonthView()
 
-        //task date
-
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        databaseController = appDelegate?.databaseController
         
+
     }
     
     // task date
@@ -90,28 +108,80 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         totalSquares.count
     }
     
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calendarCell", for: indexPath) as! CalendarCell
+//
+//        cell.dateOfMonth.text = totalSquares[indexPath.item]
+//
+//
+//
+//        // Update the cell background color based on the selected index path
+//        if indexPath == selectedIndexPath {
+//            cell.backgroundColor = .lightGray
+//        } else if let day = Int(totalSquares[indexPath.item]), CalendarHelper().isCurrentDate(day: day) {
+//            cell.backgroundColor = .separator
+//        } else {
+//            cell.backgroundColor = .systemBackground
+//        }
+//
+//        if let taskCount = allTask[currentDate], taskCount > 0 {
+//            cell.backgroundColor = .blue
+//        }
+//
+//        return cell
+//
+//    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calendarCell", for: indexPath) as! CalendarCell
 
-        cell.dateOfMonth.text = totalSquares[indexPath.item]
+        let dayStr = totalSquares[indexPath.item]
+        cell.dateOfMonth.text = dayStr
 
+        // Reset the cell's background color
+        cell.backgroundColor = .systemBackground
 
-        // Update the cell background color based on the selected index path
-        if indexPath == selectedIndexPath {
+        if dayStr.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            // This is an empty cell, just return it without further customization
+            return cell
+        }
+
+        // Get the selected month and year
+        let monthYearStr = CalendarHelper().monthString(date: selectedDate) + " " + CalendarHelper().yearString(date: selectedDate)
+
+        // Construct the full date string
+        let fullDateStr = monthYearStr + " " + dayStr
+
+        // Date formatter
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM yyyy dd" // Set this to match the date format of fullDateStr
+
+        guard let fullDate = dateFormatter.date(from: fullDateStr) else {
+            return cell
+        }
+
+        // Filter allTask for tasks on the full date
+        let tasksForFullDate = allTask.filter { task in
+            guard let taskDate = task.taskDate else { return false }
+
+            // We convert taskDate into a string to remove time and then back to Date for comparison
+            let taskDateStr = dateFormatter.string(from: taskDate)
+            return taskDateStr == dateFormatter.string(from: fullDate)
+        }
+
+        if tasksForFullDate.count > 0 {
+            cell.backgroundColor = .tintColor
+        } else if let selectedIndexPath = self.selectedIndexPath, selectedIndexPath == indexPath {
             cell.backgroundColor = .lightGray
-        } else if let day = Int(totalSquares[indexPath.item]), CalendarHelper().isCurrentDate(day: day) {
+        } else if CalendarHelper().isCurrentDate(date: fullDate) {
             cell.backgroundColor = .separator
-        } else if allTaskCount > 0 {
-            cell.backgroundColor = .blue
-        } else {
-            cell.backgroundColor = .systemBackground
         }
 
         return cell
-        
-        
-        
     }
+
+
+
 
 
     

@@ -50,14 +50,6 @@ struct ProgressCheck: View {
 //                        .edgesIgnoringSafeArea(.all)
 
                     VStack {
-                        Button(action: {
-                            self.presentationMode.wrappedValue.dismiss()
-                        }) {
-                            Text("Back")
-                                .foregroundColor(Color("ButtonBackgroundColour"))
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.leading, 10)
 
                         Text("Daily task completion").padding(20)
                         ZStack {

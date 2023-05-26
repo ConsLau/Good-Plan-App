@@ -26,6 +26,8 @@ extension Task {
     @NSManaged public var isComplete: Int32
     @NSManaged public var taskDate: Date?
     @NSManaged public var userID: String?
+    @NSManaged public var category: TaskCategory?
+
 
 }
 

@@ -11,10 +11,16 @@ import Firebase
 import FirebaseAuth
 
 class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsControllerDelegate {
+
+
     var listeners = MulticastDelegate<DatabaseListener>()
     var persistentContainer: NSPersistentContainer
     var TaskFetchedResultsController: NSFetchedResultsController<Task>?
     var TaskFetchedResultsControllerUser: String = ""
+    
+    // task category
+    let DEFAULT_TASKCATE_NAME = "Default Task Category"
+    var TaskCategoryFetchedResultsController: NSFetchedResultsController<Task>?
     
     override init() {
         persistentContainer = NSPersistentContainer(name: "ToDoListModel")
@@ -42,13 +48,19 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         if listener.listenerType == .task{
             listener.onTaskChange(change: .update, tasks: fetchTask())
         }
+        
+        // task category
+        if listener.listenerType == .taskCategory || listener.listenerType == .all {
+            listener.onTaskCategoryChange(change: .update, taskCategory: fetchTaskCateTask())
+        }
+
     }
     
     func removeListener(listener: DatabaseListener) {
         listeners.removeDelegate(listener)
     }
     
-    func addTask(taskName: String, taskDesc: String, taskDate: Date, isComplete: isComplete, userID: String) -> Task {
+    func addTask(taskName: String, taskDesc: String, taskDate: Date, isComplete: isComplete, userID: String, taskCategory: String) -> Task {
         let task = NSEntityDescription.insertNewObject(forEntityName: "Task", into: persistentContainer.viewContext) as! Task
         
         task.taskName = taskName
@@ -58,7 +70,26 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         // user
         task.userID = userID
         print("addTask \(userID)")
+   
+        //task category
+        // Fetch or create a TaskCategory with the provided name
+        let fetchRequest: NSFetchRequest<TaskCategory> = TaskCategory.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "cateName == %@", taskCategory)
         
+        do {
+            let matchingCategories = try persistentContainer.viewContext.fetch(fetchRequest)
+            if let existingCategory = matchingCategories.first {
+                // If a TaskCategory with the provided name already exists, use it
+                task.category = existingCategory
+            } else {
+                // If it doesn't exist, create a new TaskCategory
+                let newCategory = NSEntityDescription.insertNewObject(forEntityName: "TaskCategory", into: persistentContainer.viewContext) as! TaskCategory
+                newCategory.cateName = taskCategory
+                task.category = newCategory
+            }
+        } catch {
+            print("Failed to fetch or create TaskCategory: \(error)")
+        }
         
         return task
     }
@@ -240,31 +271,78 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
                     listener.onTaskChange(change: .update, tasks: fetchTask())
                 }
             }
+        }else if controller == TaskCategoryFetchedResultsController {
+            listeners.invoke { (listener) in
+                if listener.listenerType == .taskCategory || listener.listenerType == .all {
+                    listener.onTaskCategoryChange(change: .update, taskCategory: fetchTaskCateTask())
+                }
+            }
         }
     }
     
-    // task complete
-    func hasIncompleteTasksOn(date: Date) -> Bool {
-        // Fetch the tasks
-        let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "taskDate == %@ AND userID == %@", date as NSDate, Auth.auth().currentUser!.uid)
-        let tasks: [Task]
+    // TaskCategory related methods
+    lazy var defaultTaskCate: TaskCategory = {
+        var taskCate = [TaskCategory]()
+        let request: NSFetchRequest<TaskCategory> = TaskCategory.fetchRequest()
+        let predicate = NSPredicate(format: "cateName = %@", DEFAULT_TASKCATE_NAME)
+        request.predicate = predicate
         do {
-            tasks = try persistentContainer.viewContext.fetch(fetchRequest)
-        } catch {
-            print("Fetch request failed: \(error)")
-            return false
+            try taskCate = persistentContainer.viewContext.fetch(request)} catch {
+                print("Fetch Request Failed: \(error)")
+            }
+        if let firstTaskCate = taskCate.first {
+            return firstTaskCate
         }
-
-        // Check if any tasks are incomplete
-        for task in tasks {
-            if task.taskIsComplete == .inComplete {
-                return true
+        return addTaskCategory(cateName: DEFAULT_TASKCATE_NAME)
+    }()
+    
+    func addTaskCategory(cateName: String) -> TaskCategory {
+        let taskCate = NSEntityDescription.insertNewObject(forEntityName:
+        "TaskCategory", into: persistentContainer.viewContext) as! TaskCategory
+        taskCate.cateName = cateName
+        return taskCate
+    }
+    
+    func deleteTaskCategory(cateName: TaskCategory) {
+        persistentContainer.viewContext.delete(cateName)
+    }
+    
+//    func addTaskToTaskCate(task: Task, taskCate: TaskCategory) -> Bool {
+//        
+//    }
+//    
+    func removeTaskFromTaskCate(task: Task, taskCate: TaskCategory) {
+        taskCate.removeFromTasks(task)
+    }
+    
+    func fetchTaskCateTask() -> [Task] {
+        if TaskCategoryFetchedResultsController == nil {
+            let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
+            let nameSortDescriptor = NSSortDescriptor(key: "cateName", ascending: true)
+            let predicate = NSPredicate(format: "ANY category.cateName == %@",
+                                        DEFAULT_TASKCATE_NAME)
+            fetchRequest.sortDescriptors = [nameSortDescriptor]
+            fetchRequest.predicate = predicate
+            TaskCategoryFetchedResultsController =
+            NSFetchedResultsController<Task>(fetchRequest: fetchRequest,
+                                                  managedObjectContext: persistentContainer.viewContext,
+                                                  sectionNameKeyPath: nil, cacheName: nil)
+            TaskCategoryFetchedResultsController?.delegate = self
+            do {
+                try TaskCategoryFetchedResultsController?.performFetch()
+            } catch {
+                print("Fetch Request Failed: \(error)")
             }
         }
-
-        return false
+        var tasks = [Task]()
+        if TaskCategoryFetchedResultsController?.fetchedObjects != nil {
+            tasks = (TaskCategoryFetchedResultsController?.fetchedObjects)!
+        }
+        return tasks
     }
+    
+    
 
 }
+
 

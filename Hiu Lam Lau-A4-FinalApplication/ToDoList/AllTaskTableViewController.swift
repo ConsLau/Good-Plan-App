@@ -10,8 +10,9 @@
 import UIKit
 
 class AllTaskTableViewController: UITableViewController, DatabaseListener {
+
     
-    
+
     // variables
     var selectedDate: String?
     var selectedMonth: String?
@@ -28,6 +29,7 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
         
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
+    
         
     }
     
@@ -53,7 +55,9 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
         
     }
     
-
+    func onTaskCategoryChange(change: DatabaseChange, taskCategory: [Task]) {
+        
+    }
     
     func selecteDateResults(){
         guard let selectedDate = selectedDate, let selectedMonth = selectedMonth else {
@@ -133,29 +137,54 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // Configure the cell...
-        let taskCell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath)
-        var content = taskCell.defaultContentConfiguration()
+//        let taskCell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath)
+//        var content = taskCell.defaultContentConfiguration()
+//
+//        if indexPath.row < filteredTask.count {
+//            let task = filteredTask[indexPath.row]
+//            content.text = task.taskName
+//            content.secondaryText = task.taskDesc
+//
+//            if task.taskIsComplete == .complete {
+//                content.image = UIImage(named:"Checked")
+//            } else {
+//                content.image = UIImage(named:"Uncheck")
+//            }
+//        }
+//
+//        taskCell.contentConfiguration = content
+//        taskCell.selectionStyle = .none
+//
+//        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(doubleTapGestureHandler(_:)))
+//        gestureRecognizer.numberOfTapsRequired = 1
+//        taskCell.addGestureRecognizer(gestureRecognizer)
+//
+//        return taskCell
         
-        if indexPath.row < filteredTask.count {
-            let task = filteredTask[indexPath.row]
-            content.text = task.taskName
-            content.secondaryText = task.taskDesc
+        // Configure the cell...
+            let taskCell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath)
+            var content = taskCell.defaultContentConfiguration()
             
-            if task.taskIsComplete == .complete {
-                content.image = UIImage(named:"Checked")
-            } else {
-                content.image = UIImage(named:"Uncheck")
+            if indexPath.row < filteredTask.count {
+                let task = filteredTask[indexPath.row]
+                content.text = task.taskName
+                content.secondaryText = task.category?.cateName ?? "Default Category"
+                
+                if task.taskIsComplete == .complete {
+                    content.image = UIImage(named:"Checked")
+                } else {
+                    content.image = UIImage(named:"Uncheck")
+                }
             }
-        }
-        
-        taskCell.contentConfiguration = content
-        taskCell.selectionStyle = .none
-        
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(doubleTapGestureHandler(_:)))
-        gestureRecognizer.numberOfTapsRequired = 1
-        taskCell.addGestureRecognizer(gestureRecognizer)
-        
-        return taskCell
+            
+            taskCell.contentConfiguration = content
+            taskCell.selectionStyle = .none
+            
+            let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(doubleTapGestureHandler(_:)))
+            gestureRecognizer.numberOfTapsRequired = 1
+            taskCell.addGestureRecognizer(gestureRecognizer)
+            
+            return taskCell
         
         
     }
@@ -172,15 +201,15 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
     
     
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            let task = filteredTask[indexPath.row]
-            databaseController?.deleteTask(task: task)
-        } else if editingStyle == .insert {
-            
-        }
-    }
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            // Delete the row from the data source
+//            let task = filteredTask[indexPath.row]
+//            databaseController?.deleteTask(task: task)
+//        } else if editingStyle == .insert {
+//
+//        }
+//    }
     
     // new table view
     func updateSelectedDate(selectedDay: String, selectedMonth: String) {
@@ -189,13 +218,34 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
         self.selecteDateResults()
     }
     
-    // task date
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let controller = segue.destination as? CalendarViewController {
-            controller.allTaskCount = allTask.count
+    // show details pop up message
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        // Delete action
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completion) in
+            let task = self.filteredTask[indexPath.row]
+            self.databaseController?.deleteTask(task: task)
+            completion(true)
         }
         
+        // Details action
+        let detailsAction = UIContextualAction(style: .normal, title: "Details") { (action, view, completion) in
+            let task = self.filteredTask[indexPath.row]
+            self.showTaskDetails(task: task)
+            completion(true)
+        }
+        detailsAction.backgroundColor = .darkGray
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction, detailsAction])
     }
     
+    func showTaskDetails(task: Task) {
+        let message = "Task Name: \(task.taskName ?? "")\nTask Description: \(task.taskDesc ?? "")\nTask Category: \(task.category?.cateName ?? "")\nTask Due Date: \(task.taskDate ?? Date())\nTask Status: \(task.taskIsComplete == .complete ? "Completed" : "Incomplete")"
+
+        let alertController = UIAlertController(title: "Task Details", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okAction)
+
+        self.present(alertController, animated: true, completion: nil)
+    }
 
 }

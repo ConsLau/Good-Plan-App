@@ -6,5 +6,10 @@
         <attribute name="taskDesc" optional="YES" attributeType="String"/>
         <attribute name="taskName" optional="YES" attributeType="String"/>
         <attribute name="userID" optional="YES" attributeType="String"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TaskCategory" inverseName="tasks" inverseEntity="TaskCategory"/>
+    </entity>
+    <entity name="TaskCategory" representedClassName="TaskCategory" syncable="YES" codeGenerationType="class">
+        <attribute name="cateName" optional="YES" attributeType="String"/>
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="category" inverseEntity="Task"/>
     </entity>
 </model>

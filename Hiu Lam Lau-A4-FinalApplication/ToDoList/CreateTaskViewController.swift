@@ -13,12 +13,15 @@ import Firebase
 import FirebaseAuth
 
 class CreateTaskViewController: UIViewController {
+    
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descTextField: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var isCompleteSegmentedControl: UISegmentedControl!
 
+    @IBOutlet weak var categoryTextField: UITextField!
+    
     @IBOutlet weak var confirmBtn: UIButton!
     
     let notificationCentre = UNUserNotificationCenter.current()
@@ -26,13 +29,16 @@ class CreateTaskViewController: UIViewController {
     weak var databaseController: DatabaseProtocol?
     var selectedDate: Date?
     
+    // Task categories data source
+    var taskCategories: [TaskCategory] = []
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
-        
-        
+
         notificationCentre.requestAuthorization(options: [.alert, .sound]) { (permissionGranted, error) in
             if(!permissionGranted){
                 print("Denied!!!!!")
@@ -51,6 +57,8 @@ class CreateTaskViewController: UIViewController {
         
     }
     
+    //Task category
+   
     //Calls this function when the tap is recognized.
     @objc func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
@@ -72,6 +80,7 @@ class CreateTaskViewController: UIViewController {
         guard let taskName = nameTextField.text,
               let taskDesc = descTextField.text,
               let taskDate = selectedDate,
+              let taskCategory = categoryTextField.text,
               //user
               let userID = Auth.auth().currentUser?.uid // fetch userID from Firebase
                 else {
@@ -81,7 +90,12 @@ class CreateTaskViewController: UIViewController {
                 
         let isCompleteStatus = isComplete(rawValue: Int32(isCompleteSegmentedControl.selectedSegmentIndex)) ?? .inComplete
         
-        let _ = databaseController?.addTask(taskName: taskName, taskDesc: taskDesc, taskDate: taskDate, isComplete: isCompleteStatus, userID: userID)
+        
+        
+//        let _ = databaseController?.addTask(taskName: taskName, taskDesc: taskDesc, taskDate: taskDate, isComplete: isCompleteStatus, userID: userID)
+        
+        let _ = databaseController?.addTask(taskName: taskName, taskDesc: taskDesc, taskDate: taskDate, isComplete: isCompleteStatus, userID: userID, taskCategory: taskCategory)
+        
                 print("task added")
         print(userID)
                 

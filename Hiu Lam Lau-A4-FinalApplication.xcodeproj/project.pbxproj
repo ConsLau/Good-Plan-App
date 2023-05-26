@@ -90,6 +90,8 @@
 		4B6E82B829DFF0A200F95529 /* accountCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = accountCreateViewController.swift; sourceTree = "<group>"; };
 		4B6E82E129E33E9D00F95529 /* accountDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = accountDetails.swift; sourceTree = "<group>"; };
 		4B6E82F429E43F8600F95529 /* homePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homePageViewController.swift; sourceTree = "<group>"; };
+		4B9869732A1FC7DE0022056A /* TaskCategory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskCategory+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4B9869742A1FC7DE0022056A /* TaskCategory+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskCategory+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4B9FF3DC2A0CBCE700C3AF7D /* AllBlogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllBlogViewController.swift; sourceTree = "<group>"; };
 		4BAB4D702A06688800FD5D45 /* BlogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -164,6 +166,8 @@
 		4B6E829429DF06E100F95529 = {
 			isa = PBXGroup;
 			children = (
+				4B9869732A1FC7DE0022056A /* TaskCategory+CoreDataClass.swift */,
+				4B9869742A1FC7DE0022056A /* TaskCategory+CoreDataProperties.swift */,
 				4B6E829F29DF06E100F95529 /* Hiu Lam Lau-A4-FinalApplication */,
 				4B62FFE929E575C500605CAF /* Good Plan.app */,
 			);
