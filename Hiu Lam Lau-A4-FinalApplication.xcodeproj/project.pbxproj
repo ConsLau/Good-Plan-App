@@ -50,6 +50,8 @@
 		4B6E82F529E43F8600F95529 /* homePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6E82F429E43F8600F95529 /* homePageViewController.swift */; };
 		4B9FF3DD2A0CBCE700C3AF7D /* AllBlogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9FF3DC2A0CBCE700C3AF7D /* AllBlogViewController.swift */; };
 		4BAB4D712A06688800FD5D45 /* BlogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAB4D702A06688800FD5D45 /* BlogTableViewCell.swift */; };
+		4BCCD3C32A21335A00DC1A88 /* TaskCategory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCCD3C12A21335A00DC1A88 /* TaskCategory+CoreDataClass.swift */; };
+		4BCCD3C42A21335A00DC1A88 /* TaskCategory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCCD3C22A21335A00DC1A88 /* TaskCategory+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,10 +92,10 @@
 		4B6E82B829DFF0A200F95529 /* accountCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = accountCreateViewController.swift; sourceTree = "<group>"; };
 		4B6E82E129E33E9D00F95529 /* accountDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = accountDetails.swift; sourceTree = "<group>"; };
 		4B6E82F429E43F8600F95529 /* homePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homePageViewController.swift; sourceTree = "<group>"; };
-		4B9869732A1FC7DE0022056A /* TaskCategory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskCategory+CoreDataClass.swift"; sourceTree = "<group>"; };
-		4B9869742A1FC7DE0022056A /* TaskCategory+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskCategory+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4B9FF3DC2A0CBCE700C3AF7D /* AllBlogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllBlogViewController.swift; sourceTree = "<group>"; };
 		4BAB4D702A06688800FD5D45 /* BlogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogTableViewCell.swift; sourceTree = "<group>"; };
+		4BCCD3C12A21335A00DC1A88 /* TaskCategory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskCategory+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4BCCD3C22A21335A00DC1A88 /* TaskCategory+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskCategory+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,8 @@
 		4B62001E29F530FC00605CAF /* ToDoList */ = {
 			isa = PBXGroup;
 			children = (
+				4BCCD3C12A21335A00DC1A88 /* TaskCategory+CoreDataClass.swift */,
+				4BCCD3C22A21335A00DC1A88 /* TaskCategory+CoreDataProperties.swift */,
 				4B62002A29F5766700605CAF /* Task+CoreDataClass.swift */,
 				4B62002B29F5766700605CAF /* Task+CoreDataProperties.swift */,
 				4B62001F29F5313900605CAF /* ToDoListModel.xcdatamodeld */,
@@ -166,8 +170,6 @@
 		4B6E829429DF06E100F95529 = {
 			isa = PBXGroup;
 			children = (
-				4B9869732A1FC7DE0022056A /* TaskCategory+CoreDataClass.swift */,
-				4B9869742A1FC7DE0022056A /* TaskCategory+CoreDataProperties.swift */,
 				4B6E829F29DF06E100F95529 /* Hiu Lam Lau-A4-FinalApplication */,
 				4B62FFE929E575C500605CAF /* Good Plan.app */,
 			);
@@ -364,7 +366,9 @@
 				4B62003129F5887B00605CAF /* CoreDataController.swift in Sources */,
 				4B62002929F537F200605CAF /* ToDoListTableViewController.swift in Sources */,
 				4B6E82B529DFF06100F95529 /* loginPageViewController.swift in Sources */,
+				4BCCD3C42A21335A00DC1A88 /* TaskCategory+CoreDataProperties.swift in Sources */,
 				4B099E7829FC1B4B00B7ACC2 /* CalendarHelper.swift in Sources */,
+				4BCCD3C32A21335A00DC1A88 /* TaskCategory+CoreDataClass.swift in Sources */,
 				4B3AAD6B2A03DFA30050AB8B /* Blog+CoreDataProperties.swift in Sources */,
 				4B9FF3DD2A0CBCE700C3AF7D /* AllBlogViewController.swift in Sources */,
 				4B6E82B729DFF08900F95529 /* passwordResetViewController.swift in Sources */,

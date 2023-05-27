@@ -9,27 +9,10 @@ import SwiftUI
 import FirebaseAuth
 import CoreData
 
-// Grid
-//struct GridBackground: View {
-//    let rows = 10
-//    let columns = 10
-//
-//    var body: some View {
-//        VStack(spacing: 0) {
-//            ForEach(0..<rows, id: \.self) { _ in
-//                HStack(spacing: 0) {
-//                    ForEach(0..<columns, id: \.self) { _ in
-//                        Rectangle()
-//                            .fill(Color("ButtonBackgroundColour").opacity(0.2))
-//                        //Change color as per your needs
-//                            .frame(width: 30, height: 15)
-//                    }
-//                }
-//            }
-//        }
-//        .cornerRadius(15)
-//    }
-//}
+struct TaskCategoryProgress {
+    let category: TaskCategory
+    @State var progress: Float
+}
 
 struct ProgressCheck: View {
 
@@ -41,20 +24,21 @@ struct ProgressCheck: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     // bar
     @State var monthlyTasks: [Int] = []
+    
+    
+    // task category
+    @State var taskCategoryProgress: [TaskCategoryProgress] = []
 
     var body: some View {
             ScrollView(.vertical, showsIndicators: false) {
                 ZStack {
-//                    Color.gray
-//                        .opacity(0.1)
-//                        .edgesIgnoringSafeArea(.all)
+
 
                     VStack {
 
                         Text("Daily task completion").padding(20)
                         ZStack {
                             ProgressBar(progress: self.$dailyProgressValue)
-                            //GridBackground()
                         }
                         .frame(width: 150, height: 150)
                         .padding(10)
@@ -63,7 +47,6 @@ struct ProgressCheck: View {
                         Text("Weekly task completion").padding(20)
                         ZStack {
                             ProgressBar(progress: self.$weeklyProgressValue)
-                            //GridBackground()
                         }
                         .frame(width: 150, height: 150)
                         .padding(10)
@@ -71,11 +54,19 @@ struct ProgressCheck: View {
                         Text("Monthly task completion").padding(20)
                         ZStack {
                             ProgressBar(progress: self.$monthlyProgressValue)
-                            //GridBackground()
                         }
                         .frame(width: 150, height: 150)
                         .padding(30)
 
+                        // task category
+                        VStack(alignment: .leading) {
+                                                    ForEach(taskCategoryProgress.indices, id: \.self) { index in
+                                                        Text(self.taskCategoryProgress[index].category.cateName ?? "")
+                                                        ProgressBar(progress: self.$taskCategoryProgress[index].progress)
+                                                            .frame(width: 150, height: 150)
+                                                            .padding(30)
+                                                    }
+                                                }
 
                         // bar
                         Text("Monthly amount of tasks completion").padding(20)
@@ -111,6 +102,16 @@ struct ProgressCheck: View {
                 
                 //bar
                 self.monthlyTasks = CoreDataController().fetchCompletedTasksPerMonth()
+                
+                // Fetch all unique categories
+                let controller = CoreDataController()
+                let categories = controller.fetchAllTaskCategories()
+                self.taskCategoryProgress = categories.map { category in
+                    let tasks = category.tasks?.allObjects as? [Task] ?? []
+                    let completedTasks = tasks.filter { $0.isComplete == 0 }
+                    let percentage = tasks.count == 0 ? 0 : Float(completedTasks.count) / Float(tasks.count)
+                    return TaskCategoryProgress(category: category, progress: percentage)
+                }
             }
         
         
@@ -141,7 +142,7 @@ struct ProgressBar: View {
                 .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
                 .foregroundColor(Color("ButtonBackgroundColour"))
                 .rotationEffect(Angle(degrees: 270.0))
-//                .animation(.linear)
+
 
             Text(String(format: "%.0f %%", min(self.progress, 1.0)*100.0))
                 .font(.largeTitle)

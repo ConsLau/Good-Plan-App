@@ -2,7 +2,7 @@
 //  TaskCategory+CoreDataProperties.swift
 //  Hiu Lam Lau-A4-FinalApplication
 //
-//  Created by Cons Lau on 26/5/2023.
+//  Created by Cons Lau on 27/5/2023.
 //
 //
 
@@ -35,5 +35,9 @@ extension TaskCategory {
 
     @objc(removeTasks:)
     @NSManaged public func removeFromTasks(_ values: NSSet)
+
+}
+
+extension TaskCategory : Identifiable {
 
 }

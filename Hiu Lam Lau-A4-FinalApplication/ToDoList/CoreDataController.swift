@@ -308,9 +308,9 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     }
     
 //    func addTaskToTaskCate(task: Task, taskCate: TaskCategory) -> Bool {
-//        
+//
 //    }
-//    
+//
     func removeTaskFromTaskCate(task: Task, taskCate: TaskCategory) {
         taskCate.removeFromTasks(task)
     }
@@ -342,7 +342,47 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     }
     
     
+    // chart for category completion
+    func fetchCompletedTasksForCategory(categoryName: String) -> Int {
+        let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
+        let predicateCategory = NSPredicate(format: "category.cateName == %@", categoryName)
+        let predicateCompleted = NSPredicate(format: "isCompleted == %@", NSNumber(value: true))
+        let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicateCategory, predicateCompleted])
+        
+        fetchRequest.predicate = compoundPredicate
+        
+        do {
+            let completedTasks = try persistentContainer.viewContext.fetch(fetchRequest)
+            return completedTasks.count
+        } catch {
+            print("Fetch Request Failed: \(error)")
+        }
+        
+        return 0
+    }
+    
+    func fetchAllTaskCategories() -> [TaskCategory] {
+        var categories: [TaskCategory] = []
+        let fetchRequest: NSFetchRequest<TaskCategory> = TaskCategory.fetchRequest()
+        do {
+            categories = try self.persistentContainer.viewContext.fetch(fetchRequest)
+        } catch {
+            print("Fetching TaskCategories failed: \(error)")
+        }
+        return categories
+    }
+    
+    
+    
+}
 
+extension CoreDataController {
+    static func fetchRequestForTasks(in category: TaskCategory) -> NSFetchRequest<Task> {
+        let request: NSFetchRequest<Task> = Task.fetchRequest()
+        request.predicate = NSPredicate(format: "ANY category.cateName == %@", category.cateName ?? "")
+        request.sortDescriptors = [NSSortDescriptor(key: "dateCreated", ascending: false)]
+        return request
+    }
 }
 
 
