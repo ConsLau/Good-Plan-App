@@ -9,6 +9,10 @@ import SwiftUI
 import FirebaseAuth
 import CoreData
 
+extension Notification.Name {
+    static let taskCategoriesDidChange = Notification.Name("TaskCategoriesDidChangeNotification")
+}
+
 struct TaskCategoryProgress {
     let category: TaskCategory
     @State var progress: Float
@@ -28,6 +32,9 @@ struct ProgressCheck: View {
     
     // task category
     @State var taskCategoryProgress: [TaskCategoryProgress] = []
+    @ObservedObject var controller = CoreDataControllers()
+    
+    
 
     var body: some View {
             ScrollView(.vertical, showsIndicators: false) {
@@ -147,6 +154,66 @@ struct ProgressBar: View {
             Text(String(format: "%.0f %%", min(self.progress, 1.0)*100.0))
                 .font(.largeTitle)
                 .bold()
+        }
+    }
+}
+
+// task category
+class CoreDataControllers: ObservableObject {
+    @Published var taskCategories: [TaskCategory] = []
+
+    let persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "ToDoListModel")
+        container.loadPersistentStores { (description, error) in
+            if let error = error {
+                fatalError("Failed to load Core Data stack: \(error)")
+            }
+        }
+        return container
+    }()
+
+    init() {
+        fetchAllTaskCategories()
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(taskCategoriesDidChange(_:)),
+                                               name: .taskCategoriesDidChange,
+                                               object: nil)
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    @objc private func taskCategoriesDidChange(_ notification: Notification) {
+        fetchAllTaskCategories()
+    }
+
+    func fetchAllTaskCategories() {
+        let fetchRequest: NSFetchRequest<TaskCategory> = TaskCategory.fetchRequest()
+        do {
+            self.taskCategories = try self.persistentContainer.viewContext.fetch(fetchRequest)
+        } catch {
+            print("Fetching TaskCategories failed: \(error)")
+        }
+    }
+
+    func addTaskCategory(cateName: String) {
+        let taskCategory = TaskCategory(context: persistentContainer.viewContext)
+        taskCategory.cateName = cateName
+        saveContext()
+    }
+
+    // Rest of your CoreDataController code...
+
+    private func saveContext() {
+        let context = persistentContainer.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                print("Failed to save context: \(error)")
+            }
         }
     }
 }
