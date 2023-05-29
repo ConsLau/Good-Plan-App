@@ -27,23 +27,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         databaseController = CoreDataController()
         blogDatabaseController = BlogCoreDataController()
         
-        _ = Auth.auth().addStateDidChangeListener{ auth, user in
-            
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            if user != nil{
-                // home page
-                let controller = storyboard.instantiateViewController(withIdentifier: "TabBarController") as!UITabBarController
-                
-                self.window?.rootViewController = controller
-                self.window?.makeKeyAndVisible()
-            }else{
-                // login in
-                let controller = storyboard.instantiateViewController(withIdentifier: "loginPageViewController") 
-                    
-                    self.window?.rootViewController = controller
-                    self.window?.makeKeyAndVisible()
-            }
-        }
+//        _ = Auth.auth().addStateDidChangeListener{ auth, user in
+//
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            if user != nil{
+//                // home page
+//                let controller = storyboard.instantiateViewController(withIdentifier: "TabBarController") as!UITabBarController
+//
+//                self.window?.rootViewController = controller
+//                self.window?.makeKeyAndVisible()
+//            }else{
+//                // login in
+//                let controller = storyboard.instantiateViewController(withIdentifier: "loginPageViewController")
+//
+//                    self.window?.rootViewController = controller
+//                    self.window?.makeKeyAndVisible()
+//            }
+//        }
         
 
         return true

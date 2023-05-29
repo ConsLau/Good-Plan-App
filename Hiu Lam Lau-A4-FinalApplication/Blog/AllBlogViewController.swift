@@ -15,9 +15,6 @@ import UIKit
 class AllBlogViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DatabaseListener {
 
 
-    
-    
-
     @IBOutlet weak var blogTable: UITableView!
     
     // varable
@@ -34,7 +31,7 @@ class AllBlogViewController: UIViewController, UITableViewDelegate, UITableViewD
         blogTable.dataSource = self
         blogTable.delegate = self
         
-        //self.navigationController?.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.navigationController?.isNavigationBarHidden = false
 
     }
     
@@ -43,7 +40,7 @@ class AllBlogViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         blogCoreDataController?.addListener(listener: self)
         
-        //self.navigationController?.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.navigationController?.isNavigationBarHidden = true
     }
     
 
