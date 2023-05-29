@@ -40,6 +40,24 @@ class MulticastDelegate <T> {
     }
 }
 
+//private class WeakObjectWrapper: Equatable, Hashable {
+//    weak var value: AnyObject?
+//
+//    init(value: AnyObject) {
+//        self.value = value
+//    }
+//
+//    // Hash based on the address (pointer) of the value.
+//    func hash(into hasher: inout Hasher) {
+//        hasher.combine(ObjectIdentifier(value!).hashValue)
+//    }
+//
+//    // Equate based on equality of the value pointers of two wrappers.
+//    static func == (lhs: WeakObjectWrapper, rhs: WeakObjectWrapper) -> Bool {
+//        return lhs.value === rhs.value
+//    }
+//}
+
 private class WeakObjectWrapper: Equatable, Hashable {
     weak var value: AnyObject?
     
@@ -47,12 +65,12 @@ private class WeakObjectWrapper: Equatable, Hashable {
         self.value = value
     }
     
-    // Hash based on the address (pointer) of the value.
     func hash(into hasher: inout Hasher) {
-        hasher.combine(ObjectIdentifier(value!).hashValue)
+        if let value = value {
+            hasher.combine(ObjectIdentifier(value).hashValue)
+        }
     }
     
-    // Equate based on equality of the value pointers of two wrappers.
     static func == (lhs: WeakObjectWrapper, rhs: WeakObjectWrapper) -> Bool {
         return lhs.value === rhs.value
     }

@@ -5,6 +5,7 @@
 //  Created by Cons Lau on 24/4/2023.
 //
 // Reference 1 Schedule Local Notifications Swift Xcode Tutorial: https://www.youtube.com/watch?v=qDbbdvTYpVI
+// Reference 2 Local notification: https://developer.apple.com/documentation/usernotifications
 
 import UIKit
 import CoreData
@@ -14,23 +15,19 @@ import FirebaseAuth
 
 class CreateTaskViewController: UIViewController {
     
-
+    // UI elements
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descTextField: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var isCompleteSegmentedControl: UISegmentedControl!
-
     @IBOutlet weak var categoryTextField: UITextField!
-    
     @IBOutlet weak var confirmBtn: UIButton!
     
+    // Variable
     let notificationCentre = UNUserNotificationCenter.current()
-    
     weak var databaseController: DatabaseProtocol?
     var selectedDate: Date?
-    
-    // Task categories data source
-    var taskCategories: [TaskCategory] = []
+    var taskCategories: [TaskCategory] = []// Task categories data source
 
     
     override func viewDidLoad() {
@@ -45,24 +42,13 @@ class CreateTaskViewController: UIViewController {
             }
             
         }
-        
-        
+
         //self.navigationController?.navigationController?.isNavigationBarHidden = false
         
-        //Looks for single or multiple taps.
-        // keyboard
+        // keyboard dismiss
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
 
         view.addGestureRecognizer(tap)
-        
-    }
-    
-    //Task category
-   
-    //Calls this function when the tap is recognized.
-    @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,6 +58,12 @@ class CreateTaskViewController: UIViewController {
         //self.navigationController?.navigationController?.isNavigationBarHidden = true
     }
     
+    //Calls this function when the tap is recognized.
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+
     @IBAction func datePicker(_ sender: UIDatePicker) {
             selectedDate = sender.date
     }

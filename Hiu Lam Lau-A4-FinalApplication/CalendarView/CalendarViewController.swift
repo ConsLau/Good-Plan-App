@@ -15,24 +15,22 @@ var selectedDate = Date()
 var selectedMonth: String?
 
 class CalendarViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, DatabaseListener {
-
+    
+    
+    // UI elements
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var monthLabel: UILabel!
-    
-    
     @IBOutlet weak var addTaskBtn: UIButton!
     
+    //variable
     var totalSquares = [String]()
     var selectedIndexPath: IndexPath?
-    
-    //table
     var allTaskTableViewController: AllTaskTableViewController?
-    
-    // task date
     var allTask: [Task] = []
     weak var databaseController: DatabaseProtocol?
     var listenerType = ListenerType.task
     
+    // DatabaseListener
     func onTaskChange(change: DatabaseChange, tasks: [Task]) {
         allTask = tasks
     }
@@ -44,33 +42,39 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     func onTaskCategoryChange(change: DatabaseChange, taskCategory: [Task]) {
         
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        databaseController?.addListener(listener: self)
-    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Get the AllTaskTableViewController
-            for child in self.children {
-                if let childVC = child as? AllTaskTableViewController {
-                    allTaskTableViewController = childVC
-                }
+        for child in self.children {
+            if let childVC = child as? AllTaskTableViewController {
+                allTaskTableViewController = childVC
             }
+        }
         
         setCellView()
         setMonthView()
-
+        
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
-        
-
     }
     
-    // task date
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        databaseController?.addListener(listener: self)
+    }
+
+    @IBAction func previousBtn(_ sender: Any) {
+        selectedDate = CalendarHelper().minusMonth(date: selectedDate)
+        setMonthView()
+    }
     
+    @IBAction func nextBtn(_ sender: Any) {
+        selectedDate = CalendarHelper().plusMonth(date: selectedDate)
+        setMonthView()
+    }
     
     func setCellView(){
         let width = (collectionView.frame.size.width - 2)/8
@@ -108,44 +112,43 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         totalSquares.count
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calendarCell", for: indexPath) as! CalendarCell
-
+        
         let dayStr = totalSquares[indexPath.item]
         cell.dateOfMonth.text = dayStr
-
+        
         // Reset the cell's background color
         cell.backgroundColor = .systemBackground
-
+        
         if dayStr.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             // This is an empty cell, just return it without further customization
             return cell
         }
-
+        
         // Get the selected month and year
         let monthYearStr = CalendarHelper().monthString(date: selectedDate) + " " + CalendarHelper().yearString(date: selectedDate)
-
+        
         // Construct the full date string
         let fullDateStr = monthYearStr + " " + dayStr
-
+        
         // Date formatter
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM yyyy dd" // Set this to match the date format of fullDateStr
-
+        dateFormatter.dateFormat = "MMMM yyyy dd"
+        
         guard let fullDate = dateFormatter.date(from: fullDateStr) else {
             return cell
         }
-
+        
         // Filter allTask for tasks on the full date
         let tasksForFullDate = allTask.filter { task in
             guard let taskDate = task.taskDate else { return false }
-
+            
             // We convert taskDate into a string to remove time and then back to Date for comparison
             let taskDateStr = dateFormatter.string(from: taskDate)
             return taskDateStr == dateFormatter.string(from: fullDate)
         }
-
+        
         if tasksForFullDate.count > 0 {
             cell.backgroundColor = .tintColor
         } else if let selectedIndexPath = self.selectedIndexPath, selectedIndexPath == indexPath {
@@ -153,18 +156,13 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         } else if CalendarHelper().isCurrentDate(date: fullDate) {
             cell.backgroundColor = .separator
         }
-
+        
         return cell
     }
-
-
-
-
-
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // Update the selected index path and reload the data to apply the background color changes
-//        performSegue(withIdentifier: "addTask", sender: nil)
+        //        performSegue(withIdentifier: "addTask", sender: nil)
         selectedIndexPath = indexPath
         collectionView.reloadData()
         
@@ -173,28 +171,16 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
             let day = totalSquares[indexPath.item]
             allTaskTableViewController?.updateSelectedDate(selectedDay: day, selectedMonth: CalendarHelper().monthString(date: selectedDate))
         }
+        
+    }
 
-    }
-    
-    
-    @IBAction func previousBtn(_ sender: Any) {
-        selectedDate = CalendarHelper().minusMonth(date: selectedDate)
-        setMonthView()
-    }
-    
-    @IBAction func nextBtn(_ sender: Any) {
-        selectedDate = CalendarHelper().plusMonth(date: selectedDate)
-        setMonthView()
-    }
-    
-    
     override open var shouldAutorotate: Bool{
         return false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? AllTaskTableViewController {
-
+            
             if let selectedindexPath = collectionView.indexPathsForSelectedItems?.first{
                 controller.selectedDate = totalSquares[selectedindexPath.item]
                 controller.selectedMonth = CalendarHelper().monthString(date: selectedDate)

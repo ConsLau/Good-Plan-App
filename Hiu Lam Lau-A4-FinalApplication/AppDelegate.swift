@@ -5,6 +5,7 @@
 //  Created by Cons Lau on 6/4/2023.
 //
 // Reference 1 Handling User Auth State Changes - Swift & Firebase Part 3: https://www.youtube.com/watch?v=n6eR9lJDiyY
+// Reference 2 Set Window’s Root View Controller in Swift: https://www.appsdeveloperblog.com/set-windows-root-view-controller-in-swift/
 
 import UIKit
 import Firebase

@@ -130,6 +130,14 @@
 			path = Blog;
 			sourceTree = "<group>";
 		};
+		4B3EB7252A24A17000449DBE /* ProgressChart */ = {
+			isa = PBXGroup;
+			children = (
+				4B3531112A17ECCB0010AA5A /* ProgressCheck.swift */,
+			);
+			path = ProgressChart;
+			sourceTree = "<group>";
+		};
 		4B4725EB2A10D144000F0D61 /* Theme */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +186,7 @@
 			children = (
 				4B62002E29F5866900605CAF /* DatabaseProtocol.swift */,
 				4B33E71A29F78ADF00E1A8AB /* MultcastDelegate.swift */,
+				4B3EB7252A24A17000449DBE /* ProgressChart */,
 				4B4725EB2A10D144000F0D61 /* Theme */,
 				4B3AAD642A03D7DE0050AB8B /* Blog */,
 				4B57422E29FBDADF00FCA6C7 /* CalendarView */,
@@ -192,7 +201,6 @@
 				4B6E82A929DF06E100F95529 /* Assets.xcassets */,
 				4B6E82AE29DF06E100F95529 /* Info.plist */,
 				4B62FFEA29E5760900605CAF /* GoogleService-Info.plist */,
-				4B3531112A17ECCB0010AA5A /* ProgressCheck.swift */,
 			);
 			path = "Hiu Lam Lau-A4-FinalApplication";
 			sourceTree = "<group>";

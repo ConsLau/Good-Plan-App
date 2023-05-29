@@ -29,8 +29,6 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
         
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
-    
-        
     }
     
     
@@ -44,6 +42,7 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
         databaseController?.removeListener(listener: self)
     }
     
+    // DatabaseListener
     func onTaskChange(change: DatabaseChange, tasks: [Task]) {
         allTask = tasks
         filteredTask = allTask
@@ -59,6 +58,7 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
         
     }
     
+    // Other functions
     func selecteDateResults(){
         guard let selectedDate = selectedDate, let selectedMonth = selectedMonth else {
             let calendar = Calendar.current
@@ -94,7 +94,6 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
     }
     
     // MARK: - Table view data source
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1

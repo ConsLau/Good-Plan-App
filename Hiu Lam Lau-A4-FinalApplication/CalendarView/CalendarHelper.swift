@@ -51,28 +51,7 @@ class CalendarHelper{
         let components = calendar.dateComponents([.weekday], from: date)
         return components.weekday! - 1
     }
-    
-    
-    // weekly
-    func addDays(date: Date, days: Int) -> Date {
-        return calendar.date(byAdding: .day, value: days, to: date)!
-    }
-    
-    func sundayForDate(date: Date) -> Date {
-        var current = date
-        let oneWeekAgo = addDays(date: current, days: -7)
-        
-        while(current > oneWeekAgo){
-            let currentWeekDay = calendar.dateComponents([.weekday], from: current).weekday
-            if(currentWeekDay == 1){
-                return current
-            }
-            current = addDays(date: current, days: -1)
-        }
-        
-        return current
-        
-    }
+
 
 //    func isCurrentDate(day: Int) -> Bool { 
 //        let calendar = Calendar.current
@@ -92,7 +71,5 @@ class CalendarHelper{
         let dateString = DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
         return currentDateString == dateString
     }
-
-
-    
+ 
 }

@@ -4,6 +4,9 @@
 //
 //  Created by Cons Lau on 20/5/2023.
 //
+// Reference 1 SwiftUI Circular Progress Bar using Stacks and Circle Shapes: https://www.youtube.com/watch?v=H15p2gW5-G0&t=1s and https://tutorial101.blogspot.com/2021/06/swiftui-circular-progress-bar-using.html
+// Reference 2 swiftUI embed into StoryBoard(UIKit) using View Hosting Controller: https://www.youtube.com/watch?v=Zrp7RzAwm8Q
+// Reference 3 Horizontal Bar Chart Beginner SwiftUI Xcode Tutorial: https://www.youtube.com/watch?v=j8lRkpvVaB0&t=34s
 
 import SwiftUI
 import FirebaseAuth
