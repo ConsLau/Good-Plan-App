@@ -20,6 +20,5 @@ struct AppTheme: Theme {
     var buttonBackgroundColor: UIColor
     var buttonTextColor: UIColor
     var textColor: UIColor
-    //testing
-    //testing commit
+
 }
