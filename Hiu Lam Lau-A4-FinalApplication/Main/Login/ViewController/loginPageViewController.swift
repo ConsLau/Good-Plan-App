@@ -8,6 +8,7 @@
 // Reference 2: (Firebase SwiftUI Auth, Login, Registration, Password Reset, Sign Out - Bug Fix In Description) https://www.youtube.com/watch?v=5gIuYHn9nOc&t=2680s
 // Reference 4: (HOW TO ADD IMAGES TO IOS APP - Swift (2020)) https://www.youtube.com/watch?v=Tb9J08y5a4w
 // Reference 5: (Password Authentication) https://firebase.google.com/docs/auth/ios/password-auth
+// Raference 6: (Close iOS Keyboard by touching anywhere using Swift) https://stackoverflow.com/questions/24126678/close-ios-keyboard-by-touching-anywhere-using-swift
 
 import UIKit
 import FirebaseAuth
@@ -26,7 +27,7 @@ class loginPageViewController: UIViewController {
         super.viewDidLoad()
         spinner.isHidden =  true
         
-        //Looks for single or multiple taps.
+        // keyboard dismiss
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
 
         view.addGestureRecognizer(tap)

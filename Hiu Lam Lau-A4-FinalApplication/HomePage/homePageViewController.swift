@@ -19,19 +19,22 @@ import FirebaseStorage
 
 class homePageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    // UI elements
     @IBOutlet weak var nameText: UILabel!
     @IBOutlet weak var occupationText: UILabel!
     @IBOutlet weak var emailText: UILabel!
     @IBOutlet weak var imageView: UIImageView!
-
     @IBOutlet weak var titleText: UILabel!
-    
     @IBOutlet weak var logoutBtn: UIButton! 
     @IBOutlet weak var picUploadBtn: UIButton!
     
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        pullUserImage()
+        fetchUserData()
+    }
 
-    
     @IBAction func logoutBtn(_ sender: Any) {
         do {
             try Auth.auth().signOut()
@@ -54,18 +57,6 @@ class homePageViewController: UIViewController, UIImagePickerControllerDelegate,
                 imagePickerController.sourceType = .photoLibrary
                 present(imagePickerController, animated: true, completion: nil)
     }
-    
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        pullUserImage()
-        fetchUserData()
-        
-    }
-
-    
 
     func fetchUserData(){
         guard let user = Auth.auth().currentUser else {

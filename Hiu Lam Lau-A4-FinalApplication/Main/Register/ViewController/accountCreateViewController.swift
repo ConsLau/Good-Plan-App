@@ -15,23 +15,23 @@ import Firebase
 
 class accountCreateViewController: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        spinner.isHidden = true
-        
-        // keyboard
-        //Looks for single or multiple taps.
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-
-        view.addGestureRecognizer(tap)
-    }
-    
+    // UI elements
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var emailCreate: UITextField!
     @IBOutlet weak var passwordCreate: UITextField!
     @IBOutlet weak var nameCreate: UITextField!
     @IBOutlet weak var occupationCreate: UITextField!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        spinner.isHidden = true
+        
+        // keyboard dismiss
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+
+        view.addGestureRecognizer(tap)
+    }
+
     //Calls this function when the tap is recognized.
     @objc func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
@@ -59,7 +59,7 @@ class accountCreateViewController: UIViewController {
             }
 
             guard error == nil else {
-                // show ac creation
+                // show account creation
                 strongSelf.accountCreate(name: name, occupation: occupation, email: email, password: password)
                 return
             }
@@ -67,7 +67,6 @@ class accountCreateViewController: UIViewController {
         })
     }
 
-    // account create function
     func accountCreate(name: String, occupation: String, email: String, password: String){
         let alert = UIAlertController(title: "Confirmation", message: "Would you like to create an account", preferredStyle: .alert)
         

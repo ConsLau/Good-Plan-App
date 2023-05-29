@@ -13,11 +13,14 @@ import Firebase
 
 class passwordResetViewController: UIViewController {
     
+    
+    // UI element
+    @IBOutlet weak var emailnput: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // keyboard
-        //Looks for single or multiple taps.
+        // keyboard dismiss
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
 
         view.addGestureRecognizer(tap)
@@ -28,9 +31,7 @@ class passwordResetViewController: UIViewController {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
-    
-    @IBOutlet weak var emailnput: UITextField!
-    
+     
     @IBAction func continuteBtn(_ sender: Any) {
         // check if the input feild is empty or not
         guard let email = emailnput.text, !email.isEmpty else {
@@ -47,8 +48,6 @@ class passwordResetViewController: UIViewController {
                 }
         
     }
-    
-
     
     func displayMessage(title: String, message: String ){
         let alertController = UIAlertController(title: title, message: message,
