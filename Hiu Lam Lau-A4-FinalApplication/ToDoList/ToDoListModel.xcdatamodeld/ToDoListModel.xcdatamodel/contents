@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22C65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Task" representedClassName="Task" syncable="YES">
+        <attribute name="isComplete" optional="YES" attributeType="Integer 32" usesScalarValueType="YES"/>
+        <attribute name="taskDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="taskDesc" optional="YES" attributeType="String"/>
+        <attribute name="taskName" optional="YES" attributeType="String"/>
+        <attribute name="userID" optional="YES" attributeType="String"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TaskCategory" inverseName="tasks" inverseEntity="TaskCategory"/>
+    </entity>
+    <entity name="TaskCategory" representedClassName="TaskCategory" syncable="YES">
+        <attribute name="cateName" optional="YES" attributeType="String"/>
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="category" inverseEntity="Task"/>
+    </entity>
+</model>
