@@ -108,29 +108,6 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         totalSquares.count
     }
     
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calendarCell", for: indexPath) as! CalendarCell
-//
-//        cell.dateOfMonth.text = totalSquares[indexPath.item]
-//
-//
-//
-//        // Update the cell background color based on the selected index path
-//        if indexPath == selectedIndexPath {
-//            cell.backgroundColor = .lightGray
-//        } else if let day = Int(totalSquares[indexPath.item]), CalendarHelper().isCurrentDate(day: day) {
-//            cell.backgroundColor = .separator
-//        } else {
-//            cell.backgroundColor = .systemBackground
-//        }
-//
-//        if let taskCount = allTask[currentDate], taskCount > 0 {
-//            cell.backgroundColor = .blue
-//        }
-//
-//        return cell
-//
-//    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calendarCell", for: indexPath) as! CalendarCell

@@ -24,6 +24,7 @@ class homePageViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var emailText: UILabel!
     @IBOutlet weak var imageView: UIImageView!
 
+    @IBOutlet weak var titleText: UILabel!
     
     @IBOutlet weak var logoutBtn: UIButton! 
     @IBOutlet weak var picUploadBtn: UIButton!
@@ -89,6 +90,7 @@ class homePageViewController: UIViewController, UIImagePickerControllerDelegate,
                     self.nameText.text = "\(name)"
                     self.occupationText.text = "\(occupation)"
                     self.emailText.text = "\(email)"
+                    self.titleText.text = "Welcome back, \(name) !"
 
                 }
             } else {

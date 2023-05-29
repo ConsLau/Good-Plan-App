@@ -16,6 +16,12 @@ import Firebase
 class loginPageViewController: UIViewController {
 
     
+    // UI elements
+    @IBOutlet weak var emailInput: UITextField!
+    @IBOutlet weak var passwordInput: UITextField!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         spinner.isHidden =  true
@@ -24,7 +30,22 @@ class loginPageViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
 
         view.addGestureRecognizer(tap)
+    }
+    
+    // Navigate from logout page
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        emailInput.text = ""
+        passwordInput.text = ""
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
+        if Auth.auth().currentUser != nil {
+            self.navigationController?.isNavigationBarHidden = true
+            self.performSegue(withIdentifier: "homePage", sender: nil)
+        }
     }
     
     //Calls this function when the tap is recognized.
@@ -32,14 +53,9 @@ class loginPageViewController: UIViewController {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
-    
-    @IBOutlet weak var emailInput: UITextField!
-    @IBOutlet weak var passwordInput: UITextField!
-    @IBOutlet weak var spinner: UIActivityIndicatorView!
 
     
     @IBAction func signinBtn(_ sender: Any) {
-        
         //ActivityIndicatorView controll
         spinner.isHidden = false
         self.spinner.startAnimating()
@@ -56,9 +72,7 @@ class loginPageViewController: UIViewController {
             guard let strongSelf = self else {
                 return
             }
-            
-            // withEmail: emailInput.text!
-            
+
             if let error = error {
                 strongSelf.displayMessage(title: "Error", message: error.localizedDescription, actionHandler: nil)
                 strongSelf.spinner.stopAnimating()
@@ -81,23 +95,6 @@ class loginPageViewController: UIViewController {
     }
 
 
-    // Navigate from logout page
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        emailInput.text = ""
-        passwordInput.text = ""
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if Auth.auth().currentUser != nil {
-            self.navigationController?.isNavigationBarHidden = true
-            self.performSegue(withIdentifier: "homePage", sender: nil)
-        }
-    }
-    
-    
     func displayMessage(title: String, message: String ,actionHandler: ((UIAlertAction) -> Void)? = nil){
         let alertController = UIAlertController(title: title, message: message,
         preferredStyle: .alert)

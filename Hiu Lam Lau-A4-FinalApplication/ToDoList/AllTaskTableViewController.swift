@@ -116,7 +116,7 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
         }
     }
     
-    @objc func doubleTapGestureHandler(_ sender: UITapGestureRecognizer){
+    @objc func singleTapGestureHandler(_ sender: UITapGestureRecognizer){
         let location = sender.location(in: self.tableView)
         if let indexPath = self.tableView.indexPathForRow(at: location) {
             print("Double tapped")
@@ -135,32 +135,6 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        // Configure the cell...
-//        let taskCell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath)
-//        var content = taskCell.defaultContentConfiguration()
-//
-//        if indexPath.row < filteredTask.count {
-//            let task = filteredTask[indexPath.row]
-//            content.text = task.taskName
-//            content.secondaryText = task.taskDesc
-//
-//            if task.taskIsComplete == .complete {
-//                content.image = UIImage(named:"Checked")
-//            } else {
-//                content.image = UIImage(named:"Uncheck")
-//            }
-//        }
-//
-//        taskCell.contentConfiguration = content
-//        taskCell.selectionStyle = .none
-//
-//        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(doubleTapGestureHandler(_:)))
-//        gestureRecognizer.numberOfTapsRequired = 1
-//        taskCell.addGestureRecognizer(gestureRecognizer)
-//
-//        return taskCell
-        
         // Configure the cell...
             let taskCell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath)
             var content = taskCell.defaultContentConfiguration()
@@ -180,7 +154,7 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
             taskCell.contentConfiguration = content
             taskCell.selectionStyle = .none
             
-            let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(doubleTapGestureHandler(_:)))
+            let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(singleTapGestureHandler(_:)))
             gestureRecognizer.numberOfTapsRequired = 1
             taskCell.addGestureRecognizer(gestureRecognizer)
             

@@ -93,7 +93,7 @@ class BlogCoreDataController: NSObject, DatabaseProtocolBlog,  NSFetchedResultsC
         request.predicate = NSPredicate(format: "userID == %@", userID)
         print(userID)
         
-        let nameSortDescriptor = NSSortDescriptor(key: "blogTitle", ascending: true)
+        let nameSortDescriptor = NSSortDescriptor(key: "blogTitle", ascending: false)
         request.sortDescriptors = [nameSortDescriptor]
         
         BlogFetchedResultsControllerUser = Auth.auth().currentUser!.uid

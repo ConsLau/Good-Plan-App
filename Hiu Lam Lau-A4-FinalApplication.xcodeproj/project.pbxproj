@@ -46,7 +46,6 @@
 		4B6E82B529DFF06100F95529 /* loginPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6E82B429DFF06100F95529 /* loginPageViewController.swift */; };
 		4B6E82B729DFF08900F95529 /* passwordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6E82B629DFF08900F95529 /* passwordResetViewController.swift */; };
 		4B6E82B929DFF0A200F95529 /* accountCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6E82B829DFF0A200F95529 /* accountCreateViewController.swift */; };
-		4B6E82E229E33E9D00F95529 /* accountDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6E82E129E33E9D00F95529 /* accountDetails.swift */; };
 		4B6E82F529E43F8600F95529 /* homePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6E82F429E43F8600F95529 /* homePageViewController.swift */; };
 		4B9FF3DD2A0CBCE700C3AF7D /* AllBlogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9FF3DC2A0CBCE700C3AF7D /* AllBlogViewController.swift */; };
 		4BAB4D712A06688800FD5D45 /* BlogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAB4D702A06688800FD5D45 /* BlogTableViewCell.swift */; };
@@ -90,7 +89,6 @@
 		4B6E82B429DFF06100F95529 /* loginPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginPageViewController.swift; sourceTree = "<group>"; };
 		4B6E82B629DFF08900F95529 /* passwordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = passwordResetViewController.swift; sourceTree = "<group>"; };
 		4B6E82B829DFF0A200F95529 /* accountCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = accountCreateViewController.swift; sourceTree = "<group>"; };
-		4B6E82E129E33E9D00F95529 /* accountDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = accountDetails.swift; sourceTree = "<group>"; };
 		4B6E82F429E43F8600F95529 /* homePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homePageViewController.swift; sourceTree = "<group>"; };
 		4B9FF3DC2A0CBCE700C3AF7D /* AllBlogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllBlogViewController.swift; sourceTree = "<group>"; };
 		4BAB4D702A06688800FD5D45 /* BlogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogTableViewCell.swift; sourceTree = "<group>"; };
@@ -212,7 +210,6 @@
 		4B6E82D929E33DDC00F95529 /* Register */ = {
 			isa = PBXGroup;
 			children = (
-				4B6E82DB29E33E0000F95529 /* Model */,
 				4B6E82DA29E33DED00F95529 /* ViewController */,
 			);
 			path = Register;
@@ -224,14 +221,6 @@
 				4B6E82B829DFF0A200F95529 /* accountCreateViewController.swift */,
 			);
 			path = ViewController;
-			sourceTree = "<group>";
-		};
-		4B6E82DB29E33E0000F95529 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				4B6E82E129E33E9D00F95529 /* accountDetails.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		4B6E82DC29E33E1D00F95529 /* Login */ = {
@@ -361,7 +350,6 @@
 				4B3AAD732A040C770050AB8B /* CreateBlogViewController.swift in Sources */,
 				4B6E82A529DF06E100F95529 /* ViewController.swift in Sources */,
 				4B3AAD6A2A03DFA30050AB8B /* Blog+CoreDataClass.swift in Sources */,
-				4B6E82E229E33E9D00F95529 /* accountDetails.swift in Sources */,
 				4BAB4D712A06688800FD5D45 /* BlogTableViewCell.swift in Sources */,
 				4B62003129F5887B00605CAF /* CoreDataController.swift in Sources */,
 				4B62002929F537F200605CAF /* ToDoListTableViewController.swift in Sources */,
