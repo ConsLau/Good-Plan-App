@@ -27,7 +27,6 @@ struct ProgressCheck: View {
     @State var dailyProgressValue: Float = 0.0
     @State var weeklyProgressValue: Float = 0.0
     @State var monthlyProgressValue: Float = 0.0
-    let userID: String
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     // bar
     @State var monthlyTasks: [Int] = []
@@ -105,7 +104,7 @@ struct ProgressCheck: View {
                 
                 
             }.onAppear {
-                let percentages = CoreDataController().calculateCompletionPercentageForTasks(userID: self.userID)
+                let percentages = CoreDataController().calculateCompletionPercentageForTasks()
                 self.dailyProgressValue = percentages.daily
                 self.weeklyProgressValue = percentages.weekly
                 self.monthlyProgressValue = percentages.monthly
@@ -223,19 +222,15 @@ class CoreDataControllers: ObservableObject {
 
 struct ProgressCheck_Previews: PreviewProvider {
     static var previews: some View {
-        ProgressCheck(userID: "testUserID")
+        ProgressCheck()
     }
 }
 
 class ProgressCheckViewController: UIHostingController<ProgressCheck>{
     required init?(coder aDecoder: NSCoder) {
-        // Fetch the current user's ID
-        guard let userID = Auth.auth().currentUser?.uid else {
-            fatalError("No user is currently logged in.")
-        }
 
-        super.init(coder: aDecoder, rootView: ProgressCheck(userID: userID))
+
+        super.init(coder: aDecoder, rootView: ProgressCheck())
     }
 }
-
 

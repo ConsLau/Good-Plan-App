@@ -72,24 +72,19 @@ class CreateTaskViewController: UIViewController {
         guard let taskName = nameTextField.text,
               let taskDesc = descTextField.text,
               let taskDate = selectedDate,
-              let taskCategory = categoryTextField.text,
-              //user
-              let userID = Auth.auth().currentUser?.uid // fetch userID from Firebase
+              let taskCategory = categoryTextField.text
                 else {
                     print("error")
                     return
                 }
                 
         let isCompleteStatus = isComplete(rawValue: Int32(isCompleteSegmentedControl.selectedSegmentIndex)) ?? .inComplete
+
         
-        
-        
-//        let _ = databaseController?.addTask(taskName: taskName, taskDesc: taskDesc, taskDate: taskDate, isComplete: isCompleteStatus, userID: userID)
-        
-        let _ = databaseController?.addTask(taskName: taskName, taskDesc: taskDesc, taskDate: taskDate, isComplete: isCompleteStatus, userID: userID, taskCategory: taskCategory)
+        let _ = databaseController?.addTask(taskName: taskName, taskDesc: taskDesc, taskDate: taskDate, isComplete: isCompleteStatus, taskCategory: taskCategory)
         
                 print("task added")
-        print(userID)
+
                 
                 navigationController?.popViewController(animated: true)
         

@@ -17,7 +17,6 @@ class BlogCoreDataController: NSObject, DatabaseProtocolBlog,  NSFetchedResultsC
     var listeners = MulticastDelegate<DatabaseListener>()
     var persistentContainer: NSPersistentContainer
     var BlogFetchedResultsController: NSFetchedResultsController<Blog>?
-    var BlogFetchedResultsControllerUser: String = ""
     
     
     
@@ -53,7 +52,7 @@ class BlogCoreDataController: NSObject, DatabaseProtocolBlog,  NSFetchedResultsC
         listeners.removeDelegate(listener)
     }
     
-    func addBlog(blogTitle: String, blogContent: String, blogImage: String, isLocalImage: Bool, userID: String) -> Blog {
+    func addBlog(blogTitle: String, blogContent: String, blogImage: String, isLocalImage: Bool) -> Blog {
         let blog = NSEntityDescription.insertNewObject(forEntityName: "Blog", into: persistentContainer.viewContext) as! Blog
         
         blog.blogTitle = blogTitle
@@ -65,8 +64,6 @@ class BlogCoreDataController: NSObject, DatabaseProtocolBlog,  NSFetchedResultsC
         //        blog.blogImage = blogImage
         blog.isLocalImage = NSNumber(value: isLocalImage)
         
-        // user
-        blog.userID = userID
         
         // date
         blog.createDate = Date()
@@ -84,22 +81,12 @@ class BlogCoreDataController: NSObject, DatabaseProtocolBlog,  NSFetchedResultsC
     func fetchBlog() -> [Blog] {
         let request: NSFetchRequest<Blog> = Blog.fetchRequest()
         
-        // user
-        guard let userID = Auth.auth().currentUser?.uid else {
-            print("No user is currently logged in.")
-            return [Blog]()
-        }
-        
-        request.predicate = NSPredicate(format: "userID == %@", userID)
-        print(userID)
-        
         let nameSortDescriptor = NSSortDescriptor(key: "blogTitle", ascending: false)
         request.sortDescriptors = [nameSortDescriptor]
         
-        BlogFetchedResultsControllerUser = Auth.auth().currentUser!.uid
-        //        if BlogFetchedResultsController == nil {
-        
-        if BlogFetchedResultsControllerUser == userID {
+
+        if BlogFetchedResultsController == nil {
+            
             BlogFetchedResultsController =
             NSFetchedResultsController<Blog>(fetchRequest: request,
                                              managedObjectContext: persistentContainer.viewContext,
@@ -119,9 +106,7 @@ class BlogCoreDataController: NSObject, DatabaseProtocolBlog,  NSFetchedResultsC
             do {
                 try BlogFetchedResultsController?.performFetch()
                 let blogs = BlogFetchedResultsController?.fetchedObjects ?? []
-                for blog in blogs {
-                    print("Fetched task with userID: \(String(describing: blog.userID))")
-                }
+                
                 return blogs
             } catch {
                 print("Fetch Request Failed: \(error)")

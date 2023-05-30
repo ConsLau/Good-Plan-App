@@ -97,9 +97,7 @@ class CreateBlogViewController: UIViewController, UIImagePickerControllerDelegat
     @IBAction func addBlogBtn(_ sender: Any) {
         guard let blogTitle = titleInput.text, !blogTitle.isEmpty,
               let blogContent = contentInput.text, !blogContent.isEmpty,
-              let blogImage = imageView.image,
-              // user
-              let userID = Auth.auth().currentUser?.uid
+              let blogImage = imageView.image
         else {
             print("Missing blog details")
             
@@ -125,7 +123,7 @@ class CreateBlogViewController: UIViewController, UIImagePickerControllerDelegat
                 }
                 // Save blog details to Core Data
                 let isLocalImage = imageView.tag == 1
-                let _ = blogCoreDataController?.addBlog(blogTitle: blogTitle, blogContent: blogContent, blogImage: fileURL.absoluteString, isLocalImage: isLocalImage, userID: userID)
+                let _ = blogCoreDataController?.addBlog(blogTitle: blogTitle, blogContent: blogContent, blogImage: fileURL.absoluteString, isLocalImage: isLocalImage)
                 //blogCoreDataController?.cleanup()
                 print("Add successfully")
                 print(blogImage)

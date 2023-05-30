@@ -5,7 +5,6 @@
         <attribute name="taskDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="taskDesc" optional="YES" attributeType="String"/>
         <attribute name="taskName" optional="YES" attributeType="String"/>
-        <attribute name="userID" optional="YES" attributeType="String"/>
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TaskCategory" inverseName="tasks" inverseEntity="TaskCategory"/>
     </entity>
     <entity name="TaskCategory" representedClassName="TaskCategory" syncable="YES">

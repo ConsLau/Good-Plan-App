@@ -12,12 +12,11 @@ import FirebaseAuth
 
 class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsControllerDelegate {
 
-
     // Variable
     var listeners = MulticastDelegate<DatabaseListener>()
     var persistentContainer: NSPersistentContainer
     var TaskFetchedResultsController: NSFetchedResultsController<Task>?
-    var TaskFetchedResultsControllerUser: String = ""
+//    var TaskFetchedResultsControllerUser: String = ""
     let DEFAULT_TASKCATE_NAME = "Default Task Category"
     var TaskCategoryFetchedResultsController: NSFetchedResultsController<Task>?
     
@@ -59,16 +58,13 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         listeners.removeDelegate(listener)
     }
     
-    func addTask(taskName: String, taskDesc: String, taskDate: Date, isComplete: isComplete, userID: String, taskCategory: String) -> Task {
+    func addTask(taskName: String, taskDesc: String, taskDate: Date, isComplete: isComplete, taskCategory: String) -> Task {
         let task = NSEntityDescription.insertNewObject(forEntityName: "Task", into: persistentContainer.viewContext) as! Task
         
         task.taskName = taskName
         task.taskDesc = taskDesc
         task.taskDate = taskDate
         task.taskIsComplete = isComplete
-        // user
-        task.userID = userID
-        print("addTask \(userID)")
    
         //Task category
         //Fetch or create a TaskCategory with the provided name
@@ -135,6 +131,19 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         return taskCate
     }
     
+    func updateTaskCategory(taskCategory: TaskCategory, newName: String) {
+        let context = persistentContainer.viewContext
+        taskCategory.cateName = newName
+
+        do {
+            try context.save()
+        } catch {
+            print("Failed to update task category: \(error)")
+        }
+
+        NotificationCenter.default.post(name: .taskCategoriesDidChange, object: nil)
+    }
+    
     func deleteTaskCategory(cateName: TaskCategory) {
         persistentContainer.viewContext.delete(cateName)
     }
@@ -152,24 +161,15 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     func fetchTask() -> [Task] {
         let request: NSFetchRequest<Task> = Task.fetchRequest()
         
-        // user
-        // Fetch the current user's ID from Firebase
-        guard let userID = Auth.auth().currentUser?.uid else {
-            print("No user is currently logged in.")
-            return [Task]()
-        }
+
         
-        // Add a predicate to the fetch request to only fetch tasks with the same userID
-        request.predicate = NSPredicate(format: "userID == %@", userID)
-        print(userID)
         
         
         let nameSortDescriptor = NSSortDescriptor(key: "taskName", ascending: true)
         request.sortDescriptors = [nameSortDescriptor]
         
-        TaskFetchedResultsControllerUser = Auth.auth().currentUser!.uid
-        //        if TaskFetchedResultsController == nil {
-        if TaskFetchedResultsControllerUser == userID {
+        if TaskFetchedResultsController == nil {
+            
             
             TaskFetchedResultsController =
             NSFetchedResultsController<Task>(fetchRequest: request,
@@ -181,21 +181,19 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         }
         
         
-        //        do {
-        //            try TaskFetchedResultsController?.performFetch()
-        //        } catch {
-        //            print("Fetch Request Failed: \(error)")
-        //        }
-        //        if let task = TaskFetchedResultsController?.fetchedObjects {
-        //            return task
-        //        }
+//                do {
+//                    try TaskFetchedResultsController?.performFetch()
+//                } catch {
+//                    print("Fetch Request Failed: \(error)")
+//                }
+//                if let task = TaskFetchedResultsController?.fetchedObjects {
+//                    return task
+//                }
         
         do {
             try TaskFetchedResultsController?.performFetch()
             let tasks = TaskFetchedResultsController?.fetchedObjects ?? []
-            for task in tasks {
-                print("Fetched task with userID: \(String(describing: task.userID))")
-            }
+
             return tasks
         } catch {
             print("Fetch Request Failed: \(error)")
@@ -204,7 +202,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         
     }
     
-    func calculateCompletionPercentageForTasks(userID: String) -> (daily: Float, weekly: Float, monthly: Float) {
+    func calculateCompletionPercentageForTasks() -> (daily: Float, weekly: Float, monthly: Float) {
         // Fetch the tasks
         let tasks = fetchTask()
         var dailyTasks = [Task]()
@@ -263,15 +261,11 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     
     // For bar chart
     func fetchCompletedTasksPerMonth() -> [Int] {
-        // Get the current user's ID
-        guard let userID = Auth.auth().currentUser?.uid else {
-            print("No user is currently logged in.")
-            return [Int]()
-        }
+
         
         // Fetch all tasks for the current user
         let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "userID == %@", userID)
+
         
         do {
             let fetchedTasks = try persistentContainer.viewContext.fetch(fetchRequest)
@@ -377,6 +371,10 @@ extension CoreDataController {
         request.sortDescriptors = [NSSortDescriptor(key: "dateCreated", ascending: false)]
         return request
     }
+}
+
+extension Notification.Name {
+    static let taskCategoryAdded = Notification.Name("TaskCategoryAdded")
 }
 
 
