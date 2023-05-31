@@ -15,159 +15,47 @@ import Firebase
 import FirebaseFirestore
 import PhotosUI
 import FirebaseStorage
+import SwiftUI
 
 
 class homePageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     // UI elements
-    @IBOutlet weak var nameText: UILabel!
-    @IBOutlet weak var occupationText: UILabel!
-    @IBOutlet weak var emailText: UILabel!
-    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleText: UILabel!
-    @IBOutlet weak var logoutBtn: UIButton! 
-    @IBOutlet weak var picUploadBtn: UIButton!
+    @IBOutlet weak var containerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.titleText.text = "Welcome back!"
         
-        pullUserImage()
-        fetchUserData()
-    }
+        // Create the SwiftUI view that provides the window contents.
+                let swiftUIView = homePageProgressCheck()
 
-    @IBAction func logoutBtn(_ sender: Any) {
-        do {
-            try Auth.auth().signOut()
-            // Navigate to the login screen
-            self.navigationController?.popViewController(animated: true)
-            
-            // root view controller
-            if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
-                        sceneDelegate.switchRootViewController(identifier: "NavController")
-                    }
-        } catch let signOutError as NSError {
-            print("Error signing out: %@", signOutError)
-        }
-    }
-    
-    
-    @IBAction func picUploadBtn(_ sender: Any) {
-        let imagePickerController = UIImagePickerController()
-                imagePickerController.delegate = self
-                imagePickerController.sourceType = .photoLibrary
-                present(imagePickerController, animated: true, completion: nil)
-    }
+                // Use a UIHostingController to wrap it.
+                let hostingController = UIHostingController(rootView: swiftUIView)
 
-    func fetchUserData(){
-        guard let user = Auth.auth().currentUser else {
-            print("No user is signed in.")
-            return
-        }
+                // Add as a child of the current view controller.
+                addChild(hostingController)
+
+                // Add the SwiftUI view to the view controller view hierarchy.
+                containerView.addSubview(hostingController.view)
+
+                // Setup layout constraints.
+                hostingController.view.translatesAutoresizingMaskIntoConstraints = false
+                NSLayoutConstraint.activate([
+                    hostingController.view.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+                    hostingController.view.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+                    hostingController.view.topAnchor.constraint(equalTo: containerView.topAnchor),
+                    hostingController.view.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+                ])
+
+                // Notify the child view controller it has been moved to the parent.
+                hostingController.didMove(toParent: self)
         
-        let fireBase = Firestore.firestore()
-        let userData = fireBase.collection("users").document(user.uid)
-        
-        // fetch data from firebase
-        userData.getDocument { (document, error) in
-            if let document = document, document.exists {
-                let data = document.data()
-                let name = data?["name"] as? String ?? ""
-                let occupation = data?["occupation"] as? String ?? ""
-                let email = data?["email"] as? String ?? ""
-
-                
-                // Update UI view with the fetched data
-                DispatchQueue.main.async {
-                    self.nameText.text = "\(name)"
-                    self.occupationText.text = "\(occupation)"
-                    self.emailText.text = "\(email)"
-                    self.titleText.text = "Welcome back, \(name) !"
-
-                }
-            } else {
-                print("Error fetching user data: \(error?.localizedDescription ?? "No user data found")")
-            }
-        }
     }
 
     
-    func pullUserImage() {
-        // check user sign in
-        guard let user = Auth.auth().currentUser else {
-            print("No user is signed in.")
-            return
-        }
-        
-        let storageRef = Storage.storage().reference()
-        let imagePath = "user_images/\(user.uid)/profile_image.jpg"
-        
-        storageRef.child(imagePath).getData(maxSize: 10 * 1024 * 1024) { (data, error) in
-            if let error = error {
-                print("Error downloading image: \(error.localizedDescription)")
-            } else {
-                if let imageData = data, let image = UIImage(data: imageData) {
-                    DispatchQueue.main.async {
-                        self.imageView.image = image
-                    }
-                } else {
-                    print("Error converting data to UIImage.")
-                }
-            }
-        }
-    }
-    
-    // UIImagePickerControllerDelegate method
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            imageView.image = selectedImage
-            pushImageToFirebase(image: selectedImage)
-        }
-        dismiss(animated: true, completion: nil)
-    }
-    
-    
-    func pushImageToFirebase(image: UIImage) {
-        // check user sign in
-        guard let user = Auth.auth().currentUser else {
-            print("No user is signed in.")
-            return
-        }
-
-        // check image compression
-        guard let imageData = image.jpegData(compressionQuality: 0.5) else {
-            print("Could not convert image to data.")
-            return
-        }
-
-        let storageRef = Storage.storage().reference()
-
-        let metadata = StorageMetadata()
-        metadata.contentType = "image/jpeg"
-
-        storageRef.child("user_images/\(user.uid)/profile_image.jpg").putData(imageData, metadata: metadata) { (metadata, error) in
-            
-            guard error == nil else {
-                print("Error uploading image: \(error!.localizedDescription)")
-                self.displayMessage(title: "Error", message: "Error uploading image: \(error!.localizedDescription)")
-                return
-            }
-            
-            print("Image uploaded successfully.")
-            self.displayMessage(title: "Image uploaded successfully", message: "")
-
-        }
-    }
-    
-    func displayMessage(title: String, message: String ){
-        let alertController = UIAlertController(title: title, message: message,
-        preferredStyle: .alert)
-        
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: .default,
-        handler: nil))
-        
-        self.present(alertController, animated: true, completion: nil)
-    }
-
 }
 
 

@@ -16,7 +16,7 @@ extension Notification.Name {
     static let taskCategoriesDidChange = Notification.Name("TaskCategoriesDidChangeNotification")
 }
 
-struct TaskCategoryProgress {
+struct TaskCategoryProgresses {
     let category: TaskCategory
     @State var progress: Float
 }
@@ -33,7 +33,7 @@ struct ProgressCheck: View {
     
     
     // task category
-    @State var taskCategoryProgress: [TaskCategoryProgress] = []
+    @State var taskCategoryProgress: [TaskCategoryProgresses] = []
     @ObservedObject var controller = CoreDataControllers()
     
     
@@ -50,7 +50,7 @@ struct ProgressCheck: View {
                             ProgressBar(progress: self.$dailyProgressValue)
                         }
                         .frame(width: 150, height: 150)
-                        .padding(10)
+                        .padding(30)
 
 
                         Text("Weekly task completion").padding(20)
@@ -58,7 +58,7 @@ struct ProgressCheck: View {
                             ProgressBar(progress: self.$weeklyProgressValue)
                         }
                         .frame(width: 150, height: 150)
-                        .padding(10)
+                        .padding(30)
 
                         Text("Monthly task completion").padding(20)
                         ZStack {
@@ -68,7 +68,7 @@ struct ProgressCheck: View {
                         .padding(30)
 
                         // task category
-                        VStack(alignment: .leading) {
+                        VStack(alignment: .center) {
                                                     ForEach(taskCategoryProgress.indices, id: \.self) { index in
                                                         Text(self.taskCategoryProgress[index].category.cateName ?? "")
                                                         ProgressBar(progress: self.$taskCategoryProgress[index].progress)
@@ -119,7 +119,7 @@ struct ProgressCheck: View {
                     let tasks = category.tasks?.allObjects as? [Task] ?? []
                     let completedTasks = tasks.filter { $0.isComplete == 0 }
                     let percentage = tasks.count == 0 ? 0 : Float(completedTasks.count) / Float(tasks.count)
-                    return TaskCategoryProgress(category: category, progress: percentage)
+                    return TaskCategoryProgresses(category: category, progress: percentage)
                 }
             }
         
@@ -228,7 +228,6 @@ struct ProgressCheck_Previews: PreviewProvider {
 
 class ProgressCheckViewController: UIHostingController<ProgressCheck>{
     required init?(coder aDecoder: NSCoder) {
-
 
         super.init(coder: aDecoder, rootView: ProgressCheck())
     }
