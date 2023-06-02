@@ -18,6 +18,8 @@ enum ListenerType{
     case task
     case blog
     case taskCategory
+    case record
+    case recordCategory
     case all
 }
 
@@ -25,8 +27,9 @@ protocol DatabaseListener: AnyObject{
     var listenerType: ListenerType{get set}
     func onTaskChange(change: DatabaseChange, tasks: [Task])
     func onBlogChange(change: DatabaseChange, blogs: [Blog])
-    // task category
     func onTaskCategoryChange(change: DatabaseChange, taskCategory: [Task])
+    func onRecordChange(change: DatabaseChange, records: [Record])
+    func onRecordCategoryChange(change: DatabaseChange, recordCategory: [Record])
 }
 
 protocol DatabaseProtocol: AnyObject{
@@ -42,7 +45,6 @@ protocol DatabaseProtocol: AnyObject{
     func addTaskCategory(cateName: String) -> TaskCategory
     func deleteTaskCategory(cateName: TaskCategory)
     func removeTaskFromTaskCate(task: Task, taskCate: TaskCategory)
-
 }
 
 protocol DatabaseProtocolBlog: AnyObject{
@@ -51,4 +53,18 @@ protocol DatabaseProtocolBlog: AnyObject{
     func removeListener(listener: DatabaseListener)
     func addBlog(blogTitle: String, blogContent:String, blogImage:String, isLocalImage: Bool)-> Blog
     func deleteTask(blog: Blog)
+}
+
+protocol DatabaseProtocolRecord: AnyObject{
+    func cleanup()
+    func addListener(listener: DatabaseListener)
+    func removeListener(listener: DatabaseListener)
+    func addRecord(recordName: String, recordAmount:Int16, recordType: recordType, recordDate: Date, recordImage: String, categoryName: String)-> Record
+    func deleteRecord(record: Record)
+    func updateRecord(record: Record)
+    
+    var defaultRecordCate: RecordCategory {get}
+    func addRecordCategory(cateNameR: String) -> RecordCategory
+    func deleteRecordCategory(cateNameR: RecordCategory)
+    func removeRecordFromRecordCate(record: Record, recordCate: RecordCategory)
 }

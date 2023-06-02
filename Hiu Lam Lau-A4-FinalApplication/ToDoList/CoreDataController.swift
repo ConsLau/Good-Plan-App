@@ -265,7 +265,6 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         
         // Fetch all tasks for the current user
         let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
-
         
         do {
             let fetchedTasks = try persistentContainer.viewContext.fetch(fetchRequest)

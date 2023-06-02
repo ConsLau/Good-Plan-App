@@ -28,8 +28,7 @@ struct ProgressCheck: View {
     @State var weeklyProgressValue: Float = 0.0
     @State var monthlyProgressValue: Float = 0.0
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    // bar
-    @State var monthlyTasks: [Int] = []
+
     
     
     // task category
@@ -44,73 +43,27 @@ struct ProgressCheck: View {
 
 
                     VStack {
-
-                        Text("Daily task completion").padding(20)
-                        ZStack {
-                            ProgressBar(progress: self.$dailyProgressValue)
-                        }
-                        .frame(width: 150, height: 150)
-                        .padding(30)
-
-
-                        Text("Weekly task completion").padding(20)
-                        ZStack {
-                            ProgressBar(progress: self.$weeklyProgressValue)
-                        }
-                        .frame(width: 150, height: 150)
-                        .padding(30)
-
-                        Text("Monthly task completion").padding(20)
-                        ZStack {
-                            ProgressBar(progress: self.$monthlyProgressValue)
-                        }
-                        .frame(width: 150, height: 150)
-                        .padding(30)
-
                         // task category
                         VStack(alignment: .center) {
                                                     ForEach(taskCategoryProgress.indices, id: \.self) { index in
-                                                        Text(self.taskCategoryProgress[index].category.cateName ?? "")
+                                                        Text("Category: " + (self.taskCategoryProgress[index].category.cateName ?? "No Category"))
                                                         ProgressBar(progress: self.$taskCategoryProgress[index].progress)
                                                             .frame(width: 150, height: 150)
                                                             .padding(30)
                                                     }
                                                 }
-
-                        // bar
-                        Text("Monthly amount of tasks completion").padding(20)
-                        VStack(alignment: .leading) {
-                            ForEach(0..<12, id: \.self) { month in
-                                if month < self.monthlyTasks.count {
-                                    HStack {
-                                        Text(getMonthName(from: month))
-
-                                        Rectangle()
-                                            .fill(Color("ButtonBackgroundColour"))
-                                            .frame(width: CGFloat(self.monthlyTasks[month]) * 10, height: 20)
-                                    }
-                                }
-                            }
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.leading, 20)
-                        .padding(.top, 20)
-                        .padding(.bottom, 20)
-                        .background(Color("ButtonBackgroundColour").opacity(0.2))
-                        Spacer()
                     }
                     
                 }
                 
                 
-            }.onAppear {
+            }.navigationBarHidden(true)
+             .onAppear {
                 let percentages = CoreDataController().calculateCompletionPercentageForTasks()
                 self.dailyProgressValue = percentages.daily
                 self.weeklyProgressValue = percentages.weekly
                 self.monthlyProgressValue = percentages.monthly
-                
-                //bar
-                self.monthlyTasks = CoreDataController().fetchCompletedTasksPerMonth()
+
                 
                 // Fetch all unique categories
                 let controller = CoreDataController()

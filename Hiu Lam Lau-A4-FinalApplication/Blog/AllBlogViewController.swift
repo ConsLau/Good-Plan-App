@@ -14,7 +14,6 @@ import UIKit
 
 class AllBlogViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DatabaseListener {
 
-
     @IBOutlet weak var blogTable: UITableView!
     
     // varable
@@ -63,6 +62,14 @@ class AllBlogViewController: UIViewController, UITableViewDelegate, UITableViewD
     func onBlogChange(change: DatabaseChange, blogs: [Blog]) {
         allBlogs = blogs
         blogTable.reloadData()
+    }
+    
+    func onRecordCategoryChange(change: DatabaseChange, recordCategory: [Record]) {
+        
+    }
+    
+    func onRecordChange(change: DatabaseChange, records: [Record]) {
+        
     }
     
     // MARK: - Table view data source

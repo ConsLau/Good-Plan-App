@@ -15,7 +15,7 @@ var selectedDate = Date()
 var selectedMonth: String?
 
 class CalendarViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, DatabaseListener {
-    
+
     
     // UI elements
     @IBOutlet weak var collectionView: UICollectionView!
@@ -43,6 +43,14 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         
     }
     
+    func onRecordChange(change: DatabaseChange, records: [Record]) {
+        
+    }
+    
+    func onRecordCategoryChange(change: DatabaseChange, recordCategory: [Record]) {
+        
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,11 +67,15 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
+        
+        self.navigationController?.navigationController?.isNavigationBarHidden = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         databaseController?.addListener(listener: self)
+        
+        self.navigationController?.navigationController?.isNavigationBarHidden = true
     }
 
     @IBAction func previousBtn(_ sender: Any) {
@@ -150,7 +162,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
         
         if tasksForFullDate.count > 0 {
-            cell.backgroundColor = .tintColor
+            cell.backgroundColor = .tintColor.withAlphaComponent(0.5)
         } else if let selectedIndexPath = self.selectedIndexPath, selectedIndexPath == indexPath {
             cell.backgroundColor = .lightGray
         } else if CalendarHelper().isCurrentDate(date: fullDate) {

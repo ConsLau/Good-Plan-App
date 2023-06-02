@@ -9,6 +9,8 @@ import UIKit
 
 class RemainderTableViewController: UITableViewController, DatabaseListener {
 
+    
+
     //variables
     var allTask: [Task] = []
     var filteredTask: [Task] = []
@@ -43,6 +45,14 @@ class RemainderTableViewController: UITableViewController, DatabaseListener {
     }
     
     func onTaskCategoryChange(change: DatabaseChange, taskCategory: [Task]) {
+        
+    }
+    
+    func onRecordCategoryChange(change: DatabaseChange, recordCategory: [Record]) {
+        
+    }
+    
+    func onRecordChange(change: DatabaseChange, records: [Record]) {
         
     }
     

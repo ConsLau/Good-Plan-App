@@ -11,6 +11,7 @@ import UIKit
 
 class AllTaskTableViewController: UITableViewController, DatabaseListener {
 
+
     
 
     // variables
@@ -57,6 +58,15 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
     func onTaskCategoryChange(change: DatabaseChange, taskCategory: [Task]) {
         
     }
+    
+    func onRecordCategoryChange(change: DatabaseChange, recordCategory: [Record]) {
+        
+    }
+    
+    func onRecordChange(change: DatabaseChange, records: [Record]) {
+        
+    }
+    
     
     // Other functions
     func selecteDateResults(){

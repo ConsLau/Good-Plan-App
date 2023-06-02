@@ -9,9 +9,17 @@
 /* Begin PBXBuildFile section */
 		4B099E7629FBDCEC00B7ACC2 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B099E7529FBDCEC00B7ACC2 /* CalendarViewController.swift */; };
 		4B099E7829FC1B4B00B7ACC2 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B099E7729FC1B4B00B7ACC2 /* CalendarHelper.swift */; };
+		4B0E2F242A28E6160045E626 /* Record+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0E2F222A28E6160045E626 /* Record+CoreDataClass.swift */; };
+		4B0E2F252A28E6160045E626 /* Record+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0E2F232A28E6160045E626 /* Record+CoreDataProperties.swift */; };
+		4B0E2F272A28F8620045E626 /* FinancesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0E2F262A28F8620045E626 /* FinancesViewController.swift */; };
+		4B0E2F292A28FB9C0045E626 /* FinanceChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0E2F282A28FB9C0045E626 /* FinanceChart.swift */; };
 		4B1B87DC2A0CA7C3006EA689 /* BlogDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1B87DB2A0CA7C3006EA689 /* BlogDetailsViewController.swift */; };
 		4B240EB12A2628420046BED0 /* RemainderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B240EB02A2628420046BED0 /* RemainderTableViewController.swift */; };
 		4B240EB32A264D950046BED0 /* homePageProgressCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B240EB22A264D950046BED0 /* homePageProgressCheck.swift */; };
+		4B240EC12A2794C40046BED0 /* BalanceRecordModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B240EBF2A2794C40046BED0 /* BalanceRecordModel.xcdatamodeld */; };
+		4B240EC72A2799290046BED0 /* RecordCoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B240EC62A2799290046BED0 /* RecordCoreDataController.swift */; };
+		4B2683972A2822ED0098C066 /* CreateRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2683962A2822ED0098C066 /* CreateRecordViewController.swift */; };
+		4B2683992A2823590098C066 /* RecordDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2683982A2823590098C066 /* RecordDetailsViewController.swift */; };
 		4B33E71B29F78ADF00E1A8AB /* MultcastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33E71A29F78ADF00E1A8AB /* MultcastDelegate.swift */; };
 		4B33E71D29F7B16800E1A8AB /* AllTaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33E71C29F7B16800E1A8AB /* AllTaskTableViewController.swift */; };
 		4B3531122A17ECCB0010AA5A /* ProgressCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3531112A17ECCB0010AA5A /* ProgressCheck.swift */; };
@@ -50,6 +58,9 @@
 		4B6E82B929DFF0A200F95529 /* accountCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6E82B829DFF0A200F95529 /* accountCreateViewController.swift */; };
 		4B6E82F529E43F8600F95529 /* homePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6E82F429E43F8600F95529 /* homePageViewController.swift */; };
 		4B9FF3DD2A0CBCE700C3AF7D /* AllBlogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9FF3DC2A0CBCE700C3AF7D /* AllBlogViewController.swift */; };
+		4BA611F72A27A43C003346F7 /* AllRecordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA611F62A27A43C003346F7 /* AllRecordTableViewController.swift */; };
+		4BA611FA2A281D66003346F7 /* RecordCategory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA611F82A281D66003346F7 /* RecordCategory+CoreDataClass.swift */; };
+		4BA611FB2A281D66003346F7 /* RecordCategory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA611F92A281D66003346F7 /* RecordCategory+CoreDataProperties.swift */; };
 		4BAB4D712A06688800FD5D45 /* BlogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAB4D702A06688800FD5D45 /* BlogTableViewCell.swift */; };
 		4BCCD3C32A21335A00DC1A88 /* TaskCategory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCCD3C12A21335A00DC1A88 /* TaskCategory+CoreDataClass.swift */; };
 		4BCCD3C42A21335A00DC1A88 /* TaskCategory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCCD3C22A21335A00DC1A88 /* TaskCategory+CoreDataProperties.swift */; };
@@ -58,9 +69,17 @@
 /* Begin PBXFileReference section */
 		4B099E7529FBDCEC00B7ACC2 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		4B099E7729FC1B4B00B7ACC2 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
+		4B0E2F222A28E6160045E626 /* Record+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Record+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		4B0E2F232A28E6160045E626 /* Record+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Record+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		4B0E2F262A28F8620045E626 /* FinancesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancesViewController.swift; sourceTree = "<group>"; };
+		4B0E2F282A28FB9C0045E626 /* FinanceChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceChart.swift; sourceTree = "<group>"; };
 		4B1B87DB2A0CA7C3006EA689 /* BlogDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogDetailsViewController.swift; sourceTree = "<group>"; };
 		4B240EB02A2628420046BED0 /* RemainderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainderTableViewController.swift; sourceTree = "<group>"; };
 		4B240EB22A264D950046BED0 /* homePageProgressCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homePageProgressCheck.swift; sourceTree = "<group>"; };
+		4B240EC02A2794C40046BED0 /* BalanceRecordModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BalanceRecordModel.xcdatamodel; sourceTree = "<group>"; };
+		4B240EC62A2799290046BED0 /* RecordCoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCoreDataController.swift; sourceTree = "<group>"; };
+		4B2683962A2822ED0098C066 /* CreateRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecordViewController.swift; sourceTree = "<group>"; };
+		4B2683982A2823590098C066 /* RecordDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailsViewController.swift; sourceTree = "<group>"; };
 		4B33E71A29F78ADF00E1A8AB /* MultcastDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultcastDelegate.swift; sourceTree = "<group>"; };
 		4B33E71C29F7B16800E1A8AB /* AllTaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTaskTableViewController.swift; sourceTree = "<group>"; };
 		4B3531112A17ECCB0010AA5A /* ProgressCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCheck.swift; sourceTree = "<group>"; };
@@ -95,6 +114,9 @@
 		4B6E82B829DFF0A200F95529 /* accountCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = accountCreateViewController.swift; sourceTree = "<group>"; };
 		4B6E82F429E43F8600F95529 /* homePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homePageViewController.swift; sourceTree = "<group>"; };
 		4B9FF3DC2A0CBCE700C3AF7D /* AllBlogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllBlogViewController.swift; sourceTree = "<group>"; };
+		4BA611F62A27A43C003346F7 /* AllRecordTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRecordTableViewController.swift; sourceTree = "<group>"; };
+		4BA611F82A281D66003346F7 /* RecordCategory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecordCategory+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		4BA611F92A281D66003346F7 /* RecordCategory+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecordCategory+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		4BAB4D702A06688800FD5D45 /* BlogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogTableViewCell.swift; sourceTree = "<group>"; };
 		4BCCD3C12A21335A00DC1A88 /* TaskCategory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskCategory+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4BCCD3C22A21335A00DC1A88 /* TaskCategory+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskCategory+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -117,6 +139,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B240EBE2A27947A0046BED0 /* BalanceRecord */ = {
+			isa = PBXGroup;
+			children = (
+				4B0E2F222A28E6160045E626 /* Record+CoreDataClass.swift */,
+				4B0E2F232A28E6160045E626 /* Record+CoreDataProperties.swift */,
+				4BA611F82A281D66003346F7 /* RecordCategory+CoreDataClass.swift */,
+				4BA611F92A281D66003346F7 /* RecordCategory+CoreDataProperties.swift */,
+				4B240EBF2A2794C40046BED0 /* BalanceRecordModel.xcdatamodeld */,
+				4B240EC62A2799290046BED0 /* RecordCoreDataController.swift */,
+				4BA611F62A27A43C003346F7 /* AllRecordTableViewController.swift */,
+				4B2683962A2822ED0098C066 /* CreateRecordViewController.swift */,
+				4B2683982A2823590098C066 /* RecordDetailsViewController.swift */,
+				4B0E2F262A28F8620045E626 /* FinancesViewController.swift */,
+				4B0E2F282A28FB9C0045E626 /* FinanceChart.swift */,
+			);
+			path = BalanceRecord;
+			sourceTree = "<group>";
+		};
 		4B3AAD642A03D7DE0050AB8B /* Blog */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,7 +178,6 @@
 			isa = PBXGroup;
 			children = (
 				4B3531112A17ECCB0010AA5A /* ProgressCheck.swift */,
-				4B240EB22A264D950046BED0 /* homePageProgressCheck.swift */,
 			);
 			path = ProgressChart;
 			sourceTree = "<group>";
@@ -194,6 +233,7 @@
 				4B3EB7252A24A17000449DBE /* ProgressChart */,
 				4B4725EB2A10D144000F0D61 /* Theme */,
 				4B3AAD642A03D7DE0050AB8B /* Blog */,
+				4B240EBE2A27947A0046BED0 /* BalanceRecord */,
 				4B57422E29FBDADF00FCA6C7 /* CalendarView */,
 				4B62001E29F530FC00605CAF /* ToDoList */,
 				4B6E82F329E43F6700F95529 /* HomePage */,
@@ -271,6 +311,7 @@
 		4B6E82F329E43F6700F95529 /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
+				4B240EB22A264D950046BED0 /* homePageProgressCheck.swift */,
 				4B6E82F429E43F8600F95529 /* homePageViewController.swift */,
 				4B240EB02A2628420046BED0 /* RemainderTableViewController.swift */,
 			);
@@ -370,23 +411,32 @@
 				4B6E82B529DFF06100F95529 /* loginPageViewController.swift in Sources */,
 				4BCCD3C42A21335A00DC1A88 /* TaskCategory+CoreDataProperties.swift in Sources */,
 				4B099E7829FC1B4B00B7ACC2 /* CalendarHelper.swift in Sources */,
+				4B0E2F252A28E6160045E626 /* Record+CoreDataProperties.swift in Sources */,
 				4BCCD3C32A21335A00DC1A88 /* TaskCategory+CoreDataClass.swift in Sources */,
 				4B3AAD6B2A03DFA30050AB8B /* Blog+CoreDataProperties.swift in Sources */,
+				4BA611FA2A281D66003346F7 /* RecordCategory+CoreDataClass.swift in Sources */,
 				4B9FF3DD2A0CBCE700C3AF7D /* AllBlogViewController.swift in Sources */,
+				4B0E2F292A28FB9C0045E626 /* FinanceChart.swift in Sources */,
 				4B6E82B729DFF08900F95529 /* passwordResetViewController.swift in Sources */,
+				4B2683992A2823590098C066 /* RecordDetailsViewController.swift in Sources */,
+				4B0E2F242A28E6160045E626 /* Record+CoreDataClass.swift in Sources */,
 				4B33E71D29F7B16800E1A8AB /* AllTaskTableViewController.swift in Sources */,
 				4B6E82F529E43F8600F95529 /* homePageViewController.swift in Sources */,
 				4B62002F29F5866900605CAF /* DatabaseProtocol.swift in Sources */,
 				4B4725EF2A10D183000F0D61 /* Theme.swift in Sources */,
 				4B3AAD792A04CFB60050AB8B /* ImageCell.swift in Sources */,
+				4B2683972A2822ED0098C066 /* CreateRecordViewController.swift in Sources */,
 				4B6E82A129DF06E100F95529 /* AppDelegate.swift in Sources */,
 				4B3AAD672A03DA760050AB8B /* BlogModel.xcdatamodeld in Sources */,
 				4B1B87DC2A0CA7C3006EA689 /* BlogDetailsViewController.swift in Sources */,
+				4BA611F72A27A43C003346F7 /* AllRecordTableViewController.swift in Sources */,
 				4B099E7629FBDCEC00B7ACC2 /* CalendarViewController.swift in Sources */,
 				4B240EB32A264D950046BED0 /* homePageProgressCheck.swift in Sources */,
+				4B240EC72A2799290046BED0 /* RecordCoreDataController.swift in Sources */,
 				4B6E82B929DFF0A200F95529 /* accountCreateViewController.swift in Sources */,
 				4B6E82A329DF06E100F95529 /* SceneDelegate.swift in Sources */,
 				4B62002D29F5766700605CAF /* Task+CoreDataProperties.swift in Sources */,
+				4BA611FB2A281D66003346F7 /* RecordCategory+CoreDataProperties.swift in Sources */,
 				4B3AAD6F2A03F4570050AB8B /* BlogCoreDataController.swift in Sources */,
 				4B57423029FBDB2300FCA6C7 /* CalendarCell.swift in Sources */,
 				4B4725F12A10D539000F0D61 /* ThemeManager.swift in Sources */,
@@ -394,6 +444,8 @@
 				4B62002C29F5766700605CAF /* Task+CoreDataClass.swift in Sources */,
 				4B3531122A17ECCB0010AA5A /* ProgressCheck.swift in Sources */,
 				4B240EB12A2628420046BED0 /* RemainderTableViewController.swift in Sources */,
+				4B240EC12A2794C40046BED0 /* BalanceRecordModel.xcdatamodeld in Sources */,
+				4B0E2F272A28F8620045E626 /* FinancesViewController.swift in Sources */,
 				4B62002129F5313900605CAF /* ToDoListModel.xcdatamodeld in Sources */,
 				4B62003329F591CC00605CAF /* CreateTaskViewController.swift in Sources */,
 			);
@@ -667,6 +719,16 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
+		4B240EBF2A2794C40046BED0 /* BalanceRecordModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4B240EC02A2794C40046BED0 /* BalanceRecordModel.xcdatamodel */,
+			);
+			currentVersion = 4B240EC02A2794C40046BED0 /* BalanceRecordModel.xcdatamodel */;
+			path = BalanceRecordModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		4B3AAD652A03DA760050AB8B /* BlogModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

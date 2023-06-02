@@ -16,16 +16,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var databaseController: DatabaseProtocol?
     var blogDatabaseController: DatabaseProtocolBlog?
+    var recordDatabaseController: DatabaseProtocolRecord?
     var window: UIWindow?
     var authListener: AuthStateDidChangeListenerHandle?
     //bar
-    var persistentContainer: NSPersistentContainer!
+//    var persistentContainer: NSPersistentContainer!
+    lazy var persistentContainer: NSPersistentContainer = {
+            let container = NSPersistentContainer(name: "BalanceRecordModel")
+            container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+                if let error = error as NSError? {
+                    fatalError("Unresolved error \(error), \(error.userInfo)")
+                }
+            })
+            return container
+        }()
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         databaseController = CoreDataController()
         blogDatabaseController = BlogCoreDataController()
+        recordDatabaseController = RecordCoreDataController()
 
         return true
     }

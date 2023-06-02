@@ -22,13 +22,13 @@ struct homePageProgressCheck: View {
         ScrollView(.horizontal, showsIndicators: false) {
             ZStack {
                 Color.gray
-                    .opacity(0.1)
+                    .opacity(0.0)
                     .edgesIgnoringSafeArea(.all)
 
                 HStack(spacing: 80) {
 
                     VStack {
-                        Text("Daily task ").padding(20)
+                        Text("Daily task ")
                         ZStack {
                             ProgressBar(progress: self.$dailyProgressValue)
                         }
@@ -36,7 +36,7 @@ struct homePageProgressCheck: View {
                     }.padding(.leading, 30)
 
                     VStack {
-                        Text("Weekly task ").padding(20)
+                        Text("Weekly task ")
                         ZStack {
                             ProgressBar(progress: self.$weeklyProgressValue)
                         }
@@ -44,7 +44,7 @@ struct homePageProgressCheck: View {
                     }
 
                     VStack {
-                        Text("Monthly task ").padding(20)
+                        Text("Monthly task ")
                         ZStack {
                             ProgressBar(progress: self.$monthlyProgressValue)
                         }
