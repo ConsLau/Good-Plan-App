@@ -50,6 +50,7 @@ class homePageViewController: UIViewController, UIImagePickerControllerDelegate,
         // Set the dateText to the current date
         self.dateText.text = dateString
         self.titleText.text = "Good Plan"
+        titleText.textColor = UIColor.tintColor
         
         // Initialize the coreDataController
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
