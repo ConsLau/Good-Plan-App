@@ -9,7 +9,6 @@
 // Reference 3 Horizontal Bar Chart Beginner SwiftUI Xcode Tutorial: https://www.youtube.com/watch?v=j8lRkpvVaB0&t=34s
 
 import SwiftUI
-import FirebaseAuth
 import CoreData
 
 extension Notification.Name {
@@ -18,93 +17,57 @@ extension Notification.Name {
 
 struct TaskCategoryProgresses {
     let category: TaskCategory
-    @State var progress: Float
+    var progress: Float
 }
 
 struct ProgressCheck: View {
-
-
-    @State var dailyProgressValue: Float = 0.0
-    @State var weeklyProgressValue: Float = 0.0
-    @State var monthlyProgressValue: Float = 0.0
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-
-    
     
     // task category
     @State var taskCategoryProgress: [TaskCategoryProgresses] = []
-    @ObservedObject var controller = CoreDataControllers()
+    @ObservedObject var controller = TaskCategoriesController()
     
-    
-
     var body: some View {
-            ScrollView(.vertical, showsIndicators: false) {
-                ZStack {
-
-
-                    VStack {
-                        // task category
-                        VStack(alignment: .center) {
-                                                    ForEach(taskCategoryProgress.indices, id: \.self) { index in
-                                                        Text("Category: " + (self.taskCategoryProgress[index].category.cateName ?? "No Category"))
-                                                        ProgressBar(progress: self.$taskCategoryProgress[index].progress)
-                                                            .frame(width: 150, height: 150)
-                                                            .padding(30)
-                                                    }
-                                                }
-                    }
-                    
-                }
-                
-                
-            }.navigationBarHidden(true)
-             .onAppear {
-                let percentages = CoreDataController().calculateCompletionPercentageForTasks()
-                self.dailyProgressValue = percentages.daily
-                self.weeklyProgressValue = percentages.weekly
-                self.monthlyProgressValue = percentages.monthly
-
-                
-                // Fetch all unique categories
-                let controller = CoreDataController()
-                let categories = controller.fetchAllTaskCategories()
-                self.taskCategoryProgress = categories.map { category in
-                    let tasks = category.tasks?.allObjects as? [Task] ?? []
-                    let completedTasks = tasks.filter { $0.isComplete == 0 }
-                    let percentage = tasks.count == 0 ? 0 : Float(completedTasks.count) / Float(tasks.count)
-                    return TaskCategoryProgresses(category: category, progress: percentage)
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack {
+                ForEach(taskCategoryProgress.indices, id: \.self) { index in
+                    Text("Category: " + (self.taskCategoryProgress[index].category.cateName ?? "No Category"))
+                    ProgressBar(progress: self.$taskCategoryProgress[index].progress)
+                        .frame(width: 150, height: 150)
+                        .padding(30)
                 }
             }
-        
-        
-        
+        }
+        .navigationBarTitle("Progress Checking")
+        .navigationBarHidden(false)
+        .onAppear {
+            // Fetch all unique categories
+            let categories = self.controller.fetchAllTaskCategories()
+            self.taskCategoryProgress = categories.map { category in
+                let tasks = category.tasks?.allObjects as? [Task] ?? []
+                let completedTasks = tasks.filter { $0.isComplete != 1 }
+                let percentage = tasks.isEmpty ? 0 : Float(completedTasks.count) / Float(tasks.count)
+                return TaskCategoryProgresses(category: category, progress: percentage)
+            }
+        }
     }
-    
-    func getMonthName(from index: Int) -> String {
-        let monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-        return monthNames[index]
-    }
-
-    
 }
 
 struct ProgressBar: View {
-
     @Binding var progress: Float
 
     var body: some View {
         ZStack {
             Circle()
                 .stroke(lineWidth: 20)
-                .opacity(1.0)
-                .foregroundColor(Color("ButtonTextColour"))
+                .opacity(0.3)
+                .foregroundColor(Color("BackgroundColour"))
+            
 
             Circle()
                 .trim(from: 0.0, to: CGFloat(min(self.progress, 1.0)))
                 .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
                 .foregroundColor(Color("ButtonBackgroundColour"))
                 .rotationEffect(Angle(degrees: 270.0))
-
 
             Text(String(format: "%.0f %%", min(self.progress, 1.0)*100.0))
                 .font(.largeTitle)
@@ -113,8 +76,7 @@ struct ProgressBar: View {
     }
 }
 
-// task category
-class CoreDataControllers: ObservableObject {
+class TaskCategoriesController: ObservableObject {
     @Published var taskCategories: [TaskCategory] = []
 
     let persistentContainer: NSPersistentContainer = {
@@ -144,12 +106,13 @@ class CoreDataControllers: ObservableObject {
         fetchAllTaskCategories()
     }
 
-    func fetchAllTaskCategories() {
+    func fetchAllTaskCategories() -> [TaskCategory] {
         let fetchRequest: NSFetchRequest<TaskCategory> = TaskCategory.fetchRequest()
         do {
-            self.taskCategories = try self.persistentContainer.viewContext.fetch(fetchRequest)
+            return try self.persistentContainer.viewContext.fetch(fetchRequest)
         } catch {
             print("Fetching TaskCategories failed: \(error)")
+            return []
         }
     }
 
@@ -158,8 +121,6 @@ class CoreDataControllers: ObservableObject {
         taskCategory.cateName = cateName
         saveContext()
     }
-
-    // Rest of your CoreDataController code...
 
     private func saveContext() {
         let context = persistentContainer.viewContext
@@ -173,16 +134,15 @@ class CoreDataControllers: ObservableObject {
     }
 }
 
+
 struct ProgressCheck_Previews: PreviewProvider {
     static var previews: some View {
         ProgressCheck()
     }
 }
 
-class ProgressCheckViewController: UIHostingController<ProgressCheck>{
+class ProgressCheckViewController: UIHostingController<ProgressCheck> {
     required init?(coder aDecoder: NSCoder) {
-
         super.init(coder: aDecoder, rootView: ProgressCheck())
     }
 }
-
