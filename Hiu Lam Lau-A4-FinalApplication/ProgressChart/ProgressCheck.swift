@@ -39,9 +39,14 @@ struct ProgressCheck: View {
         }
         .navigationBarTitle("Progress Checking")
         .navigationBarHidden(false)
-        .onAppear {
-            // Fetch all unique categories
-            let categories = self.controller.fetchAllTaskCategories()
+        .onAppear(perform: loadCategoryProgress)
+        .onChange(of: controller.taskCategories, perform: { _ in
+                    loadCategoryProgress()
+                })
+    }
+    
+    func loadCategoryProgress() {
+            let categories = self.controller.taskCategories
             self.taskCategoryProgress = categories.map { category in
                 let tasks = category.tasks?.allObjects as? [Task] ?? []
                 let completedTasks = tasks.filter { $0.isComplete != 1 }
@@ -49,7 +54,6 @@ struct ProgressCheck: View {
                 return TaskCategoryProgresses(category: category, progress: percentage)
             }
         }
-    }
 }
 
 struct ProgressBar: View {
@@ -106,20 +110,21 @@ class TaskCategoriesController: ObservableObject {
         fetchAllTaskCategories()
     }
 
-    func fetchAllTaskCategories() -> [TaskCategory] {
-        let fetchRequest: NSFetchRequest<TaskCategory> = TaskCategory.fetchRequest()
-        do {
-            return try self.persistentContainer.viewContext.fetch(fetchRequest)
-        } catch {
-            print("Fetching TaskCategories failed: \(error)")
-            return []
+    func fetchAllTaskCategories() {
+            let fetchRequest: NSFetchRequest<TaskCategory> = TaskCategory.fetchRequest()
+            do {
+                self.taskCategories = try self.persistentContainer.viewContext.fetch(fetchRequest)
+            } catch {
+                print("Fetching TaskCategories failed: \(error)")
+            }
         }
-    }
 
     func addTaskCategory(cateName: String) {
         let taskCategory = TaskCategory(context: persistentContainer.viewContext)
         taskCategory.cateName = cateName
         saveContext()
+        
+        NotificationCenter.default.post(name: .taskCategoriesDidChange, object: nil)
     }
 
     private func saveContext() {
