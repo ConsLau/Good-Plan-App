@@ -59,35 +59,51 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     }
     
     func addTask(taskName: String, taskDesc: String, taskDate: Date, isComplete: isComplete, taskCategory: String) -> Task {
-        let task = NSEntityDescription.insertNewObject(forEntityName: "Task", into: persistentContainer.viewContext) as! Task
-        
-        task.taskName = taskName
-        task.taskDesc = taskDesc
-        task.taskDate = taskDate
-        task.taskIsComplete = isComplete
-   
-        //Task category
-        //Fetch or create a TaskCategory with the provided name
-        let fetchRequest: NSFetchRequest<TaskCategory> = TaskCategory.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "cateName == %@", taskCategory)
-        
-        do {
-            let matchingCategories = try persistentContainer.viewContext.fetch(fetchRequest)
-            if let existingCategory = matchingCategories.first {
-                // If a TaskCategory with the provided name already exists, use it
-                task.category = existingCategory
-            } else {
-                // If it doesn't exist, create a new TaskCategory
-                let newCategory = NSEntityDescription.insertNewObject(forEntityName: "TaskCategory", into: persistentContainer.viewContext) as! TaskCategory
-                newCategory.cateName = taskCategory
-                task.category = newCategory
-            }
-        } catch {
-            print("Failed to fetch or create TaskCategory: \(error)")
+            let task = NSEntityDescription.insertNewObject(forEntityName: "Task", into: persistentContainer.viewContext) as! Task
+            
+            task.taskName = taskName
+            task.taskDesc = taskDesc
+            task.taskDate = taskDate
+            task.taskIsComplete = isComplete
+       
+            assignCategoryToTask(task: task, taskCategory: taskCategory)
+            
+            return task
         }
-        
-        return task
-    }
+    
+    func assignCategoryToTask(task: Task, taskCategory: String) {
+            let fetchRequest: NSFetchRequest<TaskCategory> = TaskCategory.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "cateName == %@", taskCategory)
+            
+            do {
+                let matchingCategories = try persistentContainer.viewContext.fetch(fetchRequest)
+                if let existingCategory = matchingCategories.first {
+                    task.category = existingCategory
+                } else {
+                    let newCategory = NSEntityDescription.insertNewObject(forEntityName: "TaskCategory", into: persistentContainer.viewContext) as! TaskCategory
+                    newCategory.cateName = taskCategory
+                    task.category = newCategory
+                }
+            } catch {
+                print("Failed to fetch or create TaskCategory: \(error)")
+            }
+        }
+    
+    func fetchTasksAndNotifyListeners() {
+            do {
+                try TaskFetchedResultsController?.performFetch()
+                let tasks = TaskFetchedResultsController?.fetchedObjects ?? []
+
+                listeners.invoke { (listener) in
+                    if listener.listenerType == .task {
+                        listener.onTaskChange(change: .update, tasks: tasks)
+                    }
+                }
+            } catch {
+                print("Fetch Request Failed: \(error)")
+            }
+        }
+
     
     func deleteTask(task: Task) {
         persistentContainer.viewContext.delete(task)

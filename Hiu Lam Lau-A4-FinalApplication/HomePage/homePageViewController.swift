@@ -35,9 +35,8 @@ class homePageViewController: UIViewController, UIImagePickerControllerDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Get the current date
+        
         let currentDate = Date()
-
         // Create a date formatter
         let dateFormatter = DateFormatter()
 
@@ -51,31 +50,17 @@ class homePageViewController: UIViewController, UIImagePickerControllerDelegate,
         self.dateText.text = dateString
         self.titleText.text = "Good Plan"
         titleText.textColor = UIColor.tintColor
-        
+
         // Initialize the coreDataController
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             let container = appDelegate.persistentContainer
-            coreDataController = RecordCoreDataController()
+            coreDataController = RecordCoreDataController(container: container)
         } else {
             fatalError("Unable to access AppDelegate.")
         }
         
         // Fetch all records
         records = coreDataController.fetchRecord()
-        
-        // Calculate the income and expenditure sums
-        let incomeRecords = records.filter { $0.recRecordType.rawValue == recordType.income.rawValue }
-        let expenditureRecords = records.filter { $0.recRecordType.rawValue == recordType.expenditure.rawValue }
-        incomeSum = incomeRecords.reduce(0) { $0 + $1.recordAmount }
-        expenditureSum = expenditureRecords.reduce(0) { $0 + $1.recordAmount }
-        
-        // Display the income and expenditure sums in the segmented control
-        segmentedControl.setTitle("Income: \(incomeSum)", forSegmentAt: 0)
-        segmentedControl.setTitle("Expenditure: \(expenditureSum)", forSegmentAt: 1)
-        
-        // Set the text attributes for the selected segment
-        let selectedTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.tintColor]
-        segmentedControl.setTitleTextAttributes(selectedTextAttributes, for: .selected)
         
         // Create the SwiftUI view that provides the window contents.
         let swiftUIView = homePageProgressCheck()
@@ -100,13 +85,38 @@ class homePageViewController: UIViewController, UIImagePickerControllerDelegate,
         
         // Notify the child view controller it has been moved to the parent.
         hostingController.didMove(toParent: self)
-        
     }
 
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
 
-        self.navigationController?.isNavigationBarHidden = true
+        override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+
+            self.navigationController?.isNavigationBarHidden = true
+            
+            
+            // Get the current date
+            let currentDate = Date()
+            let calendar = Calendar.current
+            let components = calendar.dateComponents([.year, .month], from: currentDate)
+            var incomeSum: Int16 = 0
+            var expenditureSum: Int16 = 0
+            
+            // Get the income and expenditure for the current month
+                if let month = components.month, let year = components.year {
+                    let monthlyCalculations = coreDataController.calculateMonthlyIncomeAndExpenditure(forMonth: month, forYear: year)
+                    incomeSum = monthlyCalculations.income
+                    expenditureSum = monthlyCalculations.expenditure
+                }
+                
+                // Update the segmented control
+                setupSegmentedControl(income: incomeSum, expenditure: expenditureSum)
+        }
+    
+    func setupSegmentedControl(income: Int16, expenditure: Int16) {
+        segmentedControl.setTitle("Income: \(income)", forSegmentAt: 0)
+        segmentedControl.setTitle("Expenditure: \(expenditure)", forSegmentAt: 1)
+        
+        let selectedTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.tintColor]
+        segmentedControl.setTitleTextAttributes(selectedTextAttributes, for: .selected)
     }
 }

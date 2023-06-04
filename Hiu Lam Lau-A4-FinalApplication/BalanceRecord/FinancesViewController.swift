@@ -22,39 +22,45 @@ class FinancesViewController: UIViewController{
                 let container = appDelegate.persistentContainer
                 coreDataController = RecordCoreDataController(container: container)
 
-                let records = coreDataController.fetchRecord()
-                var totalIncome: Int16 = 0
-                var totalExpenditure: Int16 = 0
 
-                for record in records {
-                    if record.recRecordType == .income {
-                        totalIncome += record.recordAmount
-                    } else if record.recRecordType == .expenditure {
-                        totalExpenditure += record.recordAmount
-                    }
-                }
-
-                let totalAmount = totalIncome - totalExpenditure
-                totalAmountText.text = "\(totalAmount)"
-
-                let incomePercentages = coreDataController.calculatePercentages(for: .income)
-                let expenditurePercentages = coreDataController.calculatePercentages(for: .expenditure)
-
-                let highestIncomeCategoryPercentage = incomePercentages.max(by: {$0.value < $1.value})?.key
-                let highestExpenditureCategoryPercentage = expenditurePercentages.max(by: {$0.value < $1.value})?.key
-
-                highestCategoryInText.text = "Highest income category: \(highestIncomeCategoryPercentage ?? "None")"
-                highestCategoryExpenText.text = "Highest expenditure category: \(highestExpenditureCategoryPercentage ?? "None")"
-
-
-                if totalAmount >= 0 {
-                    totalAmountText.textColor = UIColor(named: "greenAssets")
-                } else {
-                    totalAmountText.textColor = UIColor(named: "pinkAssets")
-                }
 
             } else {
                 fatalError("Unable to access AppDelegate.")
             }
         }
+    
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            
+            let records = coreDataController.fetchRecord()
+            var totalIncome: Int16 = 0
+            var totalExpenditure: Int16 = 0
+
+            for record in records {
+                if record.recRecordType == .income {
+                    totalIncome += record.recordAmount
+                } else if record.recRecordType == .expenditure {
+                    totalExpenditure += record.recordAmount
+                }
+            }
+
+            let totalAmount = totalIncome - totalExpenditure
+            totalAmountText.text = "\(totalAmount)"
+
+            let incomePercentages = coreDataController.calculatePercentages(for: .income)
+            let expenditurePercentages = coreDataController.calculatePercentages(for: .expenditure)
+
+            let highestIncomeCategoryPercentage = incomePercentages.max(by: {$0.value < $1.value})?.key
+            let highestExpenditureCategoryPercentage = expenditurePercentages.max(by: {$0.value < $1.value})?.key
+
+            highestCategoryInText.text = "Highest income category: \(highestIncomeCategoryPercentage ?? "None")"
+            highestCategoryExpenText.text = "Highest expenditure category: \(highestExpenditureCategoryPercentage ?? "None")"
+
+            if totalAmount >= 0 {
+                totalAmountText.textColor = UIColor(named: "greenAssets")
+            } else {
+                totalAmountText.textColor = UIColor(named: "pinkAssets")
+            }
+        }
+    
 }

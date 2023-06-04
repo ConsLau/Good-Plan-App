@@ -303,6 +303,31 @@ class RecordCoreDataController: NSObject, DatabaseProtocolRecord, NSFetchedResul
         return percentagePerCategory
     }
 
+    func calculateMonthlyIncomeAndExpenditure(forMonth month: Int, forYear year: Int) -> (income: Int16, expenditure: Int16) {
+        let records = fetchRecord()
+        
+        var totalIncome: Int16 = 0
+        var totalExpenditure: Int16 = 0
+
+        // Define Calendar component
+        let calendar = Calendar.current
+
+        for record in records {
+            let recordMonth = calendar.component(.month, from: record.recordDate!)
+            let recordYear = calendar.component(.year, from: record.recordDate!)
+
+            // Only consider records in the specified month and year
+            if recordMonth == month && recordYear == year {
+                if record.recRecordType == .income {
+                    totalIncome += record.recordAmount
+                } else if record.recRecordType == .expenditure {
+                    totalExpenditure += record.recordAmount
+                }
+            }
+        }
+        return (totalIncome, totalExpenditure)
+    }
+
     
 }
 

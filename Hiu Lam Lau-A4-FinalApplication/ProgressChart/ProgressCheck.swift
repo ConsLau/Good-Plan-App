@@ -22,9 +22,8 @@ struct TaskCategoryProgresses {
 
 struct ProgressCheck: View {
     
-    // task category
-    @State var taskCategoryProgress: [TaskCategoryProgresses] = []
     @ObservedObject var controller = TaskCategoriesController()
+    @State var taskCategoryProgress: [TaskCategoryProgresses] = []
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -41,19 +40,22 @@ struct ProgressCheck: View {
         .navigationBarHidden(false)
         .onAppear(perform: loadCategoryProgress)
         .onChange(of: controller.taskCategories, perform: { _ in
-                    loadCategoryProgress()
-                })
+            loadCategoryProgress()
+        })
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+            loadCategoryProgress()
+        }
     }
     
     func loadCategoryProgress() {
-            let categories = self.controller.taskCategories
-            self.taskCategoryProgress = categories.map { category in
-                let tasks = category.tasks?.allObjects as? [Task] ?? []
-                let completedTasks = tasks.filter { $0.isComplete != 1 }
-                let percentage = tasks.isEmpty ? 0 : Float(completedTasks.count) / Float(tasks.count)
-                return TaskCategoryProgresses(category: category, progress: percentage)
-            }
+        let categories = self.controller.taskCategories
+        self.taskCategoryProgress = categories.map { category in
+            let tasks = category.tasks?.allObjects as? [Task] ?? []
+            let completedTasks = tasks.filter { $0.isComplete != 1 }
+            let percentage = tasks.isEmpty ? 0 : Float(completedTasks.count) / Float(tasks.count)
+            return TaskCategoryProgresses(category: category, progress: percentage)
         }
+    }
 }
 
 struct ProgressBar: View {
@@ -66,13 +68,12 @@ struct ProgressBar: View {
                 .opacity(0.3)
                 .foregroundColor(Color("BackgroundColour"))
             
-
             Circle()
                 .trim(from: 0.0, to: CGFloat(min(self.progress, 1.0)))
                 .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
                 .foregroundColor(Color("ButtonBackgroundColour"))
                 .rotationEffect(Angle(degrees: 270.0))
-
+            
             Text(String(format: "%.0f %%", min(self.progress, 1.0)*100.0))
                 .font(.largeTitle)
                 .bold()
@@ -111,13 +112,13 @@ class TaskCategoriesController: ObservableObject {
     }
 
     func fetchAllTaskCategories() {
-            let fetchRequest: NSFetchRequest<TaskCategory> = TaskCategory.fetchRequest()
-            do {
-                self.taskCategories = try self.persistentContainer.viewContext.fetch(fetchRequest)
-            } catch {
-                print("Fetching TaskCategories failed: \(error)")
-            }
+        let fetchRequest: NSFetchRequest<TaskCategory> = TaskCategory.fetchRequest()
+        do {
+            self.taskCategories = try self.persistentContainer.viewContext.fetch(fetchRequest)
+        } catch {
+            print("Fetching TaskCategories failed: \(error)")
         }
+    }
 
     func addTaskCategory(cateName: String) {
         let taskCategory = TaskCategory(context: persistentContainer.viewContext)
@@ -138,7 +139,6 @@ class TaskCategoriesController: ObservableObject {
         }
     }
 }
-
 
 struct ProgressCheck_Previews: PreviewProvider {
     static var previews: some View {
