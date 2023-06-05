@@ -11,12 +11,12 @@ import Firebase
 import FirebaseAuth
 
 class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsControllerDelegate {
-
+    
     // Variable
     var listeners = MulticastDelegate<DatabaseListener>()
     var persistentContainer: NSPersistentContainer
     var TaskFetchedResultsController: NSFetchedResultsController<Task>?
-//    var TaskFetchedResultsControllerUser: String = ""
+    //    var TaskFetchedResultsControllerUser: String = ""
     let DEFAULT_TASKCATE_NAME = "Default Task Category"
     var TaskCategoryFetchedResultsController: NSFetchedResultsController<Task>?
     
@@ -47,11 +47,11 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         if listener.listenerType == .task{
             listener.onTaskChange(change: .update, tasks: fetchTask())
         }
-
+        
         if listener.listenerType == .taskCategory || listener.listenerType == .all {
             listener.onTaskCategoryChange(change: .update, taskCategory: fetchTaskCateTask())
         }
-
+        
     }
     
     func removeListener(listener: DatabaseListener) {
@@ -59,51 +59,51 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     }
     
     func addTask(taskName: String, taskDesc: String, taskDate: Date, isComplete: isComplete, taskCategory: String) -> Task {
-            let task = NSEntityDescription.insertNewObject(forEntityName: "Task", into: persistentContainer.viewContext) as! Task
-            
-            task.taskName = taskName
-            task.taskDesc = taskDesc
-            task.taskDate = taskDate
-            task.taskIsComplete = isComplete
-       
-            assignCategoryToTask(task: task, taskCategory: taskCategory)
-            
-            return task
-        }
+        let task = NSEntityDescription.insertNewObject(forEntityName: "Task", into: persistentContainer.viewContext) as! Task
+        
+        task.taskName = taskName
+        task.taskDesc = taskDesc
+        task.taskDate = taskDate
+        task.taskIsComplete = isComplete
+        
+        assignCategoryToTask(task: task, taskCategory: taskCategory)
+        
+        return task
+    }
     
     func assignCategoryToTask(task: Task, taskCategory: String) {
-            let fetchRequest: NSFetchRequest<TaskCategory> = TaskCategory.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "cateName == %@", taskCategory)
-            
-            do {
-                let matchingCategories = try persistentContainer.viewContext.fetch(fetchRequest)
-                if let existingCategory = matchingCategories.first {
-                    task.category = existingCategory
-                } else {
-                    let newCategory = NSEntityDescription.insertNewObject(forEntityName: "TaskCategory", into: persistentContainer.viewContext) as! TaskCategory
-                    newCategory.cateName = taskCategory
-                    task.category = newCategory
-                }
-            } catch {
-                print("Failed to fetch or create TaskCategory: \(error)")
+        let fetchRequest: NSFetchRequest<TaskCategory> = TaskCategory.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "cateName == %@", taskCategory)
+        
+        do {
+            let matchingCategories = try persistentContainer.viewContext.fetch(fetchRequest)
+            if let existingCategory = matchingCategories.first {
+                task.category = existingCategory
+            } else {
+                let newCategory = NSEntityDescription.insertNewObject(forEntityName: "TaskCategory", into: persistentContainer.viewContext) as! TaskCategory
+                newCategory.cateName = taskCategory
+                task.category = newCategory
             }
+        } catch {
+            print("Failed to fetch or create TaskCategory: \(error)")
         }
+    }
     
     func fetchTasksAndNotifyListeners() {
-            do {
-                try TaskFetchedResultsController?.performFetch()
-                let tasks = TaskFetchedResultsController?.fetchedObjects ?? []
-
-                listeners.invoke { (listener) in
-                    if listener.listenerType == .task {
-                        listener.onTaskChange(change: .update, tasks: tasks)
-                    }
+        do {
+            try TaskFetchedResultsController?.performFetch()
+            let tasks = TaskFetchedResultsController?.fetchedObjects ?? []
+            
+            listeners.invoke { (listener) in
+                if listener.listenerType == .task {
+                    listener.onTaskChange(change: .update, tasks: tasks)
                 }
-            } catch {
-                print("Fetch Request Failed: \(error)")
             }
+        } catch {
+            print("Fetch Request Failed: \(error)")
         }
-
+    }
+    
     
     func deleteTask(task: Task) {
         persistentContainer.viewContext.delete(task)
@@ -142,7 +142,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     
     func addTaskCategory(cateName: String) -> TaskCategory {
         let taskCate = NSEntityDescription.insertNewObject(forEntityName:
-        "TaskCategory", into: persistentContainer.viewContext) as! TaskCategory
+                                                            "TaskCategory", into: persistentContainer.viewContext) as! TaskCategory
         taskCate.cateName = cateName
         return taskCate
     }
@@ -150,13 +150,13 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     func updateTaskCategory(taskCategory: TaskCategory, newName: String) {
         let context = persistentContainer.viewContext
         taskCategory.cateName = newName
-
+        
         do {
             try context.save()
         } catch {
             print("Failed to update task category: \(error)")
         }
-
+        
         NotificationCenter.default.post(name: .taskCategoriesDidChange, object: nil)
     }
     
@@ -164,20 +164,20 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         persistentContainer.viewContext.delete(cateName)
     }
     
-//    func addTaskToTaskCate(task: Task, taskCate: TaskCategory) -> Bool {
-//
-//    }
-
+    //    func addTaskToTaskCate(task: Task, taskCate: TaskCategory) -> Bool {
+    //
+    //    }
+    
     func removeTaskFromTaskCate(task: Task, taskCate: TaskCategory) {
         taskCate.removeFromTasks(task)
     }
-
+    
     
     // Other functions e.g. fetching function
     func fetchTask() -> [Task] {
         let request: NSFetchRequest<Task> = Task.fetchRequest()
         
-
+        
         
         
         
@@ -197,19 +197,19 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         }
         
         
-//                do {
-//                    try TaskFetchedResultsController?.performFetch()
-//                } catch {
-//                    print("Fetch Request Failed: \(error)")
-//                }
-//                if let task = TaskFetchedResultsController?.fetchedObjects {
-//                    return task
-//                }
+        //                do {
+        //                    try TaskFetchedResultsController?.performFetch()
+        //                } catch {
+        //                    print("Fetch Request Failed: \(error)")
+        //                }
+        //                if let task = TaskFetchedResultsController?.fetchedObjects {
+        //                    return task
+        //                }
         
         do {
             try TaskFetchedResultsController?.performFetch()
             let tasks = TaskFetchedResultsController?.fetchedObjects ?? []
-
+            
             return tasks
         } catch {
             print("Fetch Request Failed: \(error)")
@@ -267,17 +267,17 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     func completionPercentage(for tasks: [Task]) -> Float {
         let completedTasks = tasks.filter { $0.taskIsComplete == .complete }.count
         let totalTasks = tasks.count
-
+        
         guard totalTasks > 0 else {
             return 0.0
         }
-
+        
         return Float(completedTasks) / Float(totalTasks)
     }
     
     // For bar chart
     func fetchCompletedTasksPerMonth() -> [Int] {
-
+        
         
         // Fetch all tasks for the current user
         let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
@@ -330,8 +330,8 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
             fetchRequest.predicate = predicate
             TaskCategoryFetchedResultsController =
             NSFetchedResultsController<Task>(fetchRequest: fetchRequest,
-                                                  managedObjectContext: persistentContainer.viewContext,
-                                                  sectionNameKeyPath: nil, cacheName: nil)
+                                             managedObjectContext: persistentContainer.viewContext,
+                                             sectionNameKeyPath: nil, cacheName: nil)
             TaskCategoryFetchedResultsController?.delegate = self
             do {
                 try TaskCategoryFetchedResultsController?.performFetch()
@@ -366,6 +366,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         return 0
     }
     
+    // progress chart
     func fetchAllTaskCategories() -> [TaskCategory] {
         var categories: [TaskCategory] = []
         let fetchRequest: NSFetchRequest<TaskCategory> = TaskCategory.fetchRequest()
@@ -376,17 +377,41 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         }
         return categories
     }
-  
+    
+    func calculateCompletionPercentageForCategory(_ category: TaskCategory) -> Double {
+        // Fetch all tasks in the given category
+        let tasksFetchRequest: NSFetchRequest<Task> = CoreDataController.fetchRequestForTasks(in: category)
+        
+        do {
+            // Get the tasks in the given category
+            let tasks = try self.persistentContainer.viewContext.fetch(tasksFetchRequest)
+            
+            // Calculate the completion percentage for the tasks in the given category
+            let completedTasks = tasks.filter { $0.isComplete == 0 }.count
+            let totalTasks = tasks.count
+            
+            guard totalTasks > 0 else {
+                return 0.0
+            }
+            
+            return Double(completedTasks) / Double(totalTasks)
+        } catch {
+            print("Fetching tasks failed: \(error)")
+            return 0.0
+        }
+    }
+    
 }
 
 extension CoreDataController {
     static func fetchRequestForTasks(in category: TaskCategory) -> NSFetchRequest<Task> {
         let request: NSFetchRequest<Task> = Task.fetchRequest()
         request.predicate = NSPredicate(format: "ANY category.cateName == %@", category.cateName ?? "")
-        request.sortDescriptors = [NSSortDescriptor(key: "dateCreated", ascending: false)]
+        request.sortDescriptors = [NSSortDescriptor(key: "taskDate", ascending: false)]
         return request
     }
 }
+
 
 extension Notification.Name {
     static let taskCategoryAdded = Notification.Name("TaskCategoryAdded")

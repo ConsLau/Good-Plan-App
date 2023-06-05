@@ -85,6 +85,8 @@ class homePageViewController: UIViewController, UIImagePickerControllerDelegate,
         
         // Notify the child view controller it has been moved to the parent.
         hostingController.didMove(toParent: self)
+        
+        self.navigationController?.isNavigationBarHidden = false
     }
 
 

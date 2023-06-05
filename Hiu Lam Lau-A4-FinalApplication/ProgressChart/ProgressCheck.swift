@@ -20,43 +20,46 @@ struct TaskCategoryProgresses {
     var progress: Float
 }
 
+extension TaskCategory {
+    @NSManaged public var progress: Float
+}
+
 struct ProgressCheck: View {
     
     @ObservedObject var controller = TaskCategoriesController()
-    @State var taskCategoryProgress: [TaskCategoryProgresses] = []
+    @State var taskCategoryProgress: [TaskCategory] = []
+    @State var taskCategoryProgressValues: [TaskCategory : Float] = [:]
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack {
-                ForEach(taskCategoryProgress.indices, id: \.self) { index in
-                    Text("Category: " + (self.taskCategoryProgress[index].category.cateName ?? "No Category"))
-                    ProgressBar(progress: self.$taskCategoryProgress[index].progress)
-                        .frame(width: 150, height: 150)
-                        .padding(30)
-                }
+                ForEach(taskCategoryProgress, id: \.self) { category in
+                                    let progress = self.taskCategoryProgressValues[category] ?? 0
+                                    Text("Category: " + (category.cateName ?? "No Category"))
+                                    ProgressBar(progress: .constant(progress))
+                                        .frame(width: 150, height: 150)
+                                        .padding(30)
+                                }
             }
         }
         .navigationBarTitle("Progress Checking")
         .navigationBarHidden(false)
-        .onAppear(perform: loadCategoryProgress)
-        .onChange(of: controller.taskCategories, perform: { _ in
-            loadCategoryProgress()
-        })
-        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
-            loadCategoryProgress()
+        .onAppear{
+            
+            let categories = CoreDataController().fetchAllTaskCategories()
+            self.taskCategoryProgress = categories
+            
+            for category in categories {
+                let completionPercentage = CoreDataController().calculateCompletionPercentageForCategory(category)
+                self.taskCategoryProgressValues[category] = Float(completionPercentage)
+            }
         }
+        
     }
     
-    func loadCategoryProgress() {
-        let categories = self.controller.taskCategories
-        self.taskCategoryProgress = categories.map { category in
-            let tasks = category.tasks?.allObjects as? [Task] ?? []
-            let completedTasks = tasks.filter { $0.isComplete != 1 }
-            let percentage = tasks.isEmpty ? 0 : Float(completedTasks.count) / Float(tasks.count)
-            return TaskCategoryProgresses(category: category, progress: percentage)
-        }
-    }
+
 }
+
 
 struct ProgressBar: View {
     @Binding var progress: Float
@@ -83,6 +86,7 @@ struct ProgressBar: View {
 
 class TaskCategoriesController: ObservableObject {
     @Published var taskCategories: [TaskCategory] = []
+    var coreDataController = CoreDataController()
 
     let persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "ToDoListModel")
@@ -95,7 +99,7 @@ class TaskCategoriesController: ObservableObject {
     }()
 
     init() {
-        fetchAllTaskCategories()
+        self.taskCategories = coreDataController.fetchAllTaskCategories()
 
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(taskCategoriesDidChange(_:)),
@@ -108,7 +112,7 @@ class TaskCategoriesController: ObservableObject {
     }
 
     @objc private func taskCategoriesDidChange(_ notification: Notification) {
-        fetchAllTaskCategories()
+        self.taskCategories = coreDataController.fetchAllTaskCategories()
     }
 
     func fetchAllTaskCategories() {
