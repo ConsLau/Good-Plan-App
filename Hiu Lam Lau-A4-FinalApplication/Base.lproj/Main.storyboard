@@ -815,7 +815,7 @@
         <scene sceneID="YhG-BZ-RrA">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jrb-qe-7M1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Finances" image="dollarsign" catalog="system" id="9bx-sr-OIq"/>
+                    <tabBarItem key="tabBarItem" title="Finances" image="dollarsign.circle" catalog="system" id="9bx-sr-OIq"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="op6-A2-xzf">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -1133,7 +1133,7 @@
         <image name="arrowshape.right.fill" catalog="system" width="128" height="104"/>
         <image name="calendar.badge.plus" catalog="system" width="128" height="108"/>
         <image name="chart.bar.xaxis" catalog="system" width="128" height="99"/>
-        <image name="dollarsign" catalog="system" width="89" height="128"/>
+        <image name="dollarsign.circle" catalog="system" width="128" height="123"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="note.text.badge.plus" catalog="system" width="128" height="108"/>
         <image name="plus" width="128" height="128"/>

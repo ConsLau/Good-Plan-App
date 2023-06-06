@@ -88,13 +88,34 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         setMonthView()
     }
     
-    func setCellView(){
-        let width = (collectionView.frame.size.width - 2)/8
-        let height = (collectionView.frame.size.width - 2)/7
-        
-        let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        flowLayout.itemSize = CGSize(width: width, height: height)
+//    func setCellView(){
+//        let width = (collectionView.frame.size.width - 2)/8
+//        let height = (collectionView.frame.size.width - 2)/7
+//
+//        let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+//        flowLayout.itemSize = CGSize(width: width, height: height)
+//    }
+    
+    // responsive ui
+    func setCellView() {
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
+        layout.itemSize = CGSize(width: (collectionView.frame.width - layout.sectionInset.left - layout.sectionInset.right)/7, height: collectionView.frame.height/6)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        collectionView!.collectionViewLayout = layout
     }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+
+        coordinator.animate(alongsideTransition: { _ in
+            self.setCellView()
+            self.collectionView.reloadData()
+        }, completion: nil)
+    }
+
+
     
     func setMonthView(){
         totalSquares.removeAll()
@@ -129,6 +150,11 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         let dayStr = totalSquares[indexPath.item]
         cell.dateOfMonth.text = dayStr
+        
+        // responsive UI
+        // Set the cell's label font to support dynamic type text
+        cell.dateOfMonth.font = UIFont.preferredFont(forTextStyle: .body)
+        cell.dateOfMonth.adjustsFontForContentSizeCategory = true
         
         // Reset the cell's background color
         cell.backgroundColor = .systemBackground
