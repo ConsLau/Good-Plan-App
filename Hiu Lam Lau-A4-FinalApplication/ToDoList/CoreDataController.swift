@@ -67,7 +67,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         task.taskIsComplete = isComplete
         
         assignCategoryToTask(task: task, taskCategory: taskCategory)
-        
+        cleanup()
         return task
     }
     
@@ -144,6 +144,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         let taskCate = NSEntityDescription.insertNewObject(forEntityName:
                                                             "TaskCategory", into: persistentContainer.viewContext) as! TaskCategory
         taskCate.cateName = cateName
+        cleanup()
         return taskCate
     }
     
@@ -164,9 +165,6 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         persistentContainer.viewContext.delete(cateName)
     }
     
-    //    func addTaskToTaskCate(task: Task, taskCate: TaskCategory) -> Bool {
-    //
-    //    }
     
     func removeTaskFromTaskCate(task: Task, taskCate: TaskCategory) {
         taskCate.removeFromTasks(task)
