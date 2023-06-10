@@ -42,6 +42,15 @@ class CreateBlogViewController: UIViewController, UIImagePickerControllerDelegat
 
         view.addGestureRecognizer(tap)
 
+        // TextField boarder
+        titleInput.layer.borderWidth = 1.0
+        titleInput.layer.borderColor = UIColor.lightGray.cgColor
+        titleInput.layer.cornerRadius = 5.0
+        
+        // TextView boarder
+        contentInput.layer.borderWidth = 1.0
+        contentInput.layer.borderColor = UIColor.lightGray.cgColor
+        contentInput.layer.cornerRadius = 5.0
     }
     
     //Calls this function when the tap is recognized.
@@ -99,7 +108,7 @@ class CreateBlogViewController: UIViewController, UIImagePickerControllerDelegat
               let blogContent = contentInput.text, !blogContent.isEmpty,
               let blogImage = imageView.image
         else {
-            print("Missing blog details")
+            displayMessage(message: "Please fill in all fields.")
             
 
                 return
@@ -128,7 +137,8 @@ class CreateBlogViewController: UIViewController, UIImagePickerControllerDelegat
                 print("Add successfully")
                 print(blogImage)
                 
-                navigationController?.popViewController(animated: true)
+//                navigationController?.popViewController(animated: true)
+                dismiss(animated: true, completion: nil)
             }
         }
 
@@ -188,6 +198,12 @@ class CreateBlogViewController: UIViewController, UIImagePickerControllerDelegat
             let destinationVC = segue.destination as! AllImageCollectionViewController
             destinationVC.imageSelectionDelegate = self
         }
+    }
+    
+    func displayMessage(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 
 }

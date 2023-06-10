@@ -35,6 +35,21 @@ class CreateRecordViewController: UIViewController, UIImagePickerControllerDeleg
         view.addGestureRecognizer(tap)
         
         self.navigationController?.navigationController?.isNavigationBarHidden = false
+        
+        // TextField boarder
+        recordName.layer.borderWidth = 1.0
+        recordName.layer.borderColor = UIColor.lightGray.cgColor
+        recordName.layer.cornerRadius = 5.0
+        
+        // TextField boarder
+        recordAmount.layer.borderWidth = 1.0
+        recordAmount.layer.borderColor = UIColor.lightGray.cgColor
+        recordAmount.layer.cornerRadius = 5.0
+        
+        // TextField boarder
+        recordCategory.layer.borderWidth = 1.0
+        recordCategory.layer.borderColor = UIColor.lightGray.cgColor
+        recordCategory.layer.cornerRadius = 5.0
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,14 +104,14 @@ class CreateRecordViewController: UIViewController, UIImagePickerControllerDeleg
     
     @IBAction func confirmBtn(_ sender: Any) {
         guard let recordName = recordName.text, !recordName.isEmpty,
-                  let recordAmount = recordAmount.text, !recordAmount.isEmpty,
-                  let recordDate = selectedDate,
-                  let recordCategoryName = recordCategory.text, !recordCategoryName.isEmpty,
-                  let recordImage = recordImage.image
-            else {
-//                showAlert(title: "Error", message: "All fields must be filled.")
-                return
-            }
+              let recordAmount = recordAmount.text, !recordAmount.isEmpty,
+              let recordDate = selectedDate,
+              let recordCategoryName = recordCategory.text, !recordCategoryName.isEmpty,
+              let recordImage = recordImage.image
+        else {
+            displayMessage(message: "Please fill in all fields.")
+            return
+        }
 
             guard let recordAmountInt16 = Int16(recordAmount) else {
 //                showAlert(title: "Error", message: "Invalid amount. Please enter a valid number.")
@@ -126,7 +141,8 @@ class CreateRecordViewController: UIViewController, UIImagePickerControllerDeleg
                 let _ = recordDatabaseController?.addRecord(recordName: recordName, recordAmount: recordAmountInt16, recordType: recordType,recordDate: recordDate, recordImage: fileURL.absoluteString, categoryName: recordCategoryName)
                 
                 print("record added")
-                navigationController?.popViewController(animated: true)
+//                navigationController?.popViewController(animated: true)
+                dismiss(animated: true, completion: nil)
             }
     }
         
@@ -184,15 +200,12 @@ class CreateRecordViewController: UIViewController, UIImagePickerControllerDeleg
         formatter.dateFormat = "d MMM y HH:mm"
         return formatter.string(from: date)
     }
-        /*
-         // MARK: - Navigation
-         
-         // In a storyboard-based application, you will often want to do a little preparation before navigation
-         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         // Get the new view controller using segue.destination.
-         // Pass the selected object to the new view controller.
-         }
-         */
+    
+    func displayMessage(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
         
 
 }

@@ -49,6 +49,21 @@ class CreateTaskViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
 
         view.addGestureRecognizer(tap)
+        
+        // TextField boarder
+        nameTextField.layer.borderWidth = 1.0
+        nameTextField.layer.borderColor = UIColor.lightGray.cgColor
+        nameTextField.layer.cornerRadius = 5.0
+        
+        // TextField boarder
+        descTextField.layer.borderWidth = 1.0
+        descTextField.layer.borderColor = UIColor.lightGray.cgColor
+        descTextField.layer.cornerRadius = 5.0
+        
+        // TextField boarder
+        categoryTextField.layer.borderWidth = 1.0
+        categoryTextField.layer.borderColor = UIColor.lightGray.cgColor
+        categoryTextField.layer.cornerRadius = 5.0
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,14 +84,14 @@ class CreateTaskViewController: UIViewController {
     }
     
     @IBAction func confirmBtn(_ sender: Any) {
-        guard let taskName = nameTextField.text,
-              let taskDesc = descTextField.text,
+        guard let taskName = nameTextField.text, !taskName.isEmpty,
+              let taskDesc = descTextField.text, !taskDesc.isEmpty,
               let taskDate = selectedDate,
-              let taskCategory = categoryTextField.text
-                else {
-                    print("error")
-                    return
-                }
+              let taskCategory = categoryTextField.text, !taskCategory.isEmpty
+        else {
+            displayMessage(message: "Please fill in all fields.")
+            return
+        }
                 
         let isCompleteStatus = isComplete(rawValue: Int32(isCompleteSegmentedControl.selectedSegmentIndex)) ?? .inComplete
 
@@ -86,7 +101,8 @@ class CreateTaskViewController: UIViewController {
                 print("task added")
 
                 
-                navigationController?.popViewController(animated: true)
+//                navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
         
         
         // local notification
@@ -145,5 +161,10 @@ class CreateTaskViewController: UIViewController {
         return formatter.string(from: date)
     }
     
+    func displayMessage(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 
 }
