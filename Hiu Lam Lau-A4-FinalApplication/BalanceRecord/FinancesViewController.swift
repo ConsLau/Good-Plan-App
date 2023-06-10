@@ -15,6 +15,11 @@ class FinancesViewController: UIViewController{
     @IBOutlet weak var statusImage: UIImageView!
     var coreDataController: RecordCoreDataController!
     
+    //animation
+    var displayLink: CADisplayLink?
+    var currentAmount: Int = 0
+    var totalAmount: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

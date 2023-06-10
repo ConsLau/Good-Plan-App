@@ -29,6 +29,8 @@ struct ProgressCheck: View {
     @ObservedObject var controller = TaskCategoriesController()
     @State var taskCategoryProgress: [TaskCategory] = []
     @State var taskCategoryProgressValues: [TaskCategory : Float] = [:]
+    //anaimation
+    @State var animateProgress: Bool = false
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -45,13 +47,21 @@ struct ProgressCheck: View {
         .navigationBarTitle("Progress Checking")
         .navigationBarHidden(false)
         .onAppear{
-            
-            let categories = CoreDataController().fetchAllTaskCategories()
-            self.taskCategoryProgress = categories
-            
-            for category in categories {
-                let completionPercentage = CoreDataController().calculateCompletionPercentageForCategory(category)
-                self.taskCategoryProgressValues[category] = Float(completionPercentage)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                let categories = CoreDataController().fetchAllTaskCategories()
+                self.taskCategoryProgress = categories
+                
+                for category in categories {
+                    let completionPercentage = CoreDataController().calculateCompletionPercentageForCategory(category)
+                    withAnimation(.easeInOut(duration: 1.0)) {
+                        self.taskCategoryProgressValues[category] = Float(completionPercentage)
+                    }
+                }
+            }
+        }
+        .onDisappear {
+            for category in taskCategoryProgress {
+                self.taskCategoryProgressValues[category] = 0
             }
         }
         

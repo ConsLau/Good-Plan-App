@@ -100,11 +100,22 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     func setCellView() {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
-        layout.itemSize = CGSize(width: (collectionView.frame.width - layout.sectionInset.left - layout.sectionInset.right)/7, height: collectionView.frame.height/6)
+        
+        // Calculate the width and height of the cells to fit the screen size
+        let width = (self.view.frame.size.width - layout.sectionInset.left - layout.sectionInset.right) / 7
+        let height = width // to make the cells square
+        
+        layout.itemSize = CGSize(width: width, height: height)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
         collectionView!.collectionViewLayout = layout
     }
+
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        setCellView()
+    }
+
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
