@@ -49,7 +49,7 @@ class FinancesViewController: UIViewController{
             }
         }
         
-        let totalAmount = totalIncome - totalExpenditure
+        totalAmount = Int(totalIncome) - Int(totalExpenditure)
         totalAmountText.text = "\(totalAmount)"
         
         let incomePercentages = coreDataController.calculatePercentages(for: .income)
@@ -66,6 +66,38 @@ class FinancesViewController: UIViewController{
         } else {
             totalAmountText.textColor = UIColor(named: "pinkAssets")
         }
+        
+        // Reset the current amount for animation
+        currentAmount = 0
+        
+        //animation
+        startUpdatingAmount()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Invalidate the display link to stop updates
+        displayLink?.invalidate()
+        displayLink = nil
+    }
+
+    
+    func startUpdatingAmount() {
+        displayLink = CADisplayLink(target: self, selector: #selector(updateAmount))
+        displayLink?.add(to: .current, forMode: .default)
+    }
+    
+    @objc func updateAmount() {
+        if currentAmount < totalAmount {
+            currentAmount += 1
+        } else if currentAmount > totalAmount {
+            currentAmount -= 1
+        } else {
+            displayLink?.invalidate()
+            displayLink = nil
+        }
+        totalAmountText.text = "\(currentAmount)"
     }
     
 }

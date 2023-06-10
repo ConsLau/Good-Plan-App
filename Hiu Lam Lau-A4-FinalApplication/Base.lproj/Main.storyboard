@@ -1078,7 +1078,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="rLY-Oz-S6c">
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="rLY-Oz-S6c">
                                         <rect key="frame" x="0.0" y="475.33333333333337" width="353" height="50"/>
                                         <connections>
                                             <action selector="datePicker:" destination="mbs-60-Rsq" eventType="valueChanged" id="PEa-xm-YOX"/>
