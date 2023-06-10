@@ -172,12 +172,12 @@ class RecordCoreDataController: NSObject, DatabaseProtocolRecord, NSFetchedResul
     
     func fetchRecord() -> [Record]{
         let request: NSFetchRequest<Record> = Record.fetchRequest()
-        
+
         let nameSortDescriptor = NSSortDescriptor(key: "recordName", ascending: true)
         request.sortDescriptors = [nameSortDescriptor]
-        
+
         if RecordFetchedResultsController == nil {
-            
+
             RecordFetchedResultsController =
             NSFetchedResultsController<Record>(fetchRequest: request,
                                              managedObjectContext: persistentContainer.viewContext,
@@ -186,17 +186,19 @@ class RecordCoreDataController: NSObject, DatabaseProtocolRecord, NSFetchedResul
             RecordFetchedResultsController?.delegate = self
         }
 
-            
+
             do {
                 try RecordFetchedResultsController?.performFetch()
                 let records = RecordFetchedResultsController?.fetchedObjects ?? []
-                
+
                 return records
             } catch {
                 print("Fetch Request Failed: \(error)")
             }
             return [Record]()
     }
+    
+
     
     lazy var defaultRecordCate: RecordCategory = {
         var recordCate = [RecordCategory]()

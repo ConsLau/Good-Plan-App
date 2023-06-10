@@ -18,6 +18,9 @@ struct homePageProgressCheck: View {
     // bar
     @State var monthlyTasks: [Int] = []
     
+    //anaimation
+    @State var animateProgress: Bool = false
+    
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             ZStack {
@@ -31,6 +34,7 @@ struct homePageProgressCheck: View {
                         Text("Daily task ")
                         ZStack {
                             ProgressBar(progress: self.$dailyProgressValue)
+                                .animation(.easeInOut(duration: 1), value: dailyProgressValue)
                         }
                         .frame(width: 130, height: 130)
                     }.padding(.leading, 30)
@@ -39,6 +43,7 @@ struct homePageProgressCheck: View {
                         Text("Weekly task ")
                         ZStack {
                             ProgressBar(progress: self.$weeklyProgressValue)
+                                .animation(.easeInOut(duration: 1), value: weeklyProgressValue)
                         }
                         .frame(width: 130, height: 130)
                     }
@@ -47,6 +52,7 @@ struct homePageProgressCheck: View {
                         Text("Monthly task ")
                         ZStack {
                             ProgressBar(progress: self.$monthlyProgressValue)
+                                .animation(.easeInOut(duration: 1), value: monthlyProgressValue)
                         }
                         .frame(width: 130, height: 130)
                     }.padding(.trailing, 30)
@@ -55,13 +61,19 @@ struct homePageProgressCheck: View {
 
             }
             .onAppear {
-                let percentages = CoreDataController().calculateCompletionPercentageForTasks()
-                self.dailyProgressValue = percentages.daily
-                self.weeklyProgressValue = percentages.weekly
-                self.monthlyProgressValue = percentages.monthly
-                
-                //bar
-                self.monthlyTasks = CoreDataController().fetchCompletedTasksPerMonth()
+                // Start the animation after delay
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    let percentages = CoreDataController().calculateCompletionPercentageForTasks()
+                    self.dailyProgressValue = percentages.daily
+                    self.weeklyProgressValue = percentages.weekly
+                    self.monthlyProgressValue = percentages.monthly
+                }
+            }
+            .onDisappear {
+                // Reset the progress values when view is disappearing
+                self.dailyProgressValue = 0
+                self.weeklyProgressValue = 0
+                self.monthlyProgressValue = 0
             }
         }
     }

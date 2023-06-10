@@ -19,7 +19,6 @@
 		4B240EC12A2794C40046BED0 /* BalanceRecordModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B240EBF2A2794C40046BED0 /* BalanceRecordModel.xcdatamodeld */; };
 		4B240EC72A2799290046BED0 /* RecordCoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B240EC62A2799290046BED0 /* RecordCoreDataController.swift */; };
 		4B2683972A2822ED0098C066 /* CreateRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2683962A2822ED0098C066 /* CreateRecordViewController.swift */; };
-		4B2683992A2823590098C066 /* RecordDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2683982A2823590098C066 /* RecordDetailsViewController.swift */; };
 		4B33E71B29F78ADF00E1A8AB /* MultcastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33E71A29F78ADF00E1A8AB /* MultcastDelegate.swift */; };
 		4B33E71D29F7B16800E1A8AB /* AllTaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33E71C29F7B16800E1A8AB /* AllTaskTableViewController.swift */; };
 		4B3531122A17ECCB0010AA5A /* ProgressCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3531112A17ECCB0010AA5A /* ProgressCheck.swift */; };
@@ -79,7 +78,6 @@
 		4B240EC02A2794C40046BED0 /* BalanceRecordModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BalanceRecordModel.xcdatamodel; sourceTree = "<group>"; };
 		4B240EC62A2799290046BED0 /* RecordCoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCoreDataController.swift; sourceTree = "<group>"; };
 		4B2683962A2822ED0098C066 /* CreateRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecordViewController.swift; sourceTree = "<group>"; };
-		4B2683982A2823590098C066 /* RecordDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailsViewController.swift; sourceTree = "<group>"; };
 		4B33E71A29F78ADF00E1A8AB /* MultcastDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultcastDelegate.swift; sourceTree = "<group>"; };
 		4B33E71C29F7B16800E1A8AB /* AllTaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTaskTableViewController.swift; sourceTree = "<group>"; };
 		4B3531112A17ECCB0010AA5A /* ProgressCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCheck.swift; sourceTree = "<group>"; };
@@ -150,7 +148,6 @@
 				4B240EC62A2799290046BED0 /* RecordCoreDataController.swift */,
 				4BA611F62A27A43C003346F7 /* AllRecordTableViewController.swift */,
 				4B2683962A2822ED0098C066 /* CreateRecordViewController.swift */,
-				4B2683982A2823590098C066 /* RecordDetailsViewController.swift */,
 				4B0E2F262A28F8620045E626 /* FinancesViewController.swift */,
 				4B0E2F282A28FB9C0045E626 /* FinanceChart.swift */,
 			);
@@ -418,7 +415,6 @@
 				4B9FF3DD2A0CBCE700C3AF7D /* AllBlogViewController.swift in Sources */,
 				4B0E2F292A28FB9C0045E626 /* FinanceChart.swift in Sources */,
 				4B6E82B729DFF08900F95529 /* passwordResetViewController.swift in Sources */,
-				4B2683992A2823590098C066 /* RecordDetailsViewController.swift in Sources */,
 				4B0E2F242A28E6160045E626 /* Record+CoreDataClass.swift in Sources */,
 				4B33E71D29F7B16800E1A8AB /* AllTaskTableViewController.swift in Sources */,
 				4B6E82F529E43F8600F95529 /* homePageViewController.swift in Sources */,
@@ -523,7 +519,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -577,7 +573,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
