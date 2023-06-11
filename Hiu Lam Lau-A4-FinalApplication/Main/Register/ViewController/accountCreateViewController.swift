@@ -9,10 +9,6 @@
 // Reference 6: (Password Authentication) https://firebase.google.com/docs/auth/ios/password-aut
 
 import UIKit
-import FirebaseAuth
-import FirebaseFirestore
-import Firebase
-
 class accountCreateViewController: UIViewController {
     
     // UI elements

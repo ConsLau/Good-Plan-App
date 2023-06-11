@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import FirebaseAuth
 
 enum DatabaseChange {
     case add

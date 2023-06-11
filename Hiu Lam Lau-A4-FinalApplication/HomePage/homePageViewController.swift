@@ -9,12 +9,7 @@
 // Rference 3: (Swift: Upload Photos to Firebase Storage (and Download, Swift 5) - Xcode 11 - 2020) https://www.youtube.com/watch?v=TAF6cPZxmmI
 
 import UIKit
-import FirebaseAuth
-import FirebaseFirestoreSwift
-import Firebase
-import FirebaseFirestore
 import PhotosUI
-import FirebaseStorage
 import SwiftUI
 
 

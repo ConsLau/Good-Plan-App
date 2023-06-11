@@ -7,8 +7,6 @@
 
 import UIKit
 import CoreData
-import Firebase
-import FirebaseAuth
 
 class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsControllerDelegate {
     

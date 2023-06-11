@@ -7,8 +7,6 @@
 
 import UIKit
 import CoreData
-import Firebase
-import FirebaseAuth
 import AVFoundation
 
 protocol ImageSelectionDelegate: AnyObject {

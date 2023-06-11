@@ -8,8 +8,6 @@
 // Reference 2: (iOS Swift: Firebase 008 - Reset Password) https://www.youtube.com/watch?v=ScRSPEqxaNs
 
 import UIKit
-import FirebaseAuth
-import Firebase
 
 class passwordResetViewController: UIViewController {
     

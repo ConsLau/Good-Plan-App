@@ -11,8 +11,6 @@
 // Raference 6: (Close iOS Keyboard by touching anywhere using Swift) https://stackoverflow.com/questions/24126678/close-ios-keyboard-by-touching-anywhere-using-swift
 
 import UIKit
-import FirebaseAuth
-import Firebase
 
 class loginPageViewController: UIViewController {
 

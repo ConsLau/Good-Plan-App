@@ -4,11 +4,9 @@
 //
 //  Created by Cons Lau on 6/4/2023.
 //
-// Reference 1 Handling User Auth State Changes - Swift & Firebase Part 3: https://www.youtube.com/watch?v=n6eR9lJDiyY
 // Reference 2 Set Window’s Root View Controller in Swift: https://www.appsdeveloperblog.com/set-windows-root-view-controller-in-swift/
 
 import UIKit
-import Firebase
 import CoreData
 
 @main
@@ -18,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var blogDatabaseController: DatabaseProtocolBlog?
     var recordDatabaseController: DatabaseProtocolRecord?
     var window: UIWindow?
-    var authListener: AuthStateDidChangeListenerHandle?
+    
     //bar
 //    var persistentContainer: NSPersistentContainer!
     lazy var persistentContainer: NSPersistentContainer = {
@@ -34,7 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        FirebaseApp.configure()
         databaseController = CoreDataController()
         blogDatabaseController = BlogCoreDataController()
         recordDatabaseController = RecordCoreDataController()

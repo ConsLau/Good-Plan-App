@@ -9,7 +9,6 @@
 
 import UIKit
 import CoreData
-import FirebaseAuth
 
 var selectedDate = Date()
 var selectedMonth: String?
