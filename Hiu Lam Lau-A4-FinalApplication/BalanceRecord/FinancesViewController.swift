@@ -41,8 +41,25 @@ class FinancesViewController: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        //cal
+        // Get the current date and extract the year and month components
+        let date = Date()
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month], from: date)
+        // Calculate the start and end of the current month
+        guard let startOfCurrentMonth = calendar.date(from: components),
+              let endOfCurrentMonth = calendar.date(byAdding: DateComponents(month: 1, day: -1), to: startOfCurrentMonth)
+        else {
+            fatalError("Failed to calculate dates.")
+        }
+        
+        // Fetch records and filter to only include those within the current month
+        let records = coreDataController.fetchRecord().filter {
+            $0.recordDate ?? Date() >= startOfCurrentMonth &&
+            $0.recordDate ?? Date() <= endOfCurrentMonth
+        }
 
-        let records = coreDataController.fetchRecord()
         var totalIncome: Int16 = 0
         var totalExpenditure: Int16 = 0
         

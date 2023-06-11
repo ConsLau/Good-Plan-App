@@ -8,9 +8,7 @@
 import UIKit
 
 class AllRecordTableViewController: UITableViewController, DatabaseListener {
-    
-    
-    
+
     // variable
     var selectedDate: String?
     var selectedMonth: String?
@@ -81,7 +79,8 @@ class AllRecordTableViewController: UITableViewController, DatabaseListener {
             let sortedRecords = allRecord.sorted(by: { $0.recordDate ?? Date() > $1.recordDate ?? Date() }) // Sort the records by date in descending order
             let record = sortedRecords[indexPath.row]
             
-            content.text = record.recordName
+            let categoryName = record.categoryR?.cateNameR ?? "No Category"
+            content.text = "\(record.recordName ?? "No Record Name") - Category: \(categoryName)"
             content.secondaryText = "Amount: \(record.recordAmount) - \(formattedDate(from: record.recordDate!))"
 
             switch record.recRecordType {
@@ -121,41 +120,9 @@ class AllRecordTableViewController: UITableViewController, DatabaseListener {
             completion(true)
         }
         
-        // Details action
-//        let detailsAction = UIContextualAction(style: .normal, title: "Details") { (action, view, completion) in
-//            let record = self.filteredRecord[indexPath.row]
-//            self.showTaskDetails(record: record)
-//            completion(true)
-//        }
-//        detailsAction.backgroundColor = .darkGray
-//
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
     
-    // other functions
-    
-    
 
-    
-//    func showTaskDetails(record: Record) {
-//        let message = "Record Name: \(record.recordName ?? "")\nRecord Description: \(record.recordDesc ?? "")\nRecord Category: \(record.categoryR?.cateNameR ?? "")\nRecord Due Date: \(record.recordDate ?? Date())"
-//
-//        let alertController = UIAlertController(title: "Record Details", message: message, preferredStyle: .alert)
-//
-//        if let base64String = record.recordImage,
-//               let imageData = Data(base64Encoded: base64String),
-//               let image = UIImage(data: imageData) {
-//
-//                let imageView = UIImageView(frame: CGRect(x: 10, y: 70, width: 250, height: 150))
-//                imageView.image = image
-//                imageView.contentMode = .scaleAspectFit
-//                alertController.view.addSubview(imageView)
-//            }
-//
-//        let okAction = UIAlertAction(title: "OK", style: .default)
-//        alertController.addAction(okAction)
-//
-//        self.present(alertController, animated: true, completion: nil)
-//    }
 
 }
