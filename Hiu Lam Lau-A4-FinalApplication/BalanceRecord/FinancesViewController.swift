@@ -32,6 +32,11 @@ class FinancesViewController: UIViewController{
         } else {
             fatalError("Unable to access AppDelegate.")
         }
+        
+        //animation
+        totalAmountText.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        totalAmountText.addGestureRecognizer(tap)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -99,5 +104,12 @@ class FinancesViewController: UIViewController{
         }
         totalAmountText.text = "\(currentAmount)"
     }
+    
+    @objc func handleTap() {
+            displayLink?.isPaused = true
+            totalAmountText.text = "\(totalAmount)"
+        }
+    
+    
     
 }
