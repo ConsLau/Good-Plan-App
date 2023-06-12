@@ -65,17 +65,12 @@ class CreateBlogViewController: UIViewController, UIImagePickerControllerDelegat
         let actionSheet = UIAlertController(title: nil, message: "Select Option:",
                                             preferredStyle: .actionSheet)
         
-//        let cameraAction = UIAlertAction(title: "Camera", style: .default) { action in
-//            controller.sourceType = .camera
-//            self.present(controller, animated: true, completion: nil)
-//        }
-        
         let cameraAction = UIAlertAction(title: "Camera", style: .default) { action in
             if self.checkCameraAccess() {
                 controller.sourceType = .camera
                 self.present(controller, animated: true, completion: nil)
             } else {
-                // Here, you might want to display an alert to the user explaining that camera access is needed.
+
             }
         }
         
@@ -85,17 +80,12 @@ class CreateBlogViewController: UIViewController, UIImagePickerControllerDelegat
             self.present(controller, animated: true, completion: nil)
         }
         
-        let onlineAction = UIAlertAction(title: "Search online", style: .default) { action in
-            self.performSegue(withIdentifier: "searchImage", sender: nil)
-        }
-        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
         actionSheet.addAction(cameraAction)
         }
         actionSheet.addAction(libraryAction)
-        actionSheet.addAction(onlineAction)
         actionSheet.addAction(cancelAction)
         self.present(actionSheet, animated: true, completion: nil)
     }
@@ -191,12 +181,6 @@ class CreateBlogViewController: UIViewController, UIImagePickerControllerDelegat
         dismiss(animated: true, completion: nil)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "searchImage" {
-            let destinationVC = segue.destination as! AllImageCollectionViewController
-            destinationVC.imageSelectionDelegate = self
-        }
-    }
     
     func displayMessage(message: String) {
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)

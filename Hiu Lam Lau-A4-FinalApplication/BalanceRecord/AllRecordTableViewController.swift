@@ -80,8 +80,8 @@ class AllRecordTableViewController: UITableViewController, DatabaseListener {
             let record = sortedRecords[indexPath.row]
             
             let categoryName = record.categoryR?.cateNameR ?? "No Category"
-            content.text = "\(record.recordName ?? "No Record Name") - Category: \(categoryName)"
-            content.secondaryText = "Amount: \(record.recordAmount) - \(formattedDate(from: record.recordDate!))"
+            content.text = "\(record.recordName ?? "No Record Name")"
+            content.secondaryText = "Amount: \(record.recordAmount)  |  \(formattedDate(from: record.recordDate!))  |  Category: \(categoryName)"
 
             switch record.recRecordType {
             case .income:

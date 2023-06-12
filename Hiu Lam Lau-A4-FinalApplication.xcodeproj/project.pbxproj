@@ -27,8 +27,6 @@
 		4B3AAD6B2A03DFA30050AB8B /* Blog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3AAD692A03DFA30050AB8B /* Blog+CoreDataProperties.swift */; };
 		4B3AAD6F2A03F4570050AB8B /* BlogCoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3AAD6E2A03F4570050AB8B /* BlogCoreDataController.swift */; };
 		4B3AAD732A040C770050AB8B /* CreateBlogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3AAD722A040C770050AB8B /* CreateBlogViewController.swift */; };
-		4B3AAD772A04C5DF0050AB8B /* AllImageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3AAD762A04C5DF0050AB8B /* AllImageCollectionViewController.swift */; };
-		4B3AAD792A04CFB60050AB8B /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3AAD782A04CFB60050AB8B /* ImageCell.swift */; };
 		4B4725EF2A10D183000F0D61 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4725EE2A10D183000F0D61 /* Theme.swift */; };
 		4B4725F12A10D539000F0D61 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4725F02A10D539000F0D61 /* ThemeManager.swift */; };
 		4B57423029FBDB2300FCA6C7 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B57422F29FBDB2300FCA6C7 /* CalendarCell.swift */; };
@@ -76,8 +74,6 @@
 		4B3AAD692A03DFA30050AB8B /* Blog+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Blog+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4B3AAD6E2A03F4570050AB8B /* BlogCoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogCoreDataController.swift; sourceTree = "<group>"; };
 		4B3AAD722A040C770050AB8B /* CreateBlogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBlogViewController.swift; sourceTree = "<group>"; };
-		4B3AAD762A04C5DF0050AB8B /* AllImageCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllImageCollectionViewController.swift; sourceTree = "<group>"; };
-		4B3AAD782A04CFB60050AB8B /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		4B4725EE2A10D183000F0D61 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		4B4725F02A10D539000F0D61 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		4B57422F29FBDB2300FCA6C7 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
@@ -142,8 +138,6 @@
 				4B3AAD692A03DFA30050AB8B /* Blog+CoreDataProperties.swift */,
 				4B3AAD6E2A03F4570050AB8B /* BlogCoreDataController.swift */,
 				4B3AAD722A040C770050AB8B /* CreateBlogViewController.swift */,
-				4B3AAD762A04C5DF0050AB8B /* AllImageCollectionViewController.swift */,
-				4B3AAD782A04CFB60050AB8B /* ImageCell.swift */,
 				4BAB4D702A06688800FD5D45 /* BlogTableViewCell.swift */,
 				4B1B87DB2A0CA7C3006EA689 /* BlogDetailsViewController.swift */,
 				4B9FF3DC2A0CBCE700C3AF7D /* AllBlogViewController.swift */,
@@ -310,7 +304,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B3AAD772A04C5DF0050AB8B /* AllImageCollectionViewController.swift in Sources */,
 				4B3AAD732A040C770050AB8B /* CreateBlogViewController.swift in Sources */,
 				4B6E82A529DF06E100F95529 /* ViewController.swift in Sources */,
 				4B3AAD6A2A03DFA30050AB8B /* Blog+CoreDataClass.swift in Sources */,
@@ -330,7 +323,6 @@
 				4B6E82F529E43F8600F95529 /* homePageViewController.swift in Sources */,
 				4B62002F29F5866900605CAF /* DatabaseProtocol.swift in Sources */,
 				4B4725EF2A10D183000F0D61 /* Theme.swift in Sources */,
-				4B3AAD792A04CFB60050AB8B /* ImageCell.swift in Sources */,
 				4B2683972A2822ED0098C066 /* CreateRecordViewController.swift in Sources */,
 				4B6E82A129DF06E100F95529 /* AppDelegate.swift in Sources */,
 				4B3AAD672A03DA760050AB8B /* BlogModel.xcdatamodeld in Sources */,

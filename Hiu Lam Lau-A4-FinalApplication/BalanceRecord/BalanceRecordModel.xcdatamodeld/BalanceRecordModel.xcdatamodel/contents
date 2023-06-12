@@ -3,7 +3,6 @@
     <entity name="Record" representedClassName="Record" syncable="YES">
         <attribute name="recordAmount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="recordDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="recordImage" optional="YES" attributeType="String"/>
         <attribute name="recordName" optional="YES" attributeType="String"/>
         <attribute name="recordType" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="categoryR" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RecordCategory" inverseName="records" inverseEntity="RecordCategory"/>

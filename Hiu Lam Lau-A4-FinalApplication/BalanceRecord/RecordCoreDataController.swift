@@ -18,6 +18,8 @@ enum CalculationType: Int32 {
 
 
 class RecordCoreDataController: NSObject, DatabaseProtocolRecord, NSFetchedResultsControllerDelegate, ObservableObject{
+
+    
     
 
     // variables
@@ -104,7 +106,9 @@ class RecordCoreDataController: NSObject, DatabaseProtocolRecord, NSFetchedResul
 //        return record
 //    }
     
-    func addRecord(recordName: String, recordAmount: Int16, recordType: recordType, recordDate: Date, recordImage: String, categoryName: String) -> Record {
+
+    
+    func addRecord(recordName: String, recordAmount: Int16, recordType: recordType, recordDate: Date, categoryName: String) -> Record {
         let record = NSEntityDescription.insertNewObject(forEntityName: "Record", into: persistentContainer.viewContext) as! Record
 
         // Get or create the category
@@ -123,7 +127,7 @@ class RecordCoreDataController: NSObject, DatabaseProtocolRecord, NSFetchedResul
         record.recordAmount = recordAmount
         record.recRecordType = recordType
         record.recordDate = recordDate
-        record.recordImage = URL(string: recordImage)?.lastPathComponent
+//        record.recordImage = URL(string: recordImage)?.lastPathComponent
         record.categoryR = category  // Set the category
         
         cleanup()
