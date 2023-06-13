@@ -95,8 +95,8 @@ class homePageViewController: UIViewController, UIImagePickerControllerDelegate,
             let currentDate = Date()
             let calendar = Calendar.current
             let components = calendar.dateComponents([.year, .month], from: currentDate)
-            var incomeSum: Int16 = 0
-            var expenditureSum: Int16 = 0
+            var incomeSum: Float = 0.0
+            var expenditureSum: Float = 0.0
             
             // Get the income and expenditure for the current month
                 if let month = components.month, let year = components.year {
@@ -109,7 +109,7 @@ class homePageViewController: UIViewController, UIImagePickerControllerDelegate,
                 setupSegmentedControl(income: incomeSum, expenditure: expenditureSum)
         }
     
-    func setupSegmentedControl(income: Int16, expenditure: Int16) {
+    func setupSegmentedControl(income: Float, expenditure: Float) {
         segmentedControl.setTitle("Income: \(income)", forSegmentAt: 0)
         segmentedControl.setTitle("Expenditure: \(expenditure)", forSegmentAt: 1)
         

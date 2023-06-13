@@ -108,7 +108,7 @@ class RecordCoreDataController: NSObject, DatabaseProtocolRecord, NSFetchedResul
     
 
     
-    func addRecord(recordName: String, recordAmount: Int16, recordType: recordType, recordDate: Date, categoryName: String) -> Record {
+    func addRecord(recordName: String, recordAmount: Float, recordType: recordType, recordDate: Date, categoryName: String) -> Record {
         let record = NSEntityDescription.insertNewObject(forEntityName: "Record", into: persistentContainer.viewContext) as! Record
 
         // Get or create the category
@@ -269,8 +269,8 @@ class RecordCoreDataController: NSObject, DatabaseProtocolRecord, NSFetchedResul
         let records = fetchRecord() // Get all the records
         print("Fetched \(records.count) records")
 
-        var totalAmount: Int16 = 0 // Initialise total amount to 0
-        var amountPerCategory: [String: Int16] = [:] // Map to hold category and its corresponding amount
+        var totalAmount: Float = 0.0 // Initialise total amount to 0
+        var amountPerCategory: [String: Float] = [:] // Map to hold category and its corresponding amount
 
         // Calculate total amount and amount per category
         for record in records {
@@ -307,11 +307,11 @@ class RecordCoreDataController: NSObject, DatabaseProtocolRecord, NSFetchedResul
         return percentagePerCategory
     }
 
-    func calculateMonthlyIncomeAndExpenditure(forMonth month: Int, forYear year: Int) -> (income: Int16, expenditure: Int16) {
+    func calculateMonthlyIncomeAndExpenditure(forMonth month: Int, forYear year: Int) -> (income: Float, expenditure: Float) {
         let records = fetchRecord()
         
-        var totalIncome: Int16 = 0
-        var totalExpenditure: Int16 = 0
+        var totalIncome: Float = 0.0
+        var totalExpenditure: Float = 0.0
 
         // Define Calendar component
         let calendar = Calendar.current

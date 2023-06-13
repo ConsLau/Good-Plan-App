@@ -115,7 +115,7 @@ class CreateRecordViewController: UIViewController, UINavigationControllerDelega
             return
         }
 
-            guard let recordAmountInt16 = Int16(recordAmount) else {
+            guard let recordAmountFloat = Float(recordAmount) else {
 //                showAlert(title: "Error", message: "Invalid amount. Please enter a valid number.")
                 return
             }
@@ -140,7 +140,7 @@ class CreateRecordViewController: UIViewController, UINavigationControllerDelega
 //                    print(error)
 //                }
                 
-                let _ = recordDatabaseController?.addRecord(recordName: recordName, recordAmount: recordAmountInt16, recordType: recordType,recordDate: recordDate, categoryName: recordCategoryName)
+                let _ = recordDatabaseController?.addRecord(recordName: recordName, recordAmount: recordAmountFloat, recordType: recordType,recordDate: recordDate, categoryName: recordCategoryName)
                 
                 print("record added")
 //                navigationController?.popViewController(animated: true)

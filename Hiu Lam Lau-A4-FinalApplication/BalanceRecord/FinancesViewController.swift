@@ -17,8 +17,8 @@ class FinancesViewController: UIViewController{
     
     //animation
     var displayLink: CADisplayLink?
-    var currentAmount: Int = 0
-    var totalAmount: Int = 0
+    var currentAmount: Float = 0.0
+    var totalAmount: Float = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,8 +60,8 @@ class FinancesViewController: UIViewController{
             $0.recordDate ?? Date() <= endOfCurrentMonth
         }
 
-        var totalIncome: Int16 = 0
-        var totalExpenditure: Int16 = 0
+        var totalIncome: Float = 0.0
+        var totalExpenditure: Float = 0.0
         
         for record in records {
             if record.recRecordType == .income {
@@ -71,7 +71,7 @@ class FinancesViewController: UIViewController{
             }
         }
         
-        totalAmount = Int(totalIncome) - Int(totalExpenditure)
+        totalAmount = Float(totalIncome) - Float(totalExpenditure)
         totalAmountText.text = "\(totalAmount)"
         
         let incomePercentages = coreDataController.calculatePercentages(for: .income)

@@ -58,7 +58,7 @@ protocol DatabaseProtocolRecord: AnyObject{
     func cleanup()
     func addListener(listener: DatabaseListener)
     func removeListener(listener: DatabaseListener)
-    func addRecord(recordName: String, recordAmount:Int16, recordType: recordType, recordDate: Date, categoryName: String)-> Record
+    func addRecord(recordName: String, recordAmount:Float, recordType: recordType, recordDate: Date, categoryName: String)-> Record
     func deleteRecord(record: Record)
     func updateRecord(record: Record)
     
