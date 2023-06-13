@@ -112,19 +112,20 @@ class FinancesViewController: UIViewController{
     
     @objc func updateAmount() {
         if currentAmount < totalAmount {
-            currentAmount += 1
+            currentAmount += 0.01
         } else if currentAmount > totalAmount {
-            currentAmount -= 1
+            currentAmount -= 0.01
         } else {
             displayLink?.invalidate()
             displayLink = nil
         }
-        totalAmountText.text = "\(currentAmount)"
+        totalAmountText.text = String(format: "%.2f", currentAmount)
     }
+
     
     @objc func handleTap() {
             displayLink?.isPaused = true
-            totalAmountText.text = "\(totalAmount)"
+        totalAmountText.text = String(format: "%.2f", currentAmount)
         }
     
     
