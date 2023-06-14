@@ -21,6 +21,12 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
     var filteredTask: [Task] = []
     var listenerType = ListenerType.task
     weak var databaseController: DatabaseProtocol?
+    let SECTION_TASK = 0
+    let SECTION_INFO = 1
+    
+    let CELL_TASK = "TaskCell"
+    let CELL_INFO = "InfoCell"
+
     
 
     override func viewDidLoad() {
