@@ -369,7 +369,7 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today Task:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ft-f4-qS8">
                                 <rect key="frame" x="16" y="520.66666666666663" width="357" height="20.333333333333371"/>
-                                <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -983,7 +983,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Pr8-tg-Iqh">
-                                <rect key="frame" x="20" y="109" width="353" height="469"/>
+                                <rect key="frame" x="20" y="109" width="353" height="574"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNK-l7-km0">
                                         <rect key="frame" x="0.0" y="0.0" width="353" height="20.333333333333332"/>
@@ -992,59 +992,59 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalCompressionResistancePriority="754" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5ST-6n-7u9">
-                                        <rect key="frame" x="0.0" y="35.333333333333343" width="353" height="34"/>
+                                        <rect key="frame" x="0.0" y="35.333333333333343" width="353" height="139"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="flb-B5-K4H">
-                                        <rect key="frame" x="0.0" y="84.333333333333343" width="353" height="20.333333333333329"/>
+                                        <rect key="frame" x="0.0" y="189.33333333333331" width="353" height="20.333333333333343"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalCompressionResistancePriority="753" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="evx-sd-w5q">
-                                        <rect key="frame" x="0.0" y="119.66666666666666" width="353" height="34"/>
+                                        <rect key="frame" x="0.0" y="224.66666666666669" width="353" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="753" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3W-13-KfI">
-                                        <rect key="frame" x="0.0" y="168.66666666666669" width="353" height="20.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="273.66666666666669" width="353" height="20.333333333333314"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dte-9V-9MR">
-                                        <rect key="frame" x="0.0" y="204" width="353" height="32"/>
+                                        <rect key="frame" x="0.0" y="309" width="353" height="32"/>
                                         <segments>
                                             <segment title="Income"/>
                                             <segment title="Expenditure"/>
                                         </segments>
                                     </segmentedControl>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XlQ-s4-z3B">
-                                        <rect key="frame" x="0.0" y="250.00000000000003" width="353" height="20.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="355" width="353" height="20.333333333333314"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sUi-lI-ipI">
-                                        <rect key="frame" x="0.0" y="285.33333333333331" width="353" height="34"/>
+                                        <rect key="frame" x="0.0" y="390.33333333333331" width="353" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xwu-6h-IhG">
-                                        <rect key="frame" x="0.0" y="334.33333333333331" width="353" height="20.333333333333314"/>
+                                        <rect key="frame" x="0.0" y="439.33333333333337" width="353" height="20.333333333333314"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="rLY-Oz-S6c">
-                                        <rect key="frame" x="0.0" y="369.66666666666669" width="353" height="50"/>
+                                        <rect key="frame" x="0.0" y="474.66666666666663" width="353" height="50"/>
                                         <connections>
                                             <action selector="datePicker:" destination="mbs-60-Rsq" eventType="valueChanged" id="PEa-xm-YOX"/>
                                         </connections>
                                     </datePicker>
                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xMD-38-iwG">
-                                        <rect key="frame" x="0.0" y="434.66666666666663" width="353" height="34.333333333333314"/>
+                                        <rect key="frame" x="0.0" y="539.66666666666663" width="353" height="34.333333333333371"/>
                                         <color key="tintColor" systemColor="tintColor"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Confirm"/>
@@ -1059,7 +1059,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="7oh-YT-KGP" firstAttribute="trailing" secondItem="Pr8-tg-Iqh" secondAttribute="trailing" constant="20" id="99p-Sk-gVf"/>
-                            <constraint firstItem="7oh-YT-KGP" firstAttribute="bottom" secondItem="Pr8-tg-Iqh" secondAttribute="bottom" constant="205" id="KNs-7t-D2E"/>
+                            <constraint firstItem="7oh-YT-KGP" firstAttribute="bottom" secondItem="Pr8-tg-Iqh" secondAttribute="bottom" constant="100" id="SCy-iC-Rhw"/>
                             <constraint firstItem="Pr8-tg-Iqh" firstAttribute="leading" secondItem="7oh-YT-KGP" secondAttribute="leading" constant="20" id="Vz9-I9-0XI"/>
                             <constraint firstItem="Pr8-tg-Iqh" firstAttribute="top" secondItem="7oh-YT-KGP" secondAttribute="top" constant="50" id="nKb-vR-cyz"/>
                         </constraints>
