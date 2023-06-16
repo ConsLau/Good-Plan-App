@@ -12,7 +12,6 @@
 		4B0E2F242A28E6160045E626 /* Record+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0E2F222A28E6160045E626 /* Record+CoreDataClass.swift */; };
 		4B0E2F252A28E6160045E626 /* Record+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0E2F232A28E6160045E626 /* Record+CoreDataProperties.swift */; };
 		4B0E2F272A28F8620045E626 /* FinancesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0E2F262A28F8620045E626 /* FinancesViewController.swift */; };
-		4B0E2F292A28FB9C0045E626 /* FinanceChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0E2F282A28FB9C0045E626 /* FinanceChart.swift */; };
 		4B1B87DC2A0CA7C3006EA689 /* BlogDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1B87DB2A0CA7C3006EA689 /* BlogDetailsViewController.swift */; };
 		4B240EB12A2628420046BED0 /* RemainderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B240EB02A2628420046BED0 /* RemainderTableViewController.swift */; };
 		4B240EB32A264D950046BED0 /* homePageProgressCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B240EB22A264D950046BED0 /* homePageProgressCheck.swift */; };
@@ -59,7 +58,6 @@
 		4B0E2F222A28E6160045E626 /* Record+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Record+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		4B0E2F232A28E6160045E626 /* Record+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Record+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		4B0E2F262A28F8620045E626 /* FinancesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancesViewController.swift; sourceTree = "<group>"; };
-		4B0E2F282A28FB9C0045E626 /* FinanceChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceChart.swift; sourceTree = "<group>"; };
 		4B1B87DB2A0CA7C3006EA689 /* BlogDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogDetailsViewController.swift; sourceTree = "<group>"; };
 		4B240EB02A2628420046BED0 /* RemainderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainderTableViewController.swift; sourceTree = "<group>"; };
 		4B240EB22A264D950046BED0 /* homePageProgressCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homePageProgressCheck.swift; sourceTree = "<group>"; };
@@ -125,7 +123,6 @@
 				4BA611F62A27A43C003346F7 /* AllRecordTableViewController.swift */,
 				4B2683962A2822ED0098C066 /* CreateRecordViewController.swift */,
 				4B0E2F262A28F8620045E626 /* FinancesViewController.swift */,
-				4B0E2F282A28FB9C0045E626 /* FinanceChart.swift */,
 			);
 			path = BalanceRecord;
 			sourceTree = "<group>";
@@ -317,7 +314,6 @@
 				4B3AAD6B2A03DFA30050AB8B /* Blog+CoreDataProperties.swift in Sources */,
 				4BA611FA2A281D66003346F7 /* RecordCategory+CoreDataClass.swift in Sources */,
 				4B9FF3DD2A0CBCE700C3AF7D /* AllBlogViewController.swift in Sources */,
-				4B0E2F292A28FB9C0045E626 /* FinanceChart.swift in Sources */,
 				4B0E2F242A28E6160045E626 /* Record+CoreDataClass.swift in Sources */,
 				4B33E71D29F7B16800E1A8AB /* AllTaskTableViewController.swift in Sources */,
 				4B6E82F529E43F8600F95529 /* homePageViewController.swift in Sources */,

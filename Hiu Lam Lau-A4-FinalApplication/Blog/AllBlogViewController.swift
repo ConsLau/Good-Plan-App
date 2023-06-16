@@ -59,10 +59,20 @@ class AllBlogViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     
+//    func onBlogChange(change: DatabaseChange, blogs: [Blog]) {
+//        allBlogs = blogs
+//        blogTable.reloadData()
+//    }
+    
     func onBlogChange(change: DatabaseChange, blogs: [Blog]) {
-        allBlogs = blogs
+        allBlogs = blogs.sorted { (blog1, blog2) -> Bool in
+            guard let date1 = blog1.createDate, let date2 = blog2.createDate else { return false }
+            // This will sort in descending order. For ascending order, swap the positions of date1 and date2
+            return date1 > date2
+        }
         blogTable.reloadData()
     }
+
     
     func onRecordCategoryChange(change: DatabaseChange, recordCategory: [Record]) {
         
@@ -86,10 +96,6 @@ class AllBlogViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-//        guard let blogCell = tableView.dequeueReusableCell(withIdentifier: "BlogCell", for: indexPath) as? BlogTableViewCell else {
-//                fatalError("Unable to dequeue BlogCell")
-//            }
         
         let blogCell = tableView.dequeueReusableCell(withIdentifier: "BlogCell", for: indexPath) as! BlogTableViewCell
 
@@ -131,9 +137,7 @@ class AllBlogViewController: UIViewController, UITableViewDelegate, UITableViewD
         if editingStyle == .delete {
             // Delete the row from the data source
             let blog = allBlogs[indexPath.row]
-            
-            //allBlogs.remove(at: indexPath.row)
-            //tableView.deleteRows(at: [indexPath], with: .automatic)
+
             blogCoreDataController?.deleteTask(blog: blog)
         } else if editingStyle == .insert {
             

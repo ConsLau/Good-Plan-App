@@ -192,16 +192,6 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
             
         }
         
-        
-        //                do {
-        //                    try TaskFetchedResultsController?.performFetch()
-        //                } catch {
-        //                    print("Fetch Request Failed: \(error)")
-        //                }
-        //                if let task = TaskFetchedResultsController?.fetchedObjects {
-        //                    return task
-        //                }
-        
         do {
             try TaskFetchedResultsController?.performFetch()
             let tasks = TaskFetchedResultsController?.fetchedObjects ?? []
