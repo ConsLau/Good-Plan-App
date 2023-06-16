@@ -23,8 +23,8 @@ class homePageViewController: UIViewController, UIImagePickerControllerDelegate,
     
     var coreDataController: RecordCoreDataController!
     var records: [Record] = []
-    var incomeSum: Int16 = 0
-    var expenditureSum: Int16 = 0
+//    var incomeSum: Float = 0
+//    var expenditureSum: Float = 0
     
 
     override func viewDidLoad() {

@@ -60,8 +60,8 @@ class FinancesViewController: UIViewController{
             $0.recordDate ?? Date() <= endOfCurrentMonth
         }
 
-        var totalIncome: Float = 0.0
-        var totalExpenditure: Float = 0.0
+        var totalIncome: Float = 0
+        var totalExpenditure: Float = 0
         
         for record in records {
             if record.recRecordType == .income {
@@ -111,10 +111,11 @@ class FinancesViewController: UIViewController{
     }
     
     @objc func updateAmount() {
+        let incrementStep = abs(totalAmount) / 1000.0
         if currentAmount < totalAmount {
-            currentAmount += 0.01
+            currentAmount += incrementStep
         } else if currentAmount > totalAmount {
-            currentAmount -= 0.01
+            currentAmount -= incrementStep
         } else {
             displayLink?.invalidate()
             displayLink = nil
@@ -122,11 +123,12 @@ class FinancesViewController: UIViewController{
         totalAmountText.text = String(format: "%.2f", currentAmount)
     }
 
+
     
     @objc func handleTap() {
-            displayLink?.isPaused = true
-        totalAmountText.text = String(format: "%.2f", currentAmount)
-        }
+        displayLink?.isPaused = true
+        totalAmountText.text = String(format: "%.2f", totalAmount)
+    }
     
     
     
