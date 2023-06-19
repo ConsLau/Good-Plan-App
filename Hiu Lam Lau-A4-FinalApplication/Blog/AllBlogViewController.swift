@@ -91,7 +91,7 @@ class AllBlogViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return allBlogs.count
+        return max(1,allBlogs.count)
     }
 
     
@@ -99,8 +99,10 @@ class AllBlogViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let blogCell = tableView.dequeueReusableCell(withIdentifier: "BlogCell", for: indexPath) as! BlogTableViewCell
 
-
-        if indexPath.row < allBlogs.count{
+        if allBlogs.isEmpty{
+            blogCell.blogTitle.text = "Please create your first blog by pressing + button!"
+            blogCell.blogDate.text = ""
+        }else {
             let blogs = allBlogs[indexPath.row]
             blogCell.blogTitle.text = blogs.blogTitle
             

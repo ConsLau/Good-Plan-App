@@ -116,9 +116,9 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return filteredTask.count
+        return max(1, filteredTask.count)
     }
+
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row < filteredTask.count {
@@ -150,33 +150,34 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Configure the cell...
-            let taskCell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath)
-            var content = taskCell.defaultContentConfiguration()
-            
-            if indexPath.row < filteredTask.count {
-                let task = filteredTask[indexPath.row]
-                content.text = task.taskName
-                content.secondaryText = task.category?.cateName ?? "Default Category"
-                
-                if task.taskIsComplete == .complete {
-                    content.image = UIImage(named:"Checked")
-                } else {
-                    content.image = UIImage(named:"Uncheck")
-                }
+        let taskCell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath)
+        var content = taskCell.defaultContentConfiguration()
+
+        if filteredTask.isEmpty {
+            content.text = "No Task for today!"
+            content.secondaryText = ""
+            content.image = nil
+        } else {
+            let task = filteredTask[indexPath.row]
+            content.text = task.taskName
+            content.secondaryText = task.category?.cateName ?? "Default Category"
+            if task.taskIsComplete == .complete {
+                content.image = UIImage(named:"Checked")
+            } else {
+                content.image = UIImage(named:"Uncheck")
             }
-            
-            taskCell.contentConfiguration = content
-            taskCell.selectionStyle = .none
-            
-            let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(singleTapGestureHandler(_:)))
-            gestureRecognizer.numberOfTapsRequired = 1
-            taskCell.addGestureRecognizer(gestureRecognizer)
-            
-            return taskCell
+        }
         
+        taskCell.contentConfiguration = content
+        taskCell.selectionStyle = .none
         
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(singleTapGestureHandler(_:)))
+        gestureRecognizer.numberOfTapsRequired = 1
+        taskCell.addGestureRecognizer(gestureRecognizer)
+        
+        return taskCell
     }
+
     
     
     

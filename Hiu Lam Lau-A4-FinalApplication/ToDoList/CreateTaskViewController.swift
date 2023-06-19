@@ -26,26 +26,26 @@ class CreateTaskViewController: UIViewController {
     weak var databaseController: DatabaseProtocol?
     var selectedDate: Date?
     var taskCategories: [TaskCategory] = []// Task categories data source
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
-
+        
         notificationCentre.requestAuthorization(options: [.alert, .sound]) { (permissionGranted, error) in
             if(!permissionGranted){
                 print("Denied!!!!!")
             }
             
         }
-
+        
         //self.navigationController?.navigationController?.isNavigationBarHidden = false
         
         // keyboard dismiss
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-
+        
         view.addGestureRecognizer(tap)
         
         // TextField boarder
@@ -62,13 +62,17 @@ class CreateTaskViewController: UIViewController {
         categoryTextField.layer.borderWidth = 1.0
         categoryTextField.layer.borderColor = UIColor.lightGray.cgColor
         categoryTextField.layer.cornerRadius = 5.0
+        
+        isCompleteSegmentedControl.selectedSegmentIndex = 1
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         // Hide the navigation bar of the initial navigation controller
         //self.navigationController?.navigationController?.isNavigationBarHidden = true
+        
+        isCompleteSegmentedControl.selectedSegmentIndex = 1
     }
     
     //Calls this function when the tap is recognized.
@@ -76,32 +80,44 @@ class CreateTaskViewController: UIViewController {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
-
+    
     @IBAction func datePicker(_ sender: UIDatePicker) {
-            selectedDate = sender.date
+        selectedDate = sender.date
     }
     
     @IBAction func confirmBtn(_ sender: Any) {
+        var taskDate = selectedDate
+        
+        if taskDate == nil {
+            taskDate = Date()
+            displayMessage(message: "You didn't set the task date. It is now set to the current date.", completion: { [weak self] _ in
+                self?.addTask(taskDate: taskDate)
+            })
+            return
+        }
+        
+        addTask(taskDate: taskDate)
+        
+    }
+    
+    func addTask(taskDate: Date?) {
         guard let taskName = nameTextField.text, !taskName.isEmpty,
               let taskDesc = descTextField.text, !taskDesc.isEmpty,
-              let taskDate = selectedDate,
+              let finalTaskDate = taskDate,
               let taskCategory = categoryTextField.text, !taskCategory.isEmpty
         else {
             displayMessage(message: "Please fill in all fields.")
             return
         }
-                
+        
         let isCompleteStatus = isComplete(rawValue: Int32(isCompleteSegmentedControl.selectedSegmentIndex)) ?? .inComplete
-
         
-        let _ = databaseController?.addTask(taskName: taskName, taskDesc: taskDesc, taskDate: taskDate, isComplete: isCompleteStatus, taskCategory: taskCategory)
+        let _ = databaseController?.addTask(taskName: taskName, taskDesc: taskDesc, taskDate: finalTaskDate, isComplete: isCompleteStatus, taskCategory: taskCategory)
         
-                print("task added")
-
-                
-//                navigationController?.popViewController(animated: true)
+        print("task added")
+        
+        // After the task is added, dismiss the view controller.
         dismiss(animated: true, completion: nil)
-        
         
         // local notification
         notificationCentre.getNotificationSettings{ (settings) in
@@ -159,10 +175,10 @@ class CreateTaskViewController: UIViewController {
         return formatter.string(from: date)
     }
     
-    func displayMessage(message: String) {
+    func displayMessage(message: String, completion: ((UIAlertAction) -> Void)? = nil) {
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: completion))
         self.present(alert, animated: true, completion: nil)
     }
-
+    
 }

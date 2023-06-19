@@ -11,13 +11,10 @@ import AVFoundation
 class CreateRecordViewController: UIViewController, UINavigationControllerDelegate {
 
     
-    
-
     @IBOutlet weak var recordName: UITextField!
     @IBOutlet weak var recordAmount: UITextField!
     @IBOutlet weak var recordCategory: UITextField!
     @IBOutlet weak var recordDate: UIDatePicker!
-//    @IBOutlet weak var recordImage: UIImageView!
     @IBOutlet weak var recordType: UISegmentedControl!
     
     var selectedDate: Date?
@@ -26,7 +23,7 @@ class CreateRecordViewController: UIViewController, UINavigationControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         recordDatabaseController = appDelegate?.recordDatabaseController
         
@@ -71,67 +68,43 @@ class CreateRecordViewController: UIViewController, UINavigationControllerDelega
         selectedDate = (sender as AnyObject).date
     }
     
-//    @IBAction func receiptImageBtn(_ sender: Any) {
-//        let controller = UIImagePickerController()
-//        controller.allowsEditing = false
-//        controller.delegate = self
-//        let actionSheet = UIAlertController(title: nil, message: "Select Option:",
-//                                            preferredStyle: .actionSheet)
-//
-//        let cameraAction = UIAlertAction(title: "Camera", style: .default) { action in
-//            if self.checkCameraAccess() {
-//                controller.sourceType = .camera
-//                self.present(controller, animated: true, completion: nil)
-//            } else {
-//                // Here, you might want to display an alert to the user explaining that camera access is needed.
-//            }
-//        }
-//
-//
-//        let libraryAction = UIAlertAction(title: "Photo Library", style: .default) { action in
-//            controller.sourceType = .photoLibrary
-//            self.present(controller, animated: true, completion: nil)
-//        }
-//
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-//
-//        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-//            actionSheet.addAction(cameraAction)
-//        }
-//        actionSheet.addAction(libraryAction)
-//        actionSheet.addAction(cancelAction)
-//        self.present(actionSheet, animated: true, completion: nil)
-//    }
-    
     
     @IBAction func confirmBtn(_ sender: Any) {
+        var recordDate = selectedDate
+        
+        if recordDate == nil {
+            recordDate = Date()
+            displayMessage(message: "You didn't set the record date. It is now set to the current date.", completion: { [weak self] _ in
+                self?.addRecord(recordDate: recordDate)
+            })
+            return
+        }
+        
+        addRecord(recordDate: recordDate)
+    }
+    
+    func addRecord(recordDate: Date?) {
         guard let recordName = recordName.text, !recordName.isEmpty,
               let recordAmount = recordAmount.text, !recordAmount.isEmpty,
-              let recordDate = selectedDate,
-              let recordCategoryName = recordCategory.text, !recordCategoryName.isEmpty
-//              let recordImage = recordImage.image
+              let recordCategoryName = recordCategory.text, !recordCategoryName.isEmpty,
+              let finalRecordDate = recordDate
         else {
             displayMessage(message: "Please fill in all fields.")
             return
         }
-
-            guard let recordAmountFloat = Float(recordAmount) else {
-//                showAlert(title: "Error", message: "Invalid amount. Please enter a valid number.")
-                return
-            }
-                
-            // recordType
-            let recordType = Good_Plan.recordType(rawValue: Int32(recordType.selectedSegmentIndex)) ?? .expenditure
-            
-                
-                let _ = recordDatabaseController?.addRecord(recordName: recordName, recordAmount: recordAmountFloat, recordType: recordType,recordDate: recordDate, categoryName: recordCategoryName)
-                
-                print("record added")
-//                navigationController?.popViewController(animated: true)
-                dismiss(animated: true, completion: nil)
-            }
-    
         
+        guard let recordAmountFloat = Float(recordAmount) else {
+            displayMessage(message: "Invalid amount. Please enter a valid number.")
+            return
+        }
+        
+        let recordType = Good_Plan.recordType(rawValue: Int32(recordType.selectedSegmentIndex)) ?? .expenditure
+        
+        let _ = recordDatabaseController?.addRecord(recordName: recordName, recordAmount: recordAmountFloat, recordType: recordType, recordDate: finalRecordDate, categoryName: recordCategoryName)
+        
+        print("record added")
+        dismiss(animated: true, completion: nil)
+    }
     
     func formattedDate(date: Date) -> String{
         let formatter = DateFormatter()
@@ -139,11 +112,11 @@ class CreateRecordViewController: UIViewController, UINavigationControllerDelega
         return formatter.string(from: date)
     }
     
-    func displayMessage(message: String) {
+    func displayMessage(message: String, completion: ((UIAlertAction) -> Void)? = nil) {
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: completion))
         self.present(alert, animated: true, completion: nil)
     }
-        
-
+    
+    
 }

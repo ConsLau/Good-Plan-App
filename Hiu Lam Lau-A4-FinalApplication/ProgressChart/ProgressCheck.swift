@@ -36,12 +36,14 @@ struct ProgressCheck: View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack {
                 ForEach(taskCategoryProgress, id: \.self) { category in
-                                    let progress = self.taskCategoryProgressValues[category] ?? 0
-                                    Text("Category: " + (category.cateName ?? "No Category"))
-                                    ProgressBar(progress: .constant(progress))
-                                        .frame(width: 150, height: 150)
-                                        .padding(30)
-                                }
+                    let progress = self.taskCategoryProgressValues[category] ?? 0
+                    VStack {
+                        Text("Category: " + (category.cateName ?? "No Category"))
+                        ProgressBar(progress: .constant(progress))
+                            .frame(width: 150, height: 150)
+                            .padding(30)
+                    }.padding(40)
+                }
             }
         }
         .navigationBarTitle("Progress Checking")
