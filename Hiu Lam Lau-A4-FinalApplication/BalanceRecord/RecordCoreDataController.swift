@@ -93,18 +93,6 @@ class RecordCoreDataController: NSObject, DatabaseProtocolRecord, NSFetchedResul
         listeners.removeDelegate(listener)
     }
     
-//    func addRecord(recordName: String, recordAmount: Int16, recordType: recordType, recordDate: Date, recordImage: String) -> Record {
-//        let record = NSEntityDescription.insertNewObject(forEntityName: "Record", into: persistentContainer.viewContext) as! Record
-//
-//        record.recordName = recordName
-//        record.recordAmount = recordAmount
-//        record.recRecordType = recordType
-//        record.recordDate = recordDate
-//        record.recordImage = URL(string: recordImage)?.lastPathComponent
-//
-//        cleanup()
-//        return record
-//    }
     
 
     

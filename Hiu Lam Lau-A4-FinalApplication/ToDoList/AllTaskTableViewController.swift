@@ -88,12 +88,6 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
         filteredTask = allTask.filter({(task: Task) -> Bool in
             return checkDateMonth(selectedDay: selectedDate, selectedMonth: selectedMonth, taskDate: task.taskDate!)
         })
-//        filteredTask = allTask.filter({(task: Task) -> Bool in
-//                if let taskDate = task.taskDate {
-//                    return checkDateMonth(selectedDay: selectedDate, selectedMonth: selectedMonth, taskDate: taskDate)
-//                }
-//                return false
-//            })
         
         tableView.reloadData()
     }
@@ -188,18 +182,6 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
         return true
     }
     
-    
-    
-    // Override to support editing the table view.
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            // Delete the row from the data source
-//            let task = filteredTask[indexPath.row]
-//            databaseController?.deleteTask(task: task)
-//        } else if editingStyle == .insert {
-//
-//        }
-//    }
     
     // new table view
     func updateSelectedDate(selectedDay: String, selectedMonth: String) {

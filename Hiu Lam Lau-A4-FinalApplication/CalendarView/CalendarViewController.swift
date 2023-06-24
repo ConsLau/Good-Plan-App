@@ -86,15 +86,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         selectedDate = CalendarHelper().plusMonth(date: selectedDate)
         setMonthView()
     }
-    
-//    func setCellView(){
-//        let width = (collectionView.frame.size.width - 2)/8
-//        let height = (collectionView.frame.size.width - 2)/7
-//
-//        let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-//        flowLayout.itemSize = CGSize(width: width, height: height)
-//    }
-    
+
     // responsive ui
     func setCellView() {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()

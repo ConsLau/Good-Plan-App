@@ -59,11 +59,6 @@ class AllBlogViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     
-//    func onBlogChange(change: DatabaseChange, blogs: [Blog]) {
-//        allBlogs = blogs
-//        blogTable.reloadData()
-//    }
-    
     func onBlogChange(change: DatabaseChange, blogs: [Blog]) {
         allBlogs = blogs.sorted { (blog1, blog2) -> Bool in
             guard let date1 = blog1.createDate, let date2 = blog2.createDate else { return false }
@@ -99,10 +94,7 @@ class AllBlogViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let blogCell = tableView.dequeueReusableCell(withIdentifier: "BlogCell", for: indexPath) as! BlogTableViewCell
 
-        if allBlogs.isEmpty{
-            blogCell.blogTitle.text = "Please create your first blog by pressing + button!"
-            blogCell.blogDate.text = ""
-        }else {
+        if indexPath.row < allBlogs.count {
             let blogs = allBlogs[indexPath.row]
             blogCell.blogTitle.text = blogs.blogTitle
             

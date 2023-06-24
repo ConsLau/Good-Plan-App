@@ -22,7 +22,6 @@ extension Record {
 
     @NSManaged public var recordDate: Date?
     @NSManaged public var recordType: Int32
-//    @NSManaged public var recordImage: String?
     @NSManaged public var recordAmount: Float
     @NSManaged public var recordName: String?
     @NSManaged public var categoryR: RecordCategory?
