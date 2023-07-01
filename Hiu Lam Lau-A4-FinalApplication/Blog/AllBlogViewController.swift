@@ -86,7 +86,7 @@ class AllBlogViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return max(1,allBlogs.count)
+        return allBlogs.count
     }
 
     

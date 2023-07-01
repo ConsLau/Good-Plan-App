@@ -49,10 +49,12 @@ class FinancesViewController: UIViewController{
         let components = calendar.dateComponents([.year, .month], from: date)
         // Calculate the start and end of the current month
         guard let startOfCurrentMonth = calendar.date(from: components),
-              let endOfCurrentMonth = calendar.date(byAdding: DateComponents(month: 1, day: -1), to: startOfCurrentMonth)
+              var endOfCurrentMonth = calendar.date(byAdding: DateComponents(month: 1, day: -1), to: startOfCurrentMonth)
         else {
             fatalError("Failed to calculate dates.")
         }
+        endOfCurrentMonth = calendar.date(byAdding: DateComponents(day: 1, second: -1), to: endOfCurrentMonth)!
+
         
         // Fetch records and filter to only include those within the current month
         let records = coreDataController.fetchRecord().filter {

@@ -127,20 +127,21 @@ class AllTaskTableViewController: UITableViewController, DatabaseListener {
     
     @objc func singleTapGestureHandler(_ sender: UITapGestureRecognizer){
         let location = sender.location(in: self.tableView)
-        if let indexPath = self.tableView.indexPathForRow(at: location) {
-            print("Double tapped")
-            
-            let task = filteredTask[indexPath.row]
-            
-            if task.taskIsComplete == .complete {
-                task.taskIsComplete = .inComplete
-            } else {
-                task.taskIsComplete = .complete
+            if let indexPath = self.tableView.indexPathForRow(at: location) {
+                print("Double tapped")
+                if indexPath.row < filteredTask.count {
+                    let task = filteredTask[indexPath.row]
+
+                    if task.taskIsComplete == .complete {
+                        task.taskIsComplete = .inComplete
+                    } else {
+                        task.taskIsComplete = .complete
+                    }
+
+                    databaseController?.updateTask(task: task)
+                    tableView.reloadRows(at: [indexPath], with: .automatic)
+                }
             }
-            
-            databaseController?.updateTask(task: task)
-            tableView.reloadRows(at: [indexPath], with: .automatic)
-        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
